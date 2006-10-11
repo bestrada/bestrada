@@ -1,0 +1,67 @@
+/****
+ * CSC 480, Lab 2
+ * Bryan Estrada
+ */
+
+Task 1: Agent Type and Capabilities
+-----------------------------------
+
+The sample agent provided appears to be a simple reflex agent. According to 
+[1], a simple reflex agent is one that "select(s) actions on the basis of the 
+current percept, ignoring the rest of the percept history."
+
+From a black-box observer's perspective, the agent appears to only move in its 
+current "forward" direction each step until it reaches an obstacle. When this 
+happens, the agent makes right turns only to avoid the obstacle, regardless of 
+whether or not it traversed the path that it is turning to or any other 
+information that may assist it in making a smarter decision.
+
+The agent reacts only to the current percept. It interprets the current percept 
+as one of two things: am I clear to move forward? or am I about to hit an 
+obstacle? On this information alone, the agent will either move forward, or 
+turn right (respectively).
+
+The current implementation of the agent within the chosen environment does not 
+allow it to reach the target "goal square". Since the agent is only capable of 
+making right turns when the obstacles force it to do so, and the environment 
+defined in MediumMap.sbm force the agent into a repetitive loop, it will never 
+be able to reach the target square.
+
+Task 2: Random Agent Implementation
+-----------------------------------
+
+First, notice that instead of implementing a whole new agent from scratch, I 
+simply extend the MyAgent class and override methods to achieve randomness.
+
+I implemented two aspects of randomness in MyRandomAgent.java. First, I noticed 
+that MyAgent always called turnRight() when it hits an obstacle. I 
+reimplemented the turnRight() method to call turnLeft() half of the time.
+
+Second, I allowed MyRandomAgent to make turns in mid-stride, even if there are 
+no obstacles that force it to turn. One out of every ten steps (on average), 
+the agent will turn, regardless of obstacles.
+
+Task 3: Random Agent Analysis
+-----------------------------
+
+MyRandomAgent is capable of reaching the goal square, though it is not possible 
+to predict how or when this will happen. As long as the goal is reachable, the 
+agent I implemented will reach it sooner or later.
+
+The primary limiting constraing of MyRandomAgent is the fact that it lacks 
+programmability and exhibits very unpredictable behavior. While this may seem 
+like an intelligent approach, the agent does not actually learn from it's 
+history of moves.
+
+This pseudo-random agent is, I believe, more intelligent than the sample agent 
+because it quantifiably does a better job in terms of coverage.
+
+Is your agent capable of reaching the goal square from the start square?
+What are limiting circumstances and constraints?
+How well does your agent perform?
+Would you consider such a (pseudo-) random agent more "intelligent"
+than the sample agent?
+
+References
+[1] Russell, S. J. and Norvig, P. 1995 Artificial Intelligence: a Modern 
+      Approach. Prentice-Hall, Inc.
