@@ -1,0 +1,6 @@
+This set of files illustrate the Producer-Consumer pattern,
+with the producer and the consumers running as threads.
+
+The source code comes from the Java online tutorial:
+
+http://java.sun.com/docs/books/tutorial/essential/threads/synchronization.html
