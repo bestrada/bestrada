@@ -1,63 +1,93 @@
 package Agents;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 
 import BotEnvironment.SearchBot.BotSearch;
 import BotEnvironment.SearchBot.Node;
+import BotEnvironment.SearchBot.SBConstants;
 
 public class BreadthFirstSearchAgent extends BotSearch
 {
-   private enum Direction { NORTH, SOUTH, EAST, WEST }
-   private Map<Node, Direction> _guide;
+   private Map<Node, Integer> _guide;
+   private Map<Node, Node> _heirarchy;
+   private Queue<Node> _fringe;
+   private boolean _firstStep;
    
    public BreadthFirstSearchAgent()
    {
-      _guide = new HashMap<Node, Direction>();
+      _guide = new HashMap<Node, Integer>();
+      _heirarchy = new HashMap<Node, Node>();
+      _fringe = new LinkedList<Node>();
+      _firstStep = false;
    }
    
-   public void step()
-   {
-      Node here = this.getBotLocation();
-   }
 
    @Override
    public void movementStep()
    {
-      Direction d = _guide.get(this.getBotLocation());
-      switch (d)
-      {
-         case NORTH: this.moveNorth(); break;
-         case SOUTH: this.moveSouth(); break;
-         case EAST:  this.moveEast();  break;
-         case WEST:  this.moveWest();  break;
-      }
+      int direction = _guide.get(getBotLocation()).intValue();
+      turnTo(direction);
+      moveForward();
    }
 
    @Override
    public void searchStep()
    {
-      // TODO Auto-generated method stub
+      if (!_firstStep)
+      {
+         _firstStep = true;
+         _fringe.add(getStartingLocation());
+         _heirarchy.put(getStartingLocation(), null);
+      }
+      if (_fringe.isEmpty()) return;
+      Node node = _fringe.remove();
+      moveSearchLocation(node);
       
+      if (this.getGoalFound())
+      {
+         /* this is the goal, so create a breadcrumb... */
+         for (Node n = node; null != n; )
+         {
+            Node parent = _heirarchy.get(n);
+            if (null == parent) break;
+            
+            int move = getMove(parent, n);
+            _guide.put(parent, new Integer(move));
+            n = parent;
+         }
+      }
+      else
+      {
+         List<Node> children = new ArrayList<Node>(4);
+         children.add(getNorthOfSearchLocation());
+         children.add(getEastOfSearchLocation());
+         children.add(getSouthOfSearchLocation());
+         children.add(getWestOfSearchLocation());
+         for(Node n : children)
+         {
+            if (null != n && !_heirarchy.containsKey(n) && !n.getIsWall())
+            {
+               _heirarchy.put(n, node);
+               _fringe.add(n);
+            }
+         }
+      }
    }
    
-   protected void moveSouth()
+   private int getMove(Node from, Node to)
    {
+      int result = -1;
       
-   }
-   
-   protected void moveNorth()
-   {
+      if (to == from.getNorth()) result = SBConstants.NORTH;
+      else if (to == from.getEast()) result = SBConstants.EAST;
+      else if (to == from.getSouth()) result = SBConstants.SOUTH;
+      else if (to == from.getWest()) result = SBConstants.WEST;
       
-   }
-   
-   protected void moveEast()
-   {
-      
-   }
-   
-   protected void moveWest()
-   {
-      
+      return result;
    }
 }
