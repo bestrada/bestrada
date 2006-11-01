@@ -1,11 +1,10 @@
 package Agents;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.TreeSet;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 import BotEnvironment.SearchBot.BotSearch;
 import BotEnvironment.SearchBot.Node;
@@ -20,7 +19,7 @@ public class UniformCostSearchAgent extends BotSearch
     * pretty much a struct for extra node information
     * @author bestrada
     */
-   class NodeInfo
+   class NodeInfo implements Comparable<NodeInfo>
    {
       public NodeInfo(Node n)
       {
@@ -41,10 +40,17 @@ public class UniformCostSearchAgent extends BotSearch
       
       /** a reference to this node itself */
       public Node node;
+
+      public int compareTo(NodeInfo n)
+      {
+	 return this.cost - n.cost;
+      }
+      
+      
    }
    
    private Map<Node, NodeInfo> _nodeInfo;
-   private TreeSet<NodeInfo> _fringe;
+   private Queue<Node> _fringe;
    private boolean _firstStep;
    
    public UniformCostSearchAgent()
@@ -52,15 +58,15 @@ public class UniformCostSearchAgent extends BotSearch
       _firstStep = false;
       
       _nodeInfo = new HashMap<Node, NodeInfo>();
-      _fringe = new TreeSet<NodeInfo>(
-            new Comparator<NodeInfo>()
-            {
-               public int compare(NodeInfo n1, NodeInfo n2)
-               {
-                  return n1.cost - n2.cost;
-               }
-            }
-      );
+      _fringe = new PriorityQueue<Node>(1024, new NodeComparator()); 
+   }
+   
+   class NodeComparator implements Comparator<Node>
+   {
+      public int compare(Node n1, Node n2)
+      {
+         return _nodeInfo.get(n1).compareTo(_nodeInfo.get(n2));
+      }
    }
    
    @Override
@@ -93,12 +99,11 @@ public class UniformCostSearchAgent extends BotSearch
          ni.parent = null;
          
          _nodeInfo.put(super.getStartingLocation(), ni);
-         _fringe.add(ni);
+         _fringe.add(super.getBotLocation());
       }
       if (_fringe.isEmpty()) return;
       
-      Node node = _fringe.first().node;
-      _fringe.remove(node);
+      Node node = _fringe.remove();
       moveSearchLocation(node);
       
       if (super.getGoalFound())
@@ -117,35 +122,35 @@ public class UniformCostSearchAgent extends BotSearch
       }
       else
       {
-         List<Node> children = new ArrayList<Node>(4);
-         children.add(getNorthOfSearchLocation());
-         children.add(getEastOfSearchLocation());
-         children.add(getSouthOfSearchLocation());
-         children.add(getWestOfSearchLocation());
+         this.processNode(getNorthOfSearchLocation(), node);
+         this.processNode(getSouthOfSearchLocation(), node);
+         this.processNode(getEastOfSearchLocation(), node);
+         this.processNode(getWestOfSearchLocation(), node);
+      }
+   }
+   
+   /** determines if this node needs to get added to the fringe and processed */
+   private void processNode(Node n, Node parent)
+   {
+      if (null != n && !n.getIsWall())
+      {
+         /* get extra info for the parent */
+         NodeInfo pni = _nodeInfo.get(parent);
          
-         for(Node n : children)
+         /* create new NodeInfo for this one */
+         NodeInfo ni = new NodeInfo(n);
+         
+         ni.parent = parent;
+         ni.cost = pni.cost + getTravelCost(parent, n) + n.getCost();
+         ni.facing = this.getMove(parent, n);
+         
+         /* put it in if it doesn't exist, or override if this one costs 
+          * less */
+         if (!_nodeInfo.containsKey(n) || 0 > ni.compareTo(_nodeInfo.get(n)))
          {
-            if (null != n && !n.getIsWall())
-            {
-               /* get extra info for the parent */
-               NodeInfo pni = _nodeInfo.get(node);
-               
-               /* create new node info for this one */
-               NodeInfo ni = new NodeInfo(n);
-               
-               ni.parent = node;
-               ni.cost = pni.cost + getTravelCost(node, n) + n.getCost();
-               ni.facing = this.getMove(node, n);
-               
-               /* put it in if it doesn't exist, or override if this one costs 
-                * less */
-               if (!_nodeInfo.containsKey(n) || _nodeInfo.get(n).cost >= ni.cost)
-               {
-        	  _nodeInfo.put(n, ni);
-                  _fringe.add(ni);
-               }
-            }
-         }         
+  	    _nodeInfo.put(n, ni);
+            _fringe.add(n);
+         }
       }
    }
    
