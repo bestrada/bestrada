@@ -22,15 +22,29 @@ public class UniformCostSearchAgent extends BotSearch
     */
    class NodeInfo
    {
+      public NodeInfo(Node n)
+      {
+	 this.node = n;
+      }
+      
+      /** what direction your guy faces if he moved here */
       public int facing;
+      
+      /** how much it costs to get to this spot */
       public int cost;
+      
+      /** the "breadcrumb" if this is on the path to the goal */
       public int nextMove;
       
+      /** a reference to this node's parent */
       public Node parent;
+      
+      /** a reference to this node itself */
+      public Node node;
    }
    
    private Map<Node, NodeInfo> _nodeInfo;
-   private TreeSet<Node> _fringe;
+   private TreeSet<NodeInfo> _fringe;
    private boolean _firstStep;
    
    public UniformCostSearchAgent()
@@ -38,12 +52,12 @@ public class UniformCostSearchAgent extends BotSearch
       _firstStep = false;
       
       _nodeInfo = new HashMap<Node, NodeInfo>();
-      _fringe = new TreeSet<Node>(
-            new Comparator<Node>()
+      _fringe = new TreeSet<NodeInfo>(
+            new Comparator<NodeInfo>()
             {
-               public int compare(Node n1, Node n2)
+               public int compare(NodeInfo n1, NodeInfo n2)
                {
-                  return _nodeInfo.get(n1).cost - _nodeInfo.get(n2).cost;
+                  return n1.cost - n2.cost;
                }
             }
       );
@@ -72,18 +86,18 @@ public class UniformCostSearchAgent extends BotSearch
       if (!_firstStep)
       {
          _firstStep = true;
-         _fringe.add(super.getStartingLocation());
          
-         NodeInfo ni = new NodeInfo();
+         NodeInfo ni = new NodeInfo(super.getStartingLocation());
          ni.cost = 0;
          ni.facing = SBConstants.EAST;
          ni.parent = null;
          
          _nodeInfo.put(super.getStartingLocation(), ni);
+         _fringe.add(ni);
       }
       if (_fringe.isEmpty()) return;
       
-      Node node = _fringe.first();
+      Node node = _fringe.first().node;
       _fringe.remove(node);
       moveSearchLocation(node);
       
@@ -111,15 +125,25 @@ public class UniformCostSearchAgent extends BotSearch
          
          for(Node n : children)
          {
-            if (null != n && !_nodeInfo.containsKey(n) && !n.getIsWall())
+            if (null != n && !n.getIsWall())
             {
+               /* get extra info for the parent */
                NodeInfo pni = _nodeInfo.get(node);
-               NodeInfo ni = new NodeInfo();
+               
+               /* create new node info for this one */
+               NodeInfo ni = new NodeInfo(n);
+               
                ni.parent = node;
                ni.cost = pni.cost + getTravelCost(node, n) + n.getCost();
                ni.facing = this.getMove(node, n);
-               _nodeInfo.put(n, ni);
-               _fringe.add(n);
+               
+               /* put it in if it doesn't exist, or override if this one costs 
+                * less */
+               if (!_nodeInfo.containsKey(n) || _nodeInfo.get(n).cost >= ni.cost)
+               {
+        	  _nodeInfo.put(n, ni);
+                  _fringe.add(ni);
+               }
             }
          }         
       }
@@ -144,6 +168,7 @@ public class UniformCostSearchAgent extends BotSearch
                   cost += (UniformCostSearchAgent.TURN_COST * 2);
                   break;
             }
+            break;
          case SBConstants.SOUTH:
             switch (this.getMove(from, to))
             {
@@ -154,6 +179,7 @@ public class UniformCostSearchAgent extends BotSearch
                   cost += (UniformCostSearchAgent.TURN_COST * 2);
                   break;
             }
+            break;
          case SBConstants.EAST:
             switch (this.getMove(from, to))
             {
@@ -164,6 +190,7 @@ public class UniformCostSearchAgent extends BotSearch
                   cost += (UniformCostSearchAgent.TURN_COST * 2);
                   break;
             }
+            break;
          case SBConstants.WEST:
             switch (this.getMove(from, to))
             {
@@ -173,7 +200,8 @@ public class UniformCostSearchAgent extends BotSearch
                case SBConstants.EAST:
                   cost += (UniformCostSearchAgent.TURN_COST * 2);
                   break;
-            }            
+            }
+            break;
       }
       return cost;
    }
@@ -186,6 +214,11 @@ public class UniformCostSearchAgent extends BotSearch
       else if (to == from.getEast()) result = SBConstants.EAST;
       else if (to == from.getSouth()) result = SBConstants.SOUTH;
       else if (to == from.getWest()) result = SBConstants.WEST;
+      
+      if (result == -1)
+      {
+	 super.log("Hey, couldn't find the direction!");
+      }
       
       return result;      
    }
