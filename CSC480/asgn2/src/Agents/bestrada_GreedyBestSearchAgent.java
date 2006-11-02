@@ -3,7 +3,7 @@ package Agents;
 import BotEnvironment.SearchBot.Node;
 import BotEnvironment.SearchBot.SBFunctions;
 
-public class GreedyBestSearchAgent extends AbstractSearchAgent
+public class bestrada_GreedyBestSearchAgent extends bestrada_AbstractSearchAgent
 {
    protected String getSearchMethodName()
    {
