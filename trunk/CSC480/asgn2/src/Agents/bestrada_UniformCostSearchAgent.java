@@ -2,7 +2,7 @@ package Agents;
 
 import BotEnvironment.SearchBot.Node;
 
-public class UniformCostSearchAgent extends AbstractSearchAgent
+public class bestrada_UniformCostSearchAgent extends bestrada_AbstractSearchAgent
 { 
    @Override
    protected String getSearchMethodName()

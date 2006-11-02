@@ -10,7 +10,7 @@ import BotEnvironment.SearchBot.BotSearch;
 import BotEnvironment.SearchBot.Node;
 import BotEnvironment.SearchBot.SBConstants;
 
-public abstract class AbstractSearchAgent extends BotSearch
+public abstract class bestrada_AbstractSearchAgent extends BotSearch
 {
    public static final int MOVEMENT_COST = 20;
    public static final int TURN_COST = 10;
@@ -56,7 +56,7 @@ public abstract class AbstractSearchAgent extends BotSearch
    private Queue<Node> _fringe;
    private boolean _firstStep;
    
-   protected AbstractSearchAgent()
+   protected bestrada_AbstractSearchAgent()
    {
       _firstStep = false;
       
@@ -178,7 +178,7 @@ public abstract class AbstractSearchAgent extends BotSearch
    protected int getTravelCost(Node from, Node to)
    {
       /* it will always cost at least this much */
-      int cost = AbstractSearchAgent.MOVEMENT_COST;
+      int cost = bestrada_AbstractSearchAgent.MOVEMENT_COST;
       
       NodeInfo fni = _nodeInfo.get(from);
       
@@ -188,10 +188,10 @@ public abstract class AbstractSearchAgent extends BotSearch
             switch (this.getMove(from, to))
             {
                case SBConstants.EAST: case SBConstants.WEST:
-                  cost += UniformCostSearchAgent.TURN_COST;
+                  cost += bestrada_UniformCostSearchAgent.TURN_COST;
                   break;
                case SBConstants.SOUTH:
-                  cost += (UniformCostSearchAgent.TURN_COST * 2);
+                  cost += (bestrada_UniformCostSearchAgent.TURN_COST * 2);
                   break;
             }
             break;
@@ -199,10 +199,10 @@ public abstract class AbstractSearchAgent extends BotSearch
             switch (this.getMove(from, to))
             {
                case SBConstants.EAST: case SBConstants.WEST:
-                  cost += AbstractSearchAgent.TURN_COST;
+                  cost += bestrada_AbstractSearchAgent.TURN_COST;
                   break;
                case SBConstants.NORTH:
-                  cost += (UniformCostSearchAgent.TURN_COST * 2);
+                  cost += (bestrada_UniformCostSearchAgent.TURN_COST * 2);
                   break;
             }
             break;
@@ -210,10 +210,10 @@ public abstract class AbstractSearchAgent extends BotSearch
             switch (this.getMove(from, to))
             {
                case SBConstants.SOUTH: case SBConstants.NORTH:
-                  cost += UniformCostSearchAgent.TURN_COST;
+                  cost += bestrada_UniformCostSearchAgent.TURN_COST;
                   break;
                case SBConstants.WEST:
-                  cost += (UniformCostSearchAgent.TURN_COST * 2);
+                  cost += (bestrada_UniformCostSearchAgent.TURN_COST * 2);
                   break;
             }
             break;
@@ -221,10 +221,10 @@ public abstract class AbstractSearchAgent extends BotSearch
             switch (this.getMove(from, to))
             {
                case SBConstants.SOUTH: case SBConstants.NORTH:
-                  cost += UniformCostSearchAgent.TURN_COST;
+                  cost += bestrada_UniformCostSearchAgent.TURN_COST;
                   break;
                case SBConstants.EAST:
-                  cost += (UniformCostSearchAgent.TURN_COST * 2);
+                  cost += (bestrada_UniformCostSearchAgent.TURN_COST * 2);
                   break;
             }
             break;
