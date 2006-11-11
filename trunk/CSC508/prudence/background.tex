@@ -1,33 +1,76 @@
 \section{Background}
+This research is concerned with the use of software in safety-critical systems.
+Because of the explosive use of software in organizations today, safety risks
+are at issue. A system is considered \textbf{safety-critical} if its ``failure
+may cause injury ord eath to human beings'' \cite{FOLDOC}.
 
 \subsection{Negligence Law}
+Software developers build products just as any other engineer does. In the
+safety-critical realm, software developers are subject to the same negligence
+laws that apply in all of engineering. When, then, is negligence law invoked?
+
+\begin{quote}
+``\textbf{Negligence liability} attaches when injury or loss is caused by a 
+failure to satisfy a duty that was imposed by law, as a matter of public
+policy.''
+\cite{Kaner_neg_1995}
+\end{quote}
+
+In general terms, an organization in the safety-critical realm has a duty to
+take reasonable measures to ensure that its products are safe. The ideas of
+\textit{duty} and \textit{reasonable} are ambiguous, but can be explicated. In
+\cite{Kaner_neg_1995}, Cem Kaner adopts the forumula\footnote{this cost-benefit
+analysis was originally expressed by Judge Learned Hand in \textit{United States
+v. Carroll Towing Co.}} shown in Figure \ref{negligence} to qualitatively
+evaluate how reasonable a company's actions were involving a safety-critical
+product.
+fqgwegads 
+\begin{figure}
+\begin{tabular}{|l|}
+\hline
+	Let \textbf{B} be the burden (expense) of preventing a potential accident.\\
+	Let \textbf{L} be the severity of the loss if the accident occurs.\\
+	Let \textbf{P} bet he probability of the accident.\\[6pt]
+	Then \textit{failure to attempt to prevent a potential accident is 
+	unreasonable if}\\[8pt]
+
+      \makebox[\textwidth][c]{\(B < P \times L\)}
+\\[3pt]
+\hline
+\end{tabular}
+ 
+\label{negligence}
+\caption{Negligence cost-benefit analysis}
+\end{figure}
+
+\newpage
+An organization that develops safety-critical software, then, has a duty to
+spend the amount of time and resources equivalent to the product of the severity
+of harm and the likelihood that it will happen.
 
 \subsection{Industry Standards}
-\subsubsection*{CMM}
-\subsubsection*{ISO 9000-3}
+\subsubsection{CMM}
+The Cabability Maturity Model, or CMM, is concerned with improving processes.
+The techniques laid out by CMM will help undisciplined organizations manage
+software projects. By using the infrastructure in the CMM, organizations can
+avoid software projects that finish late or overbudget.
 
-\subsection{Related Work}
-The legal problems begot by software in safety-critical systems have already
-been researched \cite{Turner1996, Turner2000} and some suggestions have been
-made to help alleviate the cost of defending the risk associated with
-safety-critical systems\cite{Turner2001}. Additionally, it has been identified
-that software defects cannot easily be designated as manufacture-defective or
-design-defective\cite{Turner2000}, and therefore cannot be classified as
-strict-product liable or negligence liable in legal disputes. It is clear that
-both aspects of liability be addressed. This research focuses on defects in the
-process model vulnerable to negligence allegations.
+\begin{quote}
+``A \textit{software process} can be defined as a set of activities, methods,
+practicies, and transformations that people use to develop and maintain software
+and the associated products (e.g., project plans, design documents, code, test
+cases, and user manuals).''
+\end{quote}
 
-There has already been work that tries to address this overall problem. Clark
-Turner has researched the implications of safety-critical systems in
-\cite{Turner1996, Turner2000, Turner2001} and as deduced that a popular
-approach to this problem is the retroactive investigation of attorneys when a
-legal dispute ensues. But this is both inefficient and oftentimes ineffective
-because important historical information may be missing and unrecoverable.
+The CMM characterizes five levels of maturity as follows.
+\begin{enumerate}
+  \item Level 1 -- The Initial Level
+  \item Level 2 -- The Repeatable Level
+  \item Level 3 -- The Defined Level
+  \item Level 4 -- The Managed Level
+  \item Level 5 -- The Optimizing Level
+\end{enumerate}
 
-In \cite{Parnas1986}, David Parnas encourages documentation to compensate for
-rational design. Since it is impossible to build a bug-free system, inadvertent
-mistakes are forgivable with requirements and documentation. He lays out
-acceptance criteria for ideal requirements documentation that can be applied to
-safety-critical software environments. Common approaches include formal
-requirement specifications, code comments, or more browseable documents like
-Javadoc\cite{Javadoc}.
+For more information about CMM, please refer to \cite{CMM11}.
+\subsubsection{ISO 9000-3}
+
