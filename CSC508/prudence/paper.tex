@@ -3,6 +3,17 @@
 %\usepackage{fullpage}
 \usepackage{setspace}
 
+% this is an environment so we can make wide figures and tables
+\newenvironment{narrow}[2]{
+  \begin{list}{}{
+    \setlength{\topsep}{0pt}
+    \setlength{\leftmargin}{#1}
+    \setlength{\rightmargin}{#2}
+    \setlength{\listparindent}{\parindent}
+    \setlength{\itemindent}{\parindent}
+    \setlength{\parsep}{\parskip}}
+\item[]}{\end{list}}
+
 \begin{document}
 
 \title{Software Accountability:\\
@@ -18,6 +29,8 @@ Adding Prudence to Process}
 \newpage
 \doublespace
 \tableofcontents
+\listoffigures
+\listoftables
 
 \include{abstract}
 
