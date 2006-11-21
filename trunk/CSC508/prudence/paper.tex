@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 
-%\usepackage{fullpage}
+\usepackage{fullpage}
 \usepackage{setspace}
 
 % this is an environment so we can make wide figures and tables
@@ -15,7 +15,6 @@
 \item[]}{\end{list}}
 
 \begin{document}
-
 \title{Software Accountability:\\
 Adding Prudence to Process}
 \author{
@@ -23,17 +22,16 @@ Adding Prudence to Process}
   California Polytechnic State University\\
   San Luis Obispo, CA
 }
-
 \pagenumbering{roman}
-\maketitle\thispagestyle{empty}
-\newpage
+\maketitle
+
+\thispagestyle{empty}
 \doublespace
+\newpage
 \tableofcontents
 \listoffigures
 \listoftables
-
-\include{abstract}
-
+\newpage
 \pagenumbering{arabic}
 \include{introduction}
 \include{background}
@@ -41,11 +39,8 @@ Adding Prudence to Process}
 \include{software}
 \include{solution}
 \include{results}
-\include{future}
-\include{conclusions}
 
-\bibliographystyle{plain}
+\bibliographystyle{acm}
 \bibliography{references}
 
 \end{document}
-

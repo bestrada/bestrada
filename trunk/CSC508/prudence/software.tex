@@ -1,24 +1,46 @@
 \section{The Software Development Process}
-
+\label{sdp}
 The sofware development lifecycle is host of several key process areas defined
 for efficient organizations.
 
-\subsection{Properties of Software}
+\subsection{Properties of Software}\label{software_props}
 
-There are key attributes about software that make it intrinsically different
-from other fields of engineering. These areas distinguish software engineering
-from traditional engineering in a way that complicates the process for
-safety-critical organizations.
+There are key attributes about software and documentation that make them 
+intrinsically different from other fields of engineering. These areas 
+distinguish software engineering from traditional engineering in a way that 
+complicates the process for safety-critical organizations.
 
 \subsubsection*{Material Costs}
 
 There are no upfront material costs to begin software implementation. Generic,
 over-the-shelf hardware like personal computers can be used to produce
 tremendous feats in software engineering. In fact, Google, Inc. started by using
-commodotity machines to create what is now one of the most ubiquitous tools in
-computing \cite{Google}.
+commodotity machines to build what is now one of the most ubiquitous search 
+tools in computing \cite{Google}.
+
+Because of this absence of material cost, it is easier for software engineers to
+neglect to use certain precautions or care since there is no notion of immediate
+damage of expensive equipment or loss due to injury. For example, an industrial
+contractor may be dealing with expensive pieces of machinery when he installs
+equipment for clients. This engineer would use extreme caution when working with
+the machine, making repairs, or tooling with devices. He may even be working off
+of very formal blueprints, instruction manuals, and installation documents. This
+degree of formality is rarely seen in the software industry.
+
+\subsubsection*{Product Replication}\label{software_product}
+Since software is entirely digital, it is easily replicatable. This means that
+there is no chance that a copy of software can ever be a diversion from the
+original design. A bug found in any particular instance of a software program
+will exhibit itself in all copies of that piece of software, including the
+``original''.
 
 \subsubsection*{Fast Turnaround}
 
 More and more clients are demanding speed in implementation. Software developers
-often deliver what is requested of them for immediate profit over long-term gain.
+often deliver what is requested of them for immediate profit over long-term
+gain. Stakeholders see no immediate benefit from quality documentation.
+
+\subsubsection*{Testability}
+
+Documentation is not testable. By their very nature, documentation and code
+comments are open-ended artifacts with few restrictions or templates.
