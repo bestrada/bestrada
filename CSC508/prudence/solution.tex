@@ -17,3 +17,36 @@ improvement to the software engineering workflow designed for safety-critical
 environments that will provide traceable documentation that developers can use
 minimize software defects and lawyers can use to defend (or confirm) negligence.
 
+\begin{figure}
+\begin{itemize}
+  \item \textbf{Constraints on system}
+    \begin{itemize}
+      \item allows easy, real-time commenting for developers
+      \item integrates commenting capabilities into IDE
+      \item indexes comments based on code references, author, version
+    \end{itemize}
+  \item \textbf{Constraints on data representation}
+    \begin{itemize}
+      \item stores documentation comments in separate from code
+      \item associates comment-to-code with a many-to-many relationship
+      \item stores comment versioning and ownership information
+      \item preserves comment-to-code associations through code changes
+    \end{itemize}
+\end{itemize}
+\caption{Design goals for the system}
+\label{design_criteria}
+\end{figure}
+
+\subsection{Comment Classification}
+Comments can be distinguished as two distinguishably different classes: 
+\begin{enumerate}
+  \item documentation comments
+  \item code comments
+\end{enumerate}
+
+\subsection{Data Representation}
+
+\subsection{Data Access}
+\subsubsection*{Setting Data}
+\subsubsection*{Retrieving Information}
+

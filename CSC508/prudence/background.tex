@@ -1,10 +1,41 @@
 \section{Background}
-This research is concerned with the use of software in safety-critical systems.
-Because of the explosive use of software in organizations today, safety risks
-are at issue. A system is considered \textbf{safety-critical} if its ``failure
-may cause injury or death to human beings'' \cite{FOLDOC}.
+The emergence of computer software in society offers a new range of disputes and
+misconduct. In recent times, software innovations have been the originating
+cause for disputes in Internet identity theft \cite{Valetk2004}, digital
+copyright infringement \cite{Manesh2006}, and death from malfunctioning
+safety-critical software \cite{Leveson1993}. This research is concerned with the
+use of software in safety-critical systems. Because of the explosive use of
+software in organizations today, safety risks are at issue. A system is 
+considered \textbf{safety-critical} if its ``\textit{failure may cause injury or
+death to human beings}'' \cite{FOLDOC}.
 
-\subsection{Negligence Law}
+\subsection{Tort Liability}
+The term \textbf{tort} encompasses many disputes that involve wrongdoings, but 
+can be expressed in general as ``\textit{an unwanted intrusion on a protected
+personal right that causes physical, economic, or psychological injury}'' 
+\cite{Burgunder2004}. Tort liability surfaces itself in the forms of strict
+products liability and negligence law.
+
+\subsubsection{Strict Products Liability}
+Strict products liability focuses primarily on the condition of actual products
+that are released to consumers, not the process used to develop them. Lee
+Burgunder lays out that a merchant
+
+\begin{quote}
+``\ldots will be liable for damages resulting from an unreasonably dangerous
+product, whether the seller was negligent or not.'' \cite{Burgunder2004}
+\end{quote}
+
+Personal injury is neccessary for the strict products liability standard to be
+applied. When applied, defective products in question are subject to either
+\textbf{manufacturing defect} consideration or \textbf{design defect}
+consideration. The former applies when a product strays from the intended
+design, while the latter pertains when the design of a product is not adequately
+safe, even if the particular instance of product complies with the
+manufacturer's intention \cite{Turner1999}. The application of strict products
+liability against software is debatable, but is not of concern in this paper.
+
+\subsubsection{Negligence Law}
 A software developer builds products just as any other engineer does. In the
 safety-critical realm, software developers are subject to the same negligence
 laws that apply in all of engineering. Negligence law is concerned with behavior
@@ -18,14 +49,24 @@ policy.'' \cite{Kaner_neg_1995}
 
 Because duty is behavioral, negligence is only concerned with the
 process\footnote{\textbf{software processes} are discussed further in
-\ref{process}} involved in creating the product, not the product itself. In
-general terms, an organization in the safety-critical realm has a duty to take
-reasonable measures to ensure that its products are safe. The ideas of
-\textit{duty} and \textit{reasonable} are ambiguous, but can be explicated. Cem 
-Kaner adopts the forumula\footnote{this cost-benefit analysis was originally
-expressed by Judge Learned Hand inthe case of  \textit{United States v. Carroll
-Towing Co.}} shown in Figure \ref{fig:negligence} to qualitatively evaluate how
-reasonable a company's actions are.
+\ref{process} and \ref{sdp}} involved in creating the product, not the product
+itself. In general terms, an organization in the safety-critical realm has a
+duty to take reasonable measures to ensure that its products are safe. Software
+is especially concerned with negligence law because it can be argued that
+software itself is not really a product. Software can be described as
+``\textit{a static description of a dynamic process}\footnote{quoted from Clark
+S. Turner during a lecture of CSC508: Software Engineering}'' where a programmer
+is providing the service of making a computer function as desired by a client.
+This service is not sufficiently a tangible product\footnote{fundamental
+properties of software are discussed further in \ref{software_props}}, so
+software engineers fall under the jurisdiction of reasonable duties of care.
+
+The ideas of \textit{duty} and \textit{reasonable} are ambiguous, but can be
+explicated. Cem Kaner adopts the forumula\footnote{this cost-benefit analysis
+was originally expressed by Judge Learned Hand inthe case of  \textit{United
+States v. Carroll Towing Co.}} shown in Figure \ref{fig:negligence} to
+qualitatively evaluate how reasonable a company's actions are.
+
 \begin{figure}
 \begin{tabular}{|l|}
 \hline
@@ -116,5 +157,3 @@ hazard or allow a hazardous condition to exist.'' \cite{NASA1997}
 Among other requirements, NASA demands of its software implementations that
 safety-critical code ``shall be commented in such a way that future changes can
 be made with a reduced likelihood of invoking a hazardous state.''
-
-\subsection{Requirements Traceability}
