@@ -7,7 +7,8 @@ improvement to this process model that overcomes these inadequacies and can
 be introduced into the workflow of sofware development to help reduce the losses
 due to negligence liability.\\
 
-\noindent{\bf Index Terms}: documentation, comments, safety-critical
+\noindent{\bf Index Terms}: documentation, comments, process constraints,
+negligence, software safety, liability
 \end{abstract}
 
 \section{Introduction}
@@ -18,7 +19,7 @@ organizations find themselves utilizing software for the benefits of rapid
 deployment and efficiency over traditionally engineered physical components. 
 Sara Baase tracks technical development of computers and  shows the technical
 growth that computers have seen since the early computing  days of the ENIAC in
-Table \ref{tab:eniac_v_today}.
+Table \ref{tab:eniac_v_today} \cite{Baase1997}.
 
 Although software does  offer the benefits of added flexibility, increased
 functionality, and reduced costs, it provides unprecedented possibilities for
@@ -32,7 +33,9 @@ Because of its unique nature, defects in software are inevitable and typically
 more difficult to locate and handle than physical flaws in mechanical
 components\cite{Brooks1987}. Defects in the safety-critical realm can be
 especially dangerous. The use of software in safety-critical systems arouses
-concern of product liability and negligence law.
+concern of strict products liability and negligence law. In general, this 
+research seeks to define prudent process requirements that an organization can
+undertake when developing safety-critical software products.
 
 \begin{table}
 %extend the margins by 1.5 inches on both sides so this can be centered
@@ -55,10 +58,11 @@ Software & Forget it. & You name it. \\
 \end{tabular}
 \end{center}
 \end{narrow}
-\caption{50 years -- Comparing the ENIAC with modern computers. \cite{Baase1997}}
+\caption{50 years -- Comparing the ENIAC with modern computers.}
 \label{tab:eniac_v_today}
 \end{table}
 
-\subsection{General Problem Statement}
-What are the process requirements that an organization must undertake when
-developing safety-critical software products?
+\subsection{Problem Statement}
+What measures can a safety-critical software organization undertake to help
+reduce the cost of defending negligence liability in disputes and identify ``due
+care'' in its processes?

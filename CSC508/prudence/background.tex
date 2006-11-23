@@ -1,4 +1,4 @@
-\section{Background}
+\section{Legal Background and Motivation}
 The emergence of computer software in society offers a new range of disputes and
 misconduct. In recent times, software innovations have been the originating
 cause for disputes in Internet identity theft \cite{Valetk2004}, digital
@@ -13,27 +13,8 @@ death to human beings}'' \cite{FOLDOC}.
 The term \textbf{tort} encompasses many disputes that involve wrongdoings, but 
 can be expressed in general as ``\textit{an unwanted intrusion on a protected
 personal right that causes physical, economic, or psychological injury}'' 
-\cite{Burgunder2004}. Tort liability surfaces itself in the forms of strict
-products liability and negligence law.
-
-\subsubsection{Strict Products Liability}
-Strict products liability focuses primarily on the condition of actual products
-that are released to consumers, not the process used to develop them. Lee
-Burgunder lays out that a merchant
-
-\begin{quote}
-``\ldots will be liable for damages resulting from an unreasonably dangerous
-product, whether the seller was negligent or not.'' \cite{Burgunder2004}
-\end{quote}
-
-Personal injury is neccessary for the strict products liability standard to be
-applied. When applied, defective products in question are subject to either
-\textbf{manufacturing defect} consideration or \textbf{design defect}
-consideration. The former applies when a product strays from the intended
-design, while the latter pertains when the design of a product is not adequately
-safe, even if the particular instance of product complies with the
-manufacturer's intention \cite{Turner1999}. The application of strict products
-liability against software is debatable, but is not of concern in this paper.
+\cite{Burgunder2004}. Tort liability surfaces itself in the forms of negligence
+law and strict products liability.
 
 \subsubsection{Negligence Law}
 A software developer builds products just as any other engineer does. In the
@@ -49,23 +30,33 @@ policy.'' \cite{Kaner_neg_1995}
 
 Because duty is behavioral, negligence is only concerned with the
 process\footnote{\textbf{software processes} are discussed further in
-\ref{process} and \ref{sdp}} involved in creating the product, not the product
-itself. In general terms, an organization in the safety-critical realm has a
-duty to take reasonable measures to ensure that its products are safe. Software
-is especially concerned with negligence law because it can be argued that
-software itself is not really a product. Software can be described as
-``\textit{a static description of a dynamic process}\footnote{quoted from Clark
-S. Turner during a lecture of CSC508: Software Engineering}'' where a programmer
-is providing the service of making a computer function as desired by a client.
-This service is not sufficiently a tangible product\footnote{fundamental
-properties of software are discussed further in \ref{software_props}}, so
-software engineers fall under the jurisdiction of reasonable duties of care.
+Sections \ref{process} and \ref{sdp}} involved in creating the product, not the
+product itself. In general terms, an organization in the safety-critical realm
+has a duty to take reasonable measures to ensure that its products are safe.
+According to negligence law, all that a party in question must do to avoid the 
+possibility of liability is to ensure to exercise ``due care".
 
-The ideas of \textit{duty} and \textit{reasonable} are ambiguous, but can be
-explicated. Cem Kaner adopts the forumula\footnote{this cost-benefit analysis
-was originally expressed by Judge Learned Hand inthe case of  \textit{United
-States v. Carroll Towing Co.}} shown in Figure \ref{fig:negligence} to
-qualitatively evaluate how reasonable a company's actions are.
+Software is especially concerned with negligence law because the comprisal of
+activities that a software developer engages in results in the product itself.
+There are no parts that need to be machined or tools that need to be fabricated
+in order to construct software. In general, software can be described as 
+``\textit{a static description of a dynamic process}\footnote{This definition
+is originally described by Clark S. Turner}'' where a programmer is providing
+the service (writing a static description) of making a computer function (a
+dynamic process) as desired by a client. This service is not sufficiently a
+tangible product\footnote{see Section \ref{software_props} and
+\cite{Turner2000}}, so it would seem that software engineers fall under the
+jurisdiction of negligence law.
+
+The idea of ``due care" is ambiguous, but can be explicated. Cem Kaner adopts
+the forumula\footnote{this cost-benefit analysis was originally expressed by
+Judge Learned Hand inthe case of  \textit{United States v. Carroll Towing Co.}
+and formally described in \cite{Kaner_neg_1995}} shown in Figure 
+\ref{fig:negligence} to qualitatively evaluate how reasonable a company's
+actions are. According to the Learned Hand test, an organization that develops 
+safety-critical software, then, has a duty to spend the amount of time and
+resources equivalent to the product of the severity of harm and the likelihood
+that it will happen.
 
 \begin{figure}
 \begin{tabular}{|l|}
@@ -80,80 +71,55 @@ qualitatively evaluate how reasonable a company's actions are.
 \\[3pt]
 \hline
 \end{tabular}
-\caption{Negligence cost-benefit analysis \cite{Kaner_neg_1995}}
+\caption{Negligence cost-benefit analysis}
 \label{fig:negligence}
 \end{figure}
 
-An organization that develops safety-critical software, then, has a duty to
-spend the amount of time and resources equivalent to the product of the severity
-of harm and the likelihood that it will happen.
+\subsubsection{Strict Liability}
+Strict products liability focuses primarily on the condition of actual products
+that are released to consumers, not the process used to develop them. If this
+standard were to be applied to software, then a software vedor ``\textit{will be
+liable for damages resulting from an unreasonably dangerous product, whether the
+seller was negligent or not}'' \cite{Burgunder2004}. Yet the line remains
+unclear as to when and how to extend the scope of strict liability since an
+injurer can be held liable even if due care was used.
 
-\subsection{Industry Standards}
-There are several relevant standards that apply to the process model proposed in
-this research. While the Software Engineering Institute, the International
-Standards Organization, and NASA put forth standards to facilitate the entire
-process of software engineering, we are only concerned with the 
-\textit{documentation} efforts recommended by these guidelines.
-
-\subsubsection{CMM}
-The Cabability Maturity Model, or CMM, is concerned with improving processes.
-According to the Software Engineering Institute, the process followed by an
-organization exhibits that organization's maturity. The CMM describes:
-
-\begin{quote}\label{process}
-``A \textbf{software process} can be defined as a set of activities, methods,
-practicies, and transformations that people use to develop and maintain software
-and the associated products (e.g., project plans, design documents, code, test
-cases, and user manuals).'' \cite{CMM11}
-\end{quote}
-
-The techniques laid out by CMM will help undisciplined organizations manage
-software projects. By using the infrastructure in the CMM, organizations can 
-avoid software projects that finish late or overbudget.
-
-For more information about CMM as it applies to software, please refer to
-\cite{CMM11}.
-
-\subsubsection{ISO 9000-3}
-The International Standards Organization put forth a quality management standard
-known as ISO 9001 to describe a set of guidelines that will help organizations
-achieve standards of quality that are recognized and respected throughout the
-world. The ISO 9000-3 is the application of ISO 9001 to the field of software
-engineering. They describe \textbf{software engineering} as: 
-
+First and foremost, personal injury is neccessary for the strict products
+liability standard to be applied. When applied, defective products in question
+are subject to either \textbf{manufacturing defect} consideration or
+\textbf{design defect} consideration. The former applies when a product strays
+from the intended design, while the latter pertains when the design of a product
+is not adequately safe, even if the particular instance of product complies with
+the manufacturer's intention \cite{Turner1999}. Once the nature of the defect is
+identified, Calabresi suggests that  a decision must be made as to 
 \begin{quote}
-``\ldots a defined, step-by-step process that facilitates the specification,
-design, implementation, and testing of a software solution for a set of stated
-requirements in the most expeditious and cost-effective manner possible.''
-\cite{Kehoe1996}
+``\ldots which of parties to the accident is in the best position to make the
+cost-benefit analysis between accident costs and accident avoidance costs and to
+act on that decision once it is made'' \cite{Calabresi1972}
 \end{quote}
+\noindent{the victim or the injurer?} Instead of deciding whether or not preventative
+measures are worthwhile, a jury must decide \textit{who} is more likely to 
+discover this and act on it.
 
-During this process of software engineering, the ISO 9000-3 standard commands
-that software development and maintenance efforts be based upon a defined
-process that (among other things): 
+Finding the liable party is not as much of a problem in software as identifying
+a defect. Software defects do exist, but calling them \textit{product defects} 
+rather than \textit{process defects} is questionable. The application of strict
+liability against software is still in debate\footnote{see Section
+\ref{software_props} and \cite{Turner2000}}, but is not of concern in this
+paper.
 
-\begin{quote}
-``\ldots creates \textit{succinct and usable} level of documentation that will
-support and facilitate continued enhancements to and maintenance of the product
-as well as provide the basis for estimating future efforts.'' \cite{Kehoe1996}
-\end{quote}
+\subsection{Why This Problem is Important}
+Although the Learned Hand test shown in Figure \ref{fig:negligence} does provide
+a method to evaluate the applicability of negligence, it still leaves much up to
+interpretation. How much would it cost to take preventative measures? What
+(if any) preventative efforts did an organization pursue to avoid risk? What is
+the likelihood that an accident would occur in the first place? In a perfect
+world with perfect foresight, this problem would be easy to solve. But as it
+stands, quantifying the probability that an accident will occur and the expense
+of its prevention in the safety-critical software domain is difficult.
 
-\subsubsection{NASA-STD-8719.13A}
-The National Aeronautics and Space Administration publishes a set of guidelines
-and standards that provide a methodology for software safety in their programs.
-In \cite{NASA1997} specifically, their organization purposes describe the
-activities necessary to ensure that safety is designed into and maintained
-throughout the safety critical software lifecycle. NASA describes \textbf{safety
-critical software} as software that\ldots
-
-\begin{quote} 
-``\ldots exercises direct command and control over the condition or state of
-hardware components; and, if not performed, performed out-of-sequence, or
-performed incorrectly could result in improper control functions (or lack of
-control functions required for proper system operation), which could cause a
-hazard or allow a hazardous condition to exist.'' \cite{NASA1997}
-\end{quote}
-
-Among other requirements, NASA demands of its software implementations that
-safety-critical code ``shall be commented in such a way that future changes can
-be made with a reduced likelihood of invoking a hazardous state.''
+This research aims to trace out an approach which will help answer these
+questions that software developers can employ at minimal cost to an 
+organization. Having a repository of traceable doccumentation comments will help
+defenders track the preventative measures taken by software developers to
+satisfy the ``due care'' requirement of negligence.

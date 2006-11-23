@@ -38,13 +38,36 @@ minimize software defects and lawyers can use to defend (or confirm) negligence.
 \end{figure}
 
 \subsection{Comment Classification}
-Comments can be distinguished as two distinguishably different classes: 
+A \textbf{software comment} is a fragment of natural language intended for human
+consumption. More formally, a comment is ``\textit{explanatory text embedded in
+program source intended to help human readers understand it."} \cite{FOLDOC}.
+For the purposes of this research, comments can be distinguished into two
+different classes: 
 \begin{enumerate}
-  \item documentation comments
   \item code comments
+  \item documentation comments
 \end{enumerate}
 
+\textbf{Code comments} refer to the in-line comments that programmers write to
+describe specific behavior of small snippets of code. In Java or C, these types
+of comments are normally preceded by \verb!//! or surrounded by \verb!/*! and
+\verb!*/!. \textbf{Documentation comments} refer to comments used as reference
+material intended for human consumption to describe larger areas of code or
+entire functions. Javadoc \cite{Javadoc} is a popoular representation of
+documentation comments. They are distinguished by a preceding \verb!/**! and a
+trailing \verb!*/!.
+
 \subsection{Data Representation}
+
+\begin{figure}
+\begin{narrow}{-1.5in}{-1.5in}
+\begin{center}
+\includegraphics[scale=0.66]{images/comments.jpg}
+\end{center}
+\end{narrow}
+\caption{Overview of comment-to-code association}
+\label{comment_to_code}
+\end{figure}
 
 \subsection{Data Access}
 \subsubsection*{Setting Data}
