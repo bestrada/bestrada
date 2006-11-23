@@ -1,6 +1,83 @@
 \section{Previous Work}
 
+\subsection{Industry Standards}
+There are several relevant standards that apply to the process model proposed in
+this research. While the Software Engineering Institute, the International
+Standards Organization, and NASA put forth standards to facilitate the entire
+process of software engineering, we are only concerned with the 
+\textit{documentation} efforts recommended by these guidelines.
+
+\subsubsection{CMM}
+The Cabability Maturity Model, or CMM, is concerned with improving processes.
+According to the Software Engineering Institute, the process followed by an
+organization exhibits that organization's maturity. The CMM describes:
+
+\begin{quote}\label{process}
+``A \textbf{software process} can be defined as a set of activities, methods,
+practicies, and transformations that people use to develop and maintain software
+and the associated products (e.g., project plans, design documents, code, test
+cases, and user manuals).'' \cite{CMM11}
+\end{quote}
+
+The techniques laid out by CMM will help undisciplined organizations manage
+software projects. By using the infrastructure in the CMM, organizations can 
+avoid software projects that finish late or overbudget.
+
+For more information about CMM as it applies to software, please refer to
+\cite{CMM11}.
+
+\subsubsection{ISO 9000-3}
+The International Standards Organization put forth a quality management standard
+known as ISO 9001 to describe a set of guidelines that will help organizations
+achieve standards of quality that are recognized and respected throughout the
+world. The ISO 9000-3 is the application of ISO 9001 to the field of software
+engineering. They describe \textbf{software engineering} as: 
+
+\begin{quote}
+``\ldots a defined, step-by-step process that facilitates the specification,
+design, implementation, and testing of a software solution for a set of stated
+requirements in the most expeditious and cost-effective manner possible.''
+\cite{Kehoe1996}
+\end{quote}
+
+During this process of software engineering, the ISO 9000-3 standard commands
+that software development and maintenance efforts be based upon a defined
+process that (among other things): 
+
+\begin{quote}
+``\ldots creates \textit{succinct and usable} level of documentation that will
+support and facilitate continued enhancements to and maintenance of the product
+as well as provide the basis for estimating future efforts.'' \cite{Kehoe1996}
+\end{quote}
+
+\subsubsection{NASA-STD-8719.13A}
+The National Aeronautics and Space Administration publishes a set of guidelines
+and standards that provide a methodology for software safety in their programs.
+In \cite{NASA1997} specifically, their organization purposes describe the
+activities necessary to ensure that safety is designed into and maintained
+throughout the safety critical software lifecycle. NASA describes \textbf{safety
+critical software} as software that\ldots
+
+\begin{quote} 
+``\ldots exercises direct command and control over the condition or state of
+hardware components; and, if not performed, performed out-of-sequence, or
+performed incorrectly could result in improper control functions (or lack of
+control functions required for proper system operation), which could cause a
+hazard or allow a hazardous condition to exist.'' \cite{NASA1997}
+\end{quote}
+
+Among other requirements, NASA demands of its software implementations that
+safety-critical code ``shall be commented in such a way that future changes can
+be made with a reduced likelihood of invoking a hazardous state.''
+
 \subsection{Legal Research}
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.66]{images/enhancement.jpg}
+\end{center}
+\caption{Enhancement to existing software development stage}
+\label{enhancement}
+\end{figure}
 The legal problems begot by software in safety-critical systems have already
 been researched \cite{Turner1996, Turner2000} and some suggestions have been
 made to help alleviate the cost of defending the risk associated with
@@ -12,11 +89,14 @@ both aspects of liability be addressed. This research focuses on defects in the
 process model vulnerable to negligence allegations.
 
 There has already been work that tries to address this overall problem. Clark
-Turner has researched the implications of safety-critical systems in
+Turner, et. al. has researched the implications of safety-critical systems in
 \cite{Turner1996, Turner2000, Turner2001} and as deduced that a popular
 approach to this problem is the retroactive investigation of attorneys when a
 legal dispute ensues. But this is both inefficient and oftentimes ineffective
-because important historical information may be missing and unrecoverable.
+because important historical information may be missing and unrecoverable. They
+briefly propose an enhanced process model shown in Figure \ref{enhancement} that
+will addresses negligence considerations early in the software development
+lifecycle \cite{Turner2001}.
 
 \subsection{Documentation Solutions}
 
@@ -35,5 +115,27 @@ This is inefficient because\ldots
 This is inefficient because\ldots
 
 \subsection{Documentation Traceability}
-Antoniol, et. al. researched techniques to recover traceability links between
-code and free text documentation \cite{Antoniol2000}.
+There is a need to associate software code with its accompanying documentation.
+This documentation includes (but is not limited to) requirements, designs, user
+manuals, and other free text documents. Gotel and Finkelstein refer to this as
+information-driven traceability wherein practitioners
+\begin{quote}
+``\ldots link functions, data, requirements and any text in the statement of
+requirements that refers to them.'' \cite{Gotel1994}
+\end{quote}
+
+Antoniol, et. al. researched information retrieval models to recover 
+traceability links between code and free text documentation \cite{Antoniol2000}.
+Their semi-automated system performs this association with the underlying
+assumption that programmers use meaningful names and mnemonics for identifiers.
+These mnemonics include method signatures, variable names, and class
+definitions. By comparing natural language software documents with source code
+identifiers, their system draws associations between documents and quantifiably
+scores the accuracy of its matches.
+
+Unfortunately, their solution is crippled by its reliance on programmer
+mnemonics. Although identifiers are the only user-defined tokens in source
+code, much more semantic information can be drawn from the code itself
+beyond mere identifier extraction.
+
+
