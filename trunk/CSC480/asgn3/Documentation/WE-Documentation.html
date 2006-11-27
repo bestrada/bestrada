@@ -1,0 +1,1351 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+
+  
+  <title>Wumpus World Documentation</title>
+</head>
+
+
+<body>
+
+<!-- <center><big><em>Draft</em></big></center> -->
+<h1>Making an Agent for the Wumpus Environment</h1>
+
+
+
+
+    
+<p>The Wumpus Environment is designed for easy creation of agents. This tutorial 
+  will instruct how to begin creating an agent by giving some information about 
+  useful methods and classes to use. &nbsp;Creating the agent is the same as with the Bot Environment, except you now extend <span style="font-family: Courier New,Courier,monospace;">WumpusAgent</span> instead of <span style="font-family: Courier New,Courier,monospace;">Bot</span> or <span style="font-family: Courier New,Courier,monospace;">BotSearch</span>.</p>
+
+
+
+<font size="4">Keep in Mind...<br>
+
+
+
+<br>
+
+
+
+</font>
+<div style="margin-left: 40px;">To get the agent's current location, <span style="font-weight: bold;">use </span><span style="font-family: Courier New,Courier,monospace; font-weight: bold;">getCurrentNode()</span><span style="font-weight: bold;"> instead of </span><span style="font-family: Courier New,Courier,monospace; font-weight: bold;">getBotLocation()</span>. &nbsp;This is because <span style="font-family: Courier New,Courier,monospace;">getCurrentNode()</span> takes care of the cost of inquiring about the node while <span style="font-family: Courier New,Courier,monospace;">getBotLocation()</span> is used without cost by <span style="font-family: Courier New,Courier,monospace;">WumpusAgent</span>.<br>
+
+
+
+<br>
+
+
+<span style="font-weight: bold;">The starting location for the agent in Wumpus World can be anywhere on the map</span>, so you cannot assume that it will start at location (1,1).<br>
+
+
+<br>
+
+
+When a map is opened or reset, the <font face="Courier New, Courier, mono">reset()</font> 
+    method is called in the agent. <span style="font-weight: bold;">If the programmer has added any variables or 
+    settings to the agent, they should be reset in this method, making sure to 
+    call </span><font style="font-weight: bold;" face="Courier New, Courier, mono">super.reset()</font><span style="font-weight: bold;"> first.<br>
+
+
+
+<br>
+
+
+
+</span>Because the environment has changed significantly for the Wumpus
+World environment, refer to this tutorial instead of the Javadocs for
+information about <span style="font-family: Courier New,Courier,monospace;">Node</span>, <span style="font-family: Courier New,Courier,monospace;">WumpusAgent</span>, and <span style="font-family: Courier New,Courier,monospace;">Bot</span>.<br>
+
+
+<br>
+
+
+Because your agent extends <span style="font-family: Courier New,Courier,monospace;">WumpusAgent</span>, which extends <span style="font-family: Courier New,Courier,monospace;">Bot</span>, all&nbsp;constants listed here (i.e. <span style="font-family: Courier New,Courier,monospace;">SAFE</span>, <span style="font-family: Courier New,Courier,monospace;">HIT_WALL</span>, etc.) can be used without having to prefix them with <span style="font-family: Courier New,Courier,monospace;">Bot</span> or <span style="font-family: Courier New,Courier,monospace;">WumpusAgent</span>. &nbsp;Also, <span style="font-family: Courier New,Courier,monospace;">NORTH</span>, <span style="font-family: Courier New,Courier,monospace;">EAST</span>, <span style="font-family: Courier New,Courier,monospace;">SOUTH</span>, and <span style="font-family: Courier New,Courier,monospace;">WEST</span> are also located in <span style="font-family: Courier New,Courier,monospace;">Bot</span>, so you do not have to prefix them with <span style="font-family: Courier New,Courier,monospace;">SBConstants</span> anymore.<span style="font-weight: bold;"><br>
+
+
+
+</span><span style="font-weight: bold;"></span><br>
+
+
+
+<span style="font-weight: bold;"></span>The following point values are&nbsp;used for this assignment:<br>
+
+
+
+</div>
+
+
+
+<ul style="margin-left: 40px;">
+
+  <li>Starting life points: 10,000 points</li>
+
+  <li>Movement: -20 points</li>
+
+  <li>Turning: -0 points (In order to emphasize flexible exploration rather than straight path travel)</li>
+
+  <li>Getting the current node: -1 point per access</li>
+
+  <li>Asking about adjacent nodes: -5 points each question</li>
+
+  <li>Asking hints about direction or distance to the gold: -5 points per question</li>
+
+  <li>Firing an arrow: -10 points per arrow</li>
+
+  <li>Encountering a Wumpus minion: -1,000 points</li>
+
+  <li>Encountering a pit or the Wumpus: All remaining life points are lost</li>
+
+  <li>Finding the gold: +10,000 points</li>
+
+</ul>
+
+
+
+<span style="font-weight: bold;"></span><font size="4">Performance Value Management<br>
+
+
+
+<br>
+
+
+
+</font>
+<div style="margin-left: 40px;"><font size="4"><small>For your
+convenience, the management of life points, movement costs, search
+costs, and gold points are taken care of for you. &nbsp;You can get the
+values of each of these by calling the following methods:</small></font><br>
+
+
+
+<br>
+
+
+
+</div>
+
+
+
+<table style="margin-left: 80px;" align="center" border="0" cellpadding="0" cellspacing="2" width="90%">
+
+
+
+
+    <tbody>
+
+
+
+    <tr>
+
+
+
+ 
+      <td style="text-align: center;" valign="top" width="150"><font face="Courier New, Courier, mono">getMovementCost()</font></td>
+
+
+
+
+      <td>Returns the total movement cost of all moves</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+ 
+      <td style="text-align: center;" valign="top"><font face="Courier New, Courier, mono">getSearchCost()</font></td>
+
+
+
+
+      <td>Returns the total search costs of getting nodes and asking hints</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+ 
+      <td style="text-align: center;" valign="top" width="150"> <font face="Courier New, Courier, mono">getLifePoints()</font></td>
+
+
+
+
+      <td>Returns the number of life points left of the agent</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+ 
+      <td style="text-align: center;" valign="top"><font face="Courier New, Courier, mono">getGoldPoints()</font></td>
+
+
+
+
+      <td>Returns 10,000 if the gold was found, 0 otherwise.</td>
+
+
+
+
+    </tr>
+
+
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+<div style="margin-left: 40px;"><br>
+
+
+
+<font size="4"><small>Also, you can find the performance value of the agent by calling the following method:<br>
+
+
+
+<br>
+
+
+
+</small></font></div>
+
+
+
+<table style="margin-left: 80px;" align="center" border="0" cellpadding="0" cellspacing="2" width="90%">
+
+
+
+
+    <tbody>
+
+
+
+    <tr>
+
+
+
+ 
+      <td style="text-align: center;" valign="top" width="150"><font face="Courier New, Courier, mono">getPerformanceValue()</font></td>
+
+
+
+
+      <td>Returns the performance value, calculated by the equation:<br>
+
+
+
+Performance Value = (Life Points) - (Search Cost) - (Movement Cost) + (Gold Points)</td>
+
+
+
+
+    </tr>
+
+
+
+
+    
+    
+    
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+<div style="margin-left: 40px;"><br>
+
+
+
+The performance cost is also displayed in the logger after every agent action.<br>
+
+
+
+</div>
+
+
+
+<font size="4"><br>
+
+
+
+New Agent Movement Methods</font>
+<blockquote>
+  
+  
+  
+  
+  <p>Several modifications have been made to the movement of the agent.
+&nbsp;The following methods have been added for your convenience:</p>
+
+
+
+
+  
+  
+  
+  
+  <table align="center" border="0" cellpadding="0" cellspacing="2" width="90%">
+
+
+
+
+    <tbody>
+
+
+
+      <tr>
+
+
+
+ 
+      <td style="text-align: center;" valign="top" width="150"><font face="Courier New, Courier, mono">moveNorth()</font></td>
+
+
+
+
+      <td>Turns the agent to face north and moves forward</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+ 
+      <td style="text-align: center;" valign="top"><font face="Courier New, Courier, mono">moveEast()</font></td>
+
+
+
+
+      <td>Turns the agent to face east and moves forward</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+ 
+      <td style="text-align: center;" valign="top" width="150"> <font face="Courier New, Courier, mono">moveSouth()</font></td>
+
+
+
+
+      <td>Turns the agent to face south and moves forward</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+ 
+      <td style="text-align: center;" valign="top"><font face="Courier New, Courier, mono">moveWest()</font></td>
+
+
+
+
+      <td>Turns the agent to face west and moves forward</td>
+
+
+
+
+    </tr>
+
+
+
+
+  
+    
+    
+    
+    </tbody>
+  
+  
+  
+  </table>
+
+
+
+  
+  
+  
+  
+  
+  <p>If desired, you can still use <span style="font-family: Courier New,Courier,monospace;">turnLeft()</span>,<span style="font-family: Courier New,Courier,monospace;"><span style="font-family: Times New Roman,Times,serif;"> </span>turnRight()</span>, <span style="font-family: Courier New,Courier,monospace;">turnTo(int)</span>, and <span style="font-family: Courier New,Courier,monospace;">moveForward()</span>.</p>
+
+
+
+A lot happens now when <span style="font-family: Courier New,Courier,monospace;">moveForward()</span> is called. &nbsp;When an agent arrives on a node, the following occurs:<br>
+
+
+
+  
+  
+  
+  <ul>
+
+    <li>It is checked if the agent hit a wall</li>
+
+    <li>It is checked if the agent entered a node with a Wumpus minion in it</li>
+
+    
+    <ul>
+
+      <li>If so, the agent loses 1,000 life points and is notified</li>
+
+    
+    </ul>
+
+    <li>It is checked if the agent entered a node with a pit or the Wumpus</li>
+
+    
+    <ul>
+
+      <li>If so, the agent loses all remaining life points and the game ends</li>
+
+    
+    </ul>
+
+    <li>It is checked if the agent entered a node with the gold</li>
+
+    
+    <ul>
+
+      <li>If so, the agent gains 10,000 gold points and the game ends</li>
+
+    
+    </ul>
+
+    <li>Messages are logged according to what happened to the agent</li>
+
+    
+    <ul>
+
+      <li>Agent hits a wall: "* Bonk! &nbsp;That's a wall! *"</li>
+
+      <li>Agent finds a Wumpus minion: "* You were attacked! *"</li>
+
+      <li>Agent falls into a pit or finds the Wumpus: "* You died! *"</li>
+
+      <li>Agent finds the gold: "* You found the gold! *</li>
+
+    
+    </ul>
+
+  
+  </ul>
+
+
+
+The agent can know about what happened by checking the return value of <span style="font-family: Courier New,Courier,monospace;">moveForward()</span>. &nbsp;<span style="font-family: Courier New,Courier,monospace;">moveForward()</span> returns the following values, as defined in <span style="font-family: Courier New,Courier,monospace;">Bot</span>, in the following order of priority:<br>
+
+
+
+  
+  
+  
+  <ul>
+
+    <li><span style="font-family: Courier New,Courier,monospace;">HURT</span>: The agent encountered a Wumpus minion<span style="font-family: Courier New,Courier,monospace;"></span></li>
+
+    <li><span style="font-family: Courier New,Courier,monospace;">DIED</span>: The agent encountered a pit or a Wumpus<span style="font-family: Courier New,Courier,monospace;"></span></li>
+
+    <li><span style="font-family: Courier New,Courier,monospace;">HIT_WALL</span>: The agent hit a wall in the direction it moved</li>
+
+    <li><span style="font-family: Courier New,Courier,monospace;">SAFE</span>: The agent encountered no problems moving</li>
+
+  
+  </ul>
+
+There is a known limitation with this environment if an agent
+encounters a Wumpus minion next to a wall and then moves into the wall.
+&nbsp;This will cause the <span style="font-family: Courier New,Courier,monospace;">HURT</span> value to be returned and the <span style="font-family: Courier New,Courier,monospace;">HIT_WALL</span>
+value to be lost to the agent. &nbsp;However, all of the maps included
+with this environment make sure not to have a Wumpus minion adjacent to
+a wall.
+
+
+</blockquote>
+
+
+
+
+<p><font size="4">Learning About the Environment</font></p>
+
+
+
+
+<blockquote>
+  
+  
+  
+  
+  <p>In order to find the gold intelligently, the agent needs to understand its 
+    environment. &nbsp;However, in the Wumpus World, many of the methods in the <span style="font-family: Courier New,Courier,monospace;">Node</span> class have been restricted as part of the game. &nbsp;Now, only the 
+    following methods can be used to learn about a particular <font face="Courier New, Courier, mono">Node</font> 
+    object:</p>
+
+
+
+
+  
+  
+  
+  
+  <table align="center" border="0" cellpadding="0" cellspacing="2" width="90%">
+
+
+
+
+    <tbody>
+
+
+
+
+    
+    
+    <tr>
+
+
+
+ 
+      <td valign="top">
+        
+        
+        
+        <div align="center"><font face="Courier New, Courier, mono">getX(), 
+          getY() </font></div>
+
+
+
+        </td>
+
+
+
+
+      <td valign="top">Returns the integer x or y coordinate of the node in the 
+        map.</td>
+
+
+
+
+    </tr>
+
+
+
+
+    
+    
+    <tr>
+
+
+
+ 
+      <td valign="top">
+        
+        
+        
+        <div align="center"><font face="Courier New, Courier, mono">getIsTraveled()</font></div>
+
+
+
+        </td>
+
+
+
+
+      <td valign="top">Returns true if the agent has traveled on the node before, 
+        false otherwise.</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+ 
+      <td valign="top">
+        
+        
+        
+        <div align="center"><font face="Courier New, Courier, mono">getBotIsHere()</font></div>
+
+
+
+        </td>
+
+
+
+
+      <td valign="top">Returns true if the agent is currently on this node, false 
+        otherwise. </td>
+
+
+
+
+    </tr>
+
+
+
+      <tr>
+
+
+
+        <td style="text-align: center;"><font face="Courier New, Courier, mono">toString()</font></td>
+
+
+
+        <td>Returns the coordinates of the node in the String, "<span style="font-family: Courier New,Courier,monospace;">(x,y)</span>"</td>
+
+
+
+      </tr>
+
+
+
+
+  
+    
+    
+    
+    </tbody>
+  
+  
+  
+  </table>
+
+
+
+
+  
+  
+  
+  
+  <p>You may get the <span style="font-family: Courier New,Courier,monospace;">Node</span> the agent is currently on by calling <span style="font-family: Courier New,Courier,monospace;">getCurrentNode()</span>.</p>
+
+
+
+  
+  
+  
+  <p>Most information in the Wumpus World is obtained about adjacent
+nodes. &nbsp;In a particular node, the agent might "feel a breeze,"
+which means that one of the adjacent nodes contains a pit. &nbsp;The
+following agent methods give general information about adjacent nodes:</p>
+
+
+
+  
+  
+  
+  <table style="width: 90%; text-align: left; margin-left: auto; margin-right: auto;" border="0" cellpadding="0" cellspacing="2">
+
+
+
+
+    <tbody>
+
+
+
+
+    
+    
+    <tr>
+
+
+
+ 
+      <td style="text-align: center;"><font face="Courier New, Courier, mono">nearMinion() </font></td>
+
+
+
+
+      <td valign="top">Returns true if a node adjacent to the agent's current location contains a Wumpus minion, false otherwise.</td>
+
+
+
+
+    </tr>
+
+
+
+
+    
+    
+    <tr>
+
+
+
+ 
+      <td style="text-align: center;"><font face="Courier New, Courier, mono">nearPit()</font></td>
+
+
+
+
+      <td valign="top">Returns true if a node adjacent to the agent's current location contains a pit, false otherwise.</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+ 
+      <td style="text-align: center;"><font face="Courier New, Courier, mono">nearWumpus()</font></td>
+
+
+
+
+      <td valign="top">Returns true if a node adjacent to the agent's current location contains the Wumpus, false otherwise. </td>
+
+
+
+
+    </tr>
+
+
+
+      <tr>
+
+
+
+        <td style="text-align: center;"><font face="Courier New, Courier, mono">nearGold()</font></td>
+
+
+
+        <td>Returns true if a node adjacent to the agent's current location contains the gold, false otherwise.</td>
+
+
+
+      </tr>
+
+
+
+      <tr>
+
+
+
+        <td style="text-align: center;"><font face="Courier New, Courier, mono">nearMinion(Node)</font></td>
+
+
+
+        <td>Returns true if a node adjacent to the given node contains a Wumpus minion, false otherwise.</td>
+
+
+
+      </tr>
+
+
+
+      <tr>
+
+
+
+        <td style="text-align: center;"><font face="Courier New, Courier, mono">nearPit(Node)</font></td>
+
+
+
+        <td>Returns true if a node adjacent to the given node contains a pit, false otherwise.</td>
+
+
+
+      </tr>
+
+
+
+      <tr>
+
+
+
+        <td style="text-align: center;"><font face="Courier New, Courier, mono">nearWumpus(Node)</font></td>
+
+
+
+        <td>Returns true if a node adjacent to the given node contains the Wumpus, false otherwise.</td>
+
+
+
+      </tr>
+
+
+
+      <tr>
+
+
+
+        <td style="text-align: center;"><font face="Courier New, Courier, mono">nearGold(Node)</font></td>
+
+
+
+        <td>Returns true if a node adjacent to the given node contains gold, false otherwise.</td>
+
+
+
+      </tr>
+
+
+
+
+  
+    
+    
+    
+    </tbody>
+  
+  
+  
+  </table>
+
+
+
+  
+  
+  
+  <p>Finally, an agent can ask for hints on where the gold is.
+&nbsp;You may now call these hint methods directly without SBFunctions,
+as they are defined in the <span style="font-family: Courier New,Courier,monospace;">WumpusAgent</span> base class.</p>
+
+
+
+
+  
+  
+  
+  
+  <table style="width: 90%; text-align: left; margin-left: auto; margin-right: auto;" border="0" cellpadding="0" cellspacing="2">
+
+
+
+
+    <tbody>
+
+
+
+      <tr>
+
+
+
+        <td style="text-align: center; vertical-align: top;"><font face="Courier New, Courier, mono">getDistanceToGoal()</font></td>
+
+
+
+        <td>Returns the integer number of nodes away the goal is from the agent's current 
+        node, disregarding walls or additional costs.</td>
+
+
+
+      </tr>
+
+
+
+      <tr>
+
+
+
+        <td style="text-align: center; vertical-align: top;"><font face="Courier New, Courier, mono">getDirectionOfGoal()</font></td>
+
+
+
+        <td>Returns the integer direction of where the goal is from the agent's current node.</td>
+
+
+
+      </tr>
+
+
+
+      <tr>
+
+
+
+ 
+      <td style="width: 150px; text-align: center; vertical-align: top;"> <font face="Courier New, Courier, mono">getDistanceToGoal(Node)</font></td>
+
+
+
+
+      <td>Returns the integer number of nodes away the goal is from the given 
+        node, disregarding walls or additional costs.</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+ 
+      <td style="text-align: center; vertical-align: top;"><font face="Courier New, Courier, mono">getDirectionOfGoal(Node)</font></td>
+
+
+
+
+      <td>Returns the integer direction of where the goal is from the given node.</td>
+
+
+
+
+    </tr>
+
+
+
+
+  
+    
+    
+    
+    </tbody>
+  
+  
+  
+  </table>
+
+
+
+
+  
+</blockquote>
+
+
+
+
+<p><font size="4">Wumpus Slaying</font></p>
+
+
+
+<p style="margin-left: 40px;"><font size="4"><small>Sometimes it may be
+difficult (or impossible) to get to the gold by going around the Wumpus
+and Wumpus minions. &nbsp;Your agent has the ability to fire an arrow
+in any direction, and it will travel until it hits the Wumpus, a Wumpus
+minion, or a wall (either a regular wall or the map boundaries).
+&nbsp;The follow methods fire an arrow:</small></font></p>
+
+
+
+<table style="width: 90%; text-align: left; margin-right: auto; margin-left: 80px;" border="0" cellpadding="0" cellspacing="2">
+
+
+
+
+    <tbody>
+
+
+
+    <tr>
+
+
+
+      <td style="text-align: center; vertical-align: top;"><font face="Courier New, Courier, mono">fireArrow(int)</font></td>
+
+
+
+      <td>Returns an integer representing if the arrow hit anything
+between the agent and the first wall the arrow encounters or would
+encounter in the direction specified.</td>
+
+
+
+    </tr>
+
+
+
+    
+
+    
+
+
+    
+
+
+  
+  
+  
+  
+  </tbody>
+</table>
+
+
+
+<p style="margin-left: 40px;">The integer values that are returned when firing an arrow are as follows:</p>
+
+
+
+<ul style="margin-left: 40px;">
+
+  <li><span style="font-family: Courier New,Courier,monospace;">HIT_NOTHING</span>: The arrow did not hit any creature before hitting a wall.</li>
+
+  <li><span style="font-family: Courier New,Courier,monospace;">HIT_MINION</span>: The arrow hit the first Wumpus minion in the direction the arrow was fired.</li>
+
+  <li><span style="font-family: Courier New,Courier,monospace;">HIT_WUMPUS</span>: The arrow hit the Wumpus in the direction the arrow was fired.</li>
+
+</ul>
+
+<div style="margin-left: 40px;">As a note, the arrow will only hit one
+thing on its path before stopping and will not travel through walls.
+&nbsp;For example, if there are three Wumpus minions east of the agent,
+firing an arrow to the east will only kill the minion closest to the
+agent.</div>
+
+<p><font size="4">Reasoning with Belief</font></p>
+
+
+
+
+<blockquote>When your agent is performing its reasoning, it is making
+assumptions or convictions about the environment. &nbsp;These are
+called <span style="font-style: italic;">beliefs</span> in the Wumpus
+Environment. &nbsp;The agent is able to get and set its beliefs about
+its current location, the nodes adjacent to its current location, a
+distant node, and the nodes adjacent to a distant node through using
+the following methods:<br>
+
+
+
+  <br>
+
+
+
+  
+  
+  
+  <table style="width: 90%; text-align: left; margin-left: auto; margin-right: auto;" border="1" cellpadding="0" cellspacing="2">
+
+
+
+
+    <tbody>
+
+
+
+      <tr>
+
+
+
+        <td style="text-align: center; vertical-align: top;"><font face="Courier New, Courier, mono">getBelief(int type)</font></td>
+
+
+
+        <td>Returns the integer belief of the given integer type that the agent has specified for the agent's current node.</td>
+
+
+
+      </tr>
+
+
+
+      <tr>
+
+
+
+        <td style="text-align: center; vertical-align: top;"><font face="Courier New, Courier, mono">getBelief(Node, int type)</font></td>
+
+
+
+        <td>Returns the integer belief of the given integer type that the agent has specified for the given node.</td>
+
+
+
+      </tr>
+
+
+
+      <tr>
+
+
+
+ 
+      <td style="width: 150px; vertical-align: top; text-align: center;"> <font face="Courier New, Courier, mono">getBelief(int direction, int type)</font></td>
+
+
+
+
+      <td>Returns the integer belief of the given integer type
+the agent has specified for the&nbsp;node adjacent to the agent's
+current location in the given integer direction.</td>
+
+
+
+
+    </tr>
+
+
+
+
+    <tr>
+
+
+
+ 
+      <td style="vertical-align: top; text-align: center;"><font face="Courier New, Courier, mono">getBelief(Node, int direction, int type)</font></td>
+
+
+
+
+      <td>Returns the integer belief of the given integer type
+the agent has specified for the node adjacent to the given node in the
+given integer direction.</td>
+
+
+
+
+    </tr>
+
+
+
+      <tr>
+
+
+
+        <td style="text-align: center; vertical-align: top;"><font face="Courier New, Courier, mono">setBelief(int type, int belief)</font></td>
+
+
+
+        <td>Sets the integer belief of the given integer type for the agent's current node.</td>
+
+
+
+      </tr>
+
+
+
+      <tr>
+
+
+
+        <td style="text-align: center; vertical-align: top;"><font face="Courier New, Courier, mono">setBelief(Node, int type, int belief)</font></td>
+
+
+
+        <td>Sets the integer belief of the given integer type for the given node.</td>
+
+
+
+      </tr>
+
+
+
+      <tr>
+
+
+
+        <td style="text-align: center; vertical-align: top;"><font face="Courier New, Courier, mono">setBelief(int direction, int type, int belief)</font></td>
+
+
+
+        <td>Sets the integer belief of the given integer type for
+the node adjacent to the agent's current location in the given integer
+direction.</td>
+
+
+
+      </tr>
+
+
+
+      <tr>
+
+
+
+        <td style="text-align: center; vertical-align: top;"><font face="Courier New, Courier, mono">setBelief(Node, int direction, int type, int belief)</font></td>
+
+
+
+        <td>Sets the integer belief of the given integer type for the node adjacent to the given node in the given integer direction.</td>
+
+
+
+      </tr>
+
+
+
+
+  
+    
+    
+    
+    </tbody>
+  
+  
+  
+  </table>
+
+
+
+  <br>
+
+The&nbsp;integer belief types are as follows:<br>
+
+
+
+  
+  
+  
+  <ul style="font-family: Courier New,Courier,monospace;">
+
+    <li>SAFE_HERE</li>
+
+    <li>MINION_HERE&nbsp;</li>
+
+    <li>PIT_HERE</li>
+
+    <li>WUMPUS_HERE</li>
+
+    <li>GOLD_HERE</li>
+
+    <li>WALL_HERE</li>
+
+  
+  </ul>
+
+The integer belief values are as follows:<br>
+
+
+
+  
+  
+  
+  <ul>
+
+    <li><span style="font-family: Courier New,Courier,monospace;">UNKNOWN</span>: All node beliefs are set to this at initialization, because the agent does not know anything yet</li>
+
+    <li><span style="font-family: Courier New,Courier,monospace;">NO</span>: The agent believes a belief type is false for a particular node</li>
+
+    <li><span style="font-family: Courier New,Courier,monospace;">MAYBE</span>: The agent is not sure if a belief type is true or false for a particular node</li>
+
+    <li><span style="font-family: Courier New,Courier,monospace;">YES</span>: The agent believes a belief type is true for a particular node</li>
+
+  
+  </ul>
+
+As a note, <span style="font-weight: bold;">the agent must set a belief for a node before it can get the belief for that node.</span> &nbsp;Also, a node can have any and all of the belief types specified about it, not being limited to one.<br>
+
+  <br>
+
+For example, if the agent thinks that the node north of where the agent currently is could contain the Wumpus, it could call <span style="font-family: Courier New,Courier,monospace;">setBelief(NORTH, WUMPUS_HERE, MAYBE)</span>. &nbsp;Also, if the agent arrives on a node and finds that it does not contain anything on it, it could call <span style="font-family: Courier New,Courier,monospace;">setBelief(SAFE_HERE, YES)</span>. &nbsp;Finally, if the agent wanted to remember if the eastern adjacent node to node '<span style="font-family: Courier New,Courier,monospace;">myNode</span>' might have a pit in it, it could call <span style="font-family: Courier New,Courier,monospace;">getBelief(myNode, EAST, PIT_HERE)</span>.<br>
+
+
+
+  <br>
+
+
+
+The benefit of using these methods to remember your agent's beliefs is
+that they will be reflected on the agent's map in the environment for
+nodes that the agent has not been to yet (on black tiles). &nbsp;For
+example, if the agent calls <span style="font-family: Courier New,Courier,monospace;">setBelief(NORTH, WUMPUS_HERE, MAYBE)</span>, then "W?" will appear on the agent's map north of where the agent currently is. &nbsp;Also, if the agent calls <span style="font-family: Courier New,Courier,monospace;">setBelief(SAFE_HERE, YES)</span>,
+&nbsp;then nothing will appear on the agent's map because the agent has
+already been to its current location. &nbsp;Even though nothing will
+visually appear on the map if the agent has been there already, it can still be
+useful for your agent to store its beliefs regardless.<br>
+
+
+
+  <br>
+
+
+
+For your own reference, the priority of belief types that appears on the map
+is in the following order from highest to lowest priority: <span style="font-family: Courier New,Courier,monospace;">WALL_HERE</span>, <span style="font-family: Courier New,Courier,monospace;">GOLD_HERE</span>, <span style="font-family: Courier New,Courier,monospace;">WUMPUS_HERE</span>, <span style="font-family: Courier New,Courier,monospace;">PIT_HERE</span>, <span style="font-family: Courier New,Courier,monospace;">MINION_HERE</span>, <span style="font-family: Courier New,Courier,monospace;">SAFE_HERE</span>.
+&nbsp;This is to ensure that if the agent believes, for example, that a
+node may contain a Wumpus or a Wumpus minion, a "W?" will appear on the
+map since the Wumpus belief is more significant than displaying belief
+about a Wumpus minion. &nbsp;This is mainly for the user's benefit
+since the agent knows if there are several beliefs on a particular node via the belief accessor methods.<br>
+
+
+  <br>
+
+
+  <span style="font-weight: bold;">Something important to keep in mind</span>,
+if the agent's beliefs change about a particular node, remember to
+update ALL beliefs on that node accordingly. &nbsp;For example, if the
+agent sets the belief about a node to be that it is definately safe,
+but previously it said that the node may have a Wumpus minion on it,
+the agent must then set the belief about the Wumpus minion on the node
+to <span style="font-family: Courier New,Courier,monospace;">NO</span> or else the agent may become confused because of conflicting information (depending on your implementation).&nbsp;
+In general, when a new belief is set, it does not affect other belief types, so
+make sure that your agent's beliefs are updated correctly.<br>
+
+
+
+</blockquote>
+
+<br>
+
+</body>
+</html>
