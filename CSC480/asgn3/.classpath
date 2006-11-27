@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/WumpusEnvironment.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/C:/Documents and Settings/bestrada/workspace/CSC480.Asgn3/docs/WumpusEnvironmentJavaDocs.zip!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
