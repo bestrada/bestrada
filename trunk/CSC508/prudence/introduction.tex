@@ -1,11 +1,12 @@
 \begin{abstract}
 Software in safety critical systems inevitably brings about the question of
-negligence liability from product defects that cause injury or harm. This
-paper examines the fundamental process inadequacies during the software
-development process lifecycle that trigger defects in software. We specifies an
-improvement to this process model that overcomes these inadequacies and can
-be introduced into the workflow of sofware development to help reduce the losses
-due to negligence liability.\\
+negligence liability from defects that cause injury or harm. This paper examines
+the fundamental inadequacies of software processes during development that
+trigger defects and hinder maintainability. We specify an improvement to this
+process model that overcomes these inadequacies and can be introduced into the
+workflow of sofware development to help identify ``due process'' in a
+safety-critical system and reduce the cost of defending such a system in the
+case of a negligence dispute.\\
 
 \noindent{\bf Index Terms}: documentation, comments, process constraints,
 negligence, software safety, liability
@@ -28,14 +29,6 @@ in their implementations\cite{Leveson1993}, and disputes have occurred regarding
 their adequacy. The advent of such systems juxtaposed with the complexities of 
 software breeds a new set of concerns that do not easily map to traditional 
 engineering standards.
-
-Because of its unique nature, defects in software are inevitable and typically
-more difficult to locate and handle than physical flaws in mechanical
-components\cite{Brooks1987}. Defects in the safety-critical realm can be
-especially dangerous. The use of software in safety-critical systems arouses
-concern of strict products liability and negligence law. In general, this 
-research seeks to define prudent process requirements that an organization can
-undertake when developing safety-critical software products.
 
 \begin{table}
 %extend the margins by 1.5 inches on both sides so this can be centered
@@ -61,6 +54,29 @@ Software & Forget it. & You name it. \\
 \caption{50 years -- Comparing the ENIAC with modern computers.}
 \label{tab:eniac_v_today}
 \end{table}
+
+Because of its unique nature, defects in software are inevitable and typically
+more difficult to locate and handle than physical flaws in mechanical
+components\cite{Brooks1987}. Defects in the safety-critical realm can be
+especially dangerous. The use of software in safety-critical systems arouses
+concern of strict products liability and negligence law. In general, this 
+research seeks to define prudent process requirements that an organization can
+undertake when developing safety-critical software products.
+
+Our approach proposes to use an enhanced commenting system that will allow
+software developers to write free text comments at implementation time into a
+centralized, traceable database.
+
+Our paper is organized as follows. Section \ref{legal} describes the legal 
+motivations of such a system as it relates to tort liability and negligence law.
+Section \ref{previous} outlines various attempts to solve similar problems
+related to the work that we do including industry process standards and
+code-to-documentation linking. Section \ref{sdp} describes the software
+development process and where our solution would fit in the model of the
+software development lifecycle. Section \ref{solution} describes our solution in
+detail, including design goals and development considerations. In Section
+\ref{results}, we explicate the potential of our solution, layout drawbacks, and
+make suggestions for future work.
 
 \subsection{Problem Statement}
 What measures can a safety-critical software organization undertake to help
