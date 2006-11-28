@@ -1,4 +1,4 @@
-\section{Previous Work}
+\section{Previous Work}\label{previous}
 
 \subsection{Industry Standards}
 There are several relevant standards that apply to the process model proposed in
@@ -109,10 +109,33 @@ requirement specifications, code comments, or more browseable documents like
 Javadoc\cite{Javadoc}.
 
 \subsubsection*{Code Comments}
-This is inefficient because\ldots
+Code comments are in-line, free-text prose that are embedded in the source code
+of a program. Comments are ignored by software compilers and program code with
+comments in it would perform identically if the comments were absent. From a
+technical standpoint, comments ARE NOT documentation. Comments provide a method
+for programmers to write helpful clues for human consumers of the code so that
+they can understand it better.
+
+The intent of comments is to allow for better comprehension and maintainabilty
+of code when other humans try to read it. Comments have potential to provide
+very useful links between developer intent and actual implementation, but suffer
+drawbacks. First, comments lie within the code, which arguably obfuscates the
+code itself if they are lengthy or used inappropriatly. Comments have no
+explicit association to modules, functions, object classes, or packages. There
+is no formal way of annotating a plain comment to link it with a specific code
+module. Also, comments can only be implicitly associated with a single area
+of code. Non-trivial programs are typically modular, and it would be useful to
+describe what is being done in a group of related code segments.
 
 \subsubsection*{Javadoc}
-This is inefficient because\ldots
+Javadoc overcomes some of the drawbacks of normal comments. Javadoc includes a
+formal syntax and provides special annotations to do associations with methods,
+data members, classes, packages, etc. In addition, Javadoc can be ``compiled''
+into a more human-readable HTML document. But Javadoc is considered actual
+documentation, which we believe does not belong in the code base itself and
+should be separated out for readability and maintainability's sake.
+Additionally, Javadoc is also limited by its single-module association and
+cannot be linked with multiple areas of code.
 
 \subsection{Documentation Traceability}
 There is a need to associate software code with its accompanying documentation.
@@ -124,14 +147,24 @@ information-driven traceability wherein practitioners
 requirements that refers to them.'' \cite{Gotel1994}
 \end{quote}
 
+This notion of code-to-documentation traceability is motivated by the following
+\cite{Antoniol1999}.
+\begin{itemize}
+  \item Program comprehension
+  \item Maintenance
+  \item Requirements tracing
+  \item Impact analysis
+  \item Software reuse
+\end{itemize}
+
 Antoniol, et. al. researched information retrieval models to recover 
-traceability links between code and free text documentation \cite{Antoniol2000}.
-Their semi-automated system performs this association with the underlying
-assumption that programmers use meaningful names and mnemonics for identifiers.
-These mnemonics include method signatures, variable names, and class
-definitions. By comparing natural language software documents with source code
-identifiers, their system draws associations between documents and quantifiably
-scores the accuracy of its matches.
+traceability links between code and free text documentation \cite{Antoniol1999,
+Antoniol2000}. Their semi-automated system performs this association with the
+underlying assumption that programmers use meaningful names and mnemonics for
+identifiers. These mnemonics include method signatures, variable names, and
+class definitions. By comparing natural language software documents with source
+code identifiers, their system draws associations between documents and
+quantifiably scores the accuracy of its matches.
 
 Unfortunately, their solution is crippled by its reliance on programmer
 mnemonics. Although identifiers are the only user-defined tokens in source
