@@ -4,8 +4,14 @@
 There are several relevant standards that apply to the process model proposed in
 this research. While the Software Engineering Institute, the International
 Standards Organization, and NASA put forth standards to facilitate the entire
-process of software engineering, we are only concerned with the 
-\textit{documentation} efforts recommended by these guidelines.
+process of software engineering, we are only concerned with the documentation
+efforts recommended by these guidelines. The \textbf{documentation} we care
+about includes 
+\begin{quote}
+``any artifact whose purpose is to communicate information about the software
+system to which it belongs, to individuals involved in the production of that
+software'' \cite{Forward2002}.
+\end{quote}
 
 \subsubsection{CMM}
 The Cabability Maturity Model, or CMM, is concerned with improving processes.
@@ -68,35 +74,42 @@ hazard or allow a hazardous condition to exist.'' \cite{NASA1997}
 
 Among other requirements, NASA demands of its software implementations that
 safety-critical code ``shall be commented in such a way that future changes can
-be made with a reduced likelihood of invoking a hazardous state.''
+be made with a reduced likelihood of invoking a hazardous state.'' We take this
+requirement in stride with our system's design.
 
 \subsection{Legal Research}
 \begin{figure}
 \begin{center}
-\includegraphics[scale=0.66]{images/enhancement.jpg}
+\includegraphics[scale=0.66]{images/enhancement.eps}
 \end{center}
-\caption{Enhancement to existing software development stage}
-\label{enhancement}
+\caption{Enhancement to existing software development stages}
+\label{fig:enhancement}
 \end{figure}
+
 The legal problems begot by software in safety-critical systems have already
 been researched \cite{Turner1996, Turner2000} and some suggestions have been
 made to help alleviate the cost of defending the risk associated with
 safety-critical systems\cite{Turner2001}. Additionally, it has been identified
 that software defects cannot easily be designated as manufacture-defective or
 design-defective\cite{Turner2000}, and therefore cannot be classified as
-strict-product liable or negligence liable in legal disputes. It is clear that
-both aspects of liability be addressed. This research focuses on defects in the
-process model vulnerable to negligence allegations.
-
+strict-product liable or negligence liable in legal disputes. It is clear, then,
+that both aspects of liability be addressed. This research focuses on defects in
+the process model vulnerable to negligence allegations.
+ 
 There has already been work that tries to address this overall problem. Clark
 Turner, et. al. has researched the implications of safety-critical systems in
 \cite{Turner1996, Turner2000, Turner2001} and as deduced that a popular
 approach to this problem is the retroactive investigation of attorneys when a
 legal dispute ensues. But this is both inefficient and oftentimes ineffective
 because important historical information may be missing and unrecoverable. They
-briefly propose an enhanced process model shown in Figure \ref{enhancement} that
-will addresses negligence considerations early in the software development
-lifecycle \cite{Turner2001}.
+briefly propose an enhanced process model shown in Figure \ref{fig:enhancement}
+that will addresses negligence considerations early in the software development
+lifecycle \cite{Turner2001}. Their model encapsulates encapsulates any arbitrary
+stage of the software development lifecycle\footnote{phases of software
+development are described in Sections \ref{waterfall} and \ref{spiral}} with a
+research phase and an archive phase. But their model fails to specify how this
+is done. Our solution seeks to refine this ``evidence generation, archiving,
+traceability'' stage.
 
 \subsection{Documentation Solutions}
 
@@ -111,21 +124,21 @@ Javadoc\cite{Javadoc}.
 \subsubsection*{Code Comments}
 Code comments are in-line, free-text prose that are embedded in the source code
 of a program. Comments are ignored by software compilers and program code with
-comments in it would perform identically if the comments were absent. From a
-technical standpoint, comments ARE NOT documentation. Comments provide a method
-for programmers to write helpful clues for human consumers of the code so that
-they can understand it better.
+comments performs identically if the comments were absent. From a technical
+standpoint, comments ARE NOT documentation. Comments provide a method for
+programmers to write helpful clues for human consumers of the code so that they
+can understand it better.
 
 The intent of comments is to allow for better comprehension and maintainabilty
 of code when other humans try to read it. Comments have potential to provide
 very useful links between developer intent and actual implementation, but suffer
 drawbacks. First, comments lie within the code, which arguably obfuscates the
 code itself if they are lengthy or used inappropriatly. Comments have no
-explicit association to modules, functions, object classes, or packages. There
-is no formal way of annotating a plain comment to link it with a specific code
-module. Also, comments can only be implicitly associated with a single area
-of code. Non-trivial programs are typically modular, and it would be useful to
-describe what is being done in a group of related code segments.
+explicit association to modules, functions, object classes, or packages. Their
+association with the code is implicit from their placement. There is no formal
+way of annotating a plain comment to link it with a specific code module.
+Non-trivial programs are typically modular, and it would be useful to describe
+what is being done in a group of related code segments.
 
 \subsubsection*{Javadoc}
 Javadoc overcomes some of the drawbacks of normal comments. Javadoc includes a
@@ -168,7 +181,5 @@ quantifiably scores the accuracy of its matches.
 
 Unfortunately, their solution is crippled by its reliance on programmer
 mnemonics. Although identifiers are the only user-defined tokens in source
-code, much more semantic information can be drawn from the code itself
-beyond mere identifier extraction.
-
-
+code other than comments, much more semantic information can be drawn from the 
+code itself beyond mere identifier extraction.

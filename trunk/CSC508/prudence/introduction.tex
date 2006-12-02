@@ -17,10 +17,12 @@ negligence, software safety, liability
 Organizations today are in the business of producing better products faster,
 cheaper, and more efficiently. As a result of society’s demands, these
 organizations find themselves utilizing software for the benefits of rapid
-deployment and efficiency over traditionally engineered physical components. 
+deployment and efficiency over traditionally engineered physical components.
+Over the years, computers have progressed to the point where this is not only
+possible, but more economically feasible than using solely hardware components. 
 Sara Baase tracks technical development of computers and  shows the technical
 growth that computers have seen since the early computing  days of the ENIAC in
-Table \ref{tab:eniac_v_today} \cite{Baase1997}.
+Table \ref{tab:eniac_v_today} adopted from \cite{Baase1997}.
 
 Although software does  offer the benefits of added flexibility, increased
 functionality, and reduced costs, it provides unprecedented possibilities for
@@ -59,9 +61,9 @@ Because of its unique nature, defects in software are inevitable and typically
 more difficult to locate and handle than physical flaws in mechanical
 components\cite{Brooks1987}. Defects in the safety-critical realm can be
 especially dangerous. The use of software in safety-critical systems arouses
-concern of strict products liability and negligence law. In general, this 
-research seeks to define prudent process requirements that an organization can
-undertake when developing safety-critical software products.
+concern of liability and negligence. In general, this research seeks to define a
+prudent process strategy that an organization can undertake when developing
+safety-critical software products.
 
 Our approach proposes to use an enhanced commenting system that will allow
 software developers to write free text comments at implementation time into a
@@ -69,16 +71,16 @@ centralized, traceable database.
 
 Our paper is organized as follows. Section \ref{legal} describes the legal 
 motivations of such a system as it relates to tort liability and negligence law.
-Section \ref{previous} outlines various attempts to solve similar problems
+Section \ref{previous} surveys various attempts to solve similar problems
 related to the work that we do including industry process standards and
-code-to-documentation linking. Section \ref{sdp} describes the software
+code-to-documentation linking. Section \ref{sdp} outlines the software
 development process and where our solution would fit in the model of the
 software development lifecycle. Section \ref{solution} describes our solution in
-detail, including design goals and development considerations. In Section
+detail, including design goals and implementation considerations. In Section
 \ref{results}, we explicate the potential of our solution, layout drawbacks, and
 make suggestions for future work.
 
-\subsection{Problem Statement}
+\subsection{General Problem Statement}
 What measures can a safety-critical software organization undertake to help
-reduce the cost of defending negligence liability in disputes and identify ``due
-care'' in its processes?
+reduce the cost of defending negligence liability in disputes and identify
+social responsibility in its processes?

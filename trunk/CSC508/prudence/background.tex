@@ -1,8 +1,8 @@
 \section{Legal Background and Motivation}\label{legal}
-The emergence of computer software in society offers a new range of disputes and
-misconduct. In recent times, software innovations have been the originating
-cause for disputes in Internet identity theft \cite{Valetk2004}, digital
-copyright infringement \cite{Manesh2006}, and death from malfunctioning
+The emergence of computer software in society allows for a new range of disputes
+and misconduct. In recent times, software innovations have been the originating
+cause for disputes in Internet identity theft \cite{Valetk2004}, digital 
+copyright infringement \cite{Manesh2006}, and death from malfunctioning 
 safety-critical software \cite{Leveson1993}. This research is concerned with the
 use of software in safety-critical systems. Because of the explosive use of
 software in organizations today, safety risks are at issue. A system is 
@@ -33,6 +33,7 @@ process\footnote{\textbf{software processes} are discussed further in
 Sections \ref{process} and \ref{sdp}} involved in creating the product, not the
 product itself. In general terms, an organization in the safety-critical realm
 has a duty to take reasonable measures to ensure that its products are safe.
+These measures are steps taken during the process of developing said product. 
 According to negligence law, all that a party in question must do to avoid the 
 possibility of liability is to ensure to exercise ``due care".
 
@@ -41,11 +42,11 @@ activities that a software developer engages in results in the product itself.
 There are no parts that need to be machined or tools that need to be fabricated
 in order to construct software. In general, software can be described as 
 ``\textit{a static description of a dynamic process}\footnote{This definition
-is originally described by Clark S. Turner}'' where a programmer is providing
+is originally expressed by Clark S. Turner}'' where a programmer is providing
 the service (writing a static description) of making a computer function (a
-dynamic process) as desired by a client. This service is not sufficiently a
-tangible product\footnote{see Section \ref{software_props} and
-\cite{Turner2000}}, so it would seem that software engineers fall under the
+dynamic process) as desired by a client. It can be argued that this service is
+not sufficiently a tangible product\footnote{see Section \ref{software_props}
+and \cite{Turner2000}}, so it would seem that software engineers fall under the
 jurisdiction of negligence law.
 
 The idea of ``due care" is ambiguous, but can be explicated. Cem Kaner adopts
@@ -83,17 +84,19 @@ that are released to consumers, not the process used to develop them. If this
 standard were to be applied to software, then a software vedor ``\textit{will be
 liable for damages resulting from an unreasonably dangerous product, whether the
 seller was negligent or not}'' \cite{Burgunder2004}. Yet the line remains
-unclear as to when and how to extend the scope of strict liability since an
-injurer can be held liable even if due care was used.
+unclear as to when and how to extend the scope of strict liability in software 
+since a developer can be held liable even if due care was used.
 
 First and foremost, personal injury is neccessary for the strict products
 liability standard to be applied. When applied, defective products in question
 are subject to either \textbf{manufacturing defect} consideration or
 \textbf{design defect} consideration. The former applies when a product strays
-from the intended design, while the latter pertains when the design of a product
-is not adequately safe, even if the particular instance of product complies with
-the manufacturer's intention \cite{Turner1999}. Once the nature of the defect is
-identified, Calabresi suggests that  a decision must be made as to 
+from the intended design, but software itself \textit{is} a design for a
+computer system to operate under. The latter pertains when the design of a
+product is not adequately safe, even if the particular instance of product
+complies with the manufacturer's intention \cite{Turner1999}. Once the nature of
+the defect is identified, Calabresi suggests that  a decision must be made as to
+
 \begin{quote}
 ``\ldots which of parties to the accident is in the best position to make the
 cost-benefit analysis between accident costs and accident avoidance costs and to
@@ -113,12 +116,12 @@ paper.
 \subsection{Why This Problem is Important}
 Although the Learned Hand test shown in Figure \ref{fig:negligence} does provide
 a method to evaluate the applicability of negligence, it still leaves much up to
-interpretation. How much would it cost to take preventative measures? What
-(if any) preventative efforts did an organization pursue to avoid risk? What is
-the likelihood that an accident would occur in the first place? In a perfect
-world with perfect foresight, this problem would be easy to solve. But as it
-stands, quantifying the probability that an accident will occur and the expense
-of its prevention in the safety-critical software domain is difficult.
+interpretation for software developers. How much would it cost to take preventative
+measures? What (if any) preventative efforts did an organization pursue to avoid
+risk? What is the likelihood that an accident would occur in the first place? In
+a perfect world with perfect foresight, this problem would be easy to solve. But
+as it stands, quantifying the probability that an accident will occur and the
+expense of its prevention in the safety-critical software domain is difficult.
 
 This research aims to trace out an approach which will help answer these
 questions that software developers can employ at minimal cost to an 
