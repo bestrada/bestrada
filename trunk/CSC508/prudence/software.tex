@@ -1,5 +1,5 @@
 \section{On Software Engineering}\label{sdp}
-The sofware engineering lifecycle is host of several key process areas defined
+The software engineering lifecycle is host of several key process areas defined
 for efficient organizations. We will discuss the properties and processes used
 in software development and hour our proposed model fits in to this process.
 
@@ -18,7 +18,7 @@ There are no upfront material costs to begin software implementation. No
 specialized tools or equipment are necessary for the development of software.
 Generic, over-the-shelf hardware like personal computers can be used to produce
 tremendous feats in software engineering. In fact, Google, Inc. started by using
-commodotity machines to build what is now one of the most advanced search tools 
+commodity machines to build what is now one of the most advanced search tools 
 in computing \cite{Google}.
 
 Because of this absence of material cost, it is easier for software engineers to
@@ -32,7 +32,7 @@ degree of formality is rarely seen in the software industry because no such
 formal standard exists.
 
 \subsubsection*{Product Replication}\label{software_product}
-Since software is entirely digital, it is easily replicatable. This means that
+Since software is entirely digital, it is easily replicated. This means that
 there is no chance that a copy of software can ever be a diversion from the
 original design. A bug found in any particular instance of a software program
 will exhibit itself in all copies of that piece of software, including the
@@ -53,37 +53,6 @@ it very difficult to validate the sufficiency of the documents created.
 
 \subsubsection*{Bugs}
 
-Defects in software, commonly referred to as ``bugs'', manifest themselves in
-different ways: (1) syntax errors, (2) runtime or execution errors, and (3)
-logic errors.
-
-Syntax errors occur when a software developer makes a mistake by 
-typing incorrect symbols, tokens, or characters in the source code. These types
-of errors or normally detected by the code-editing environment before errors
-propogate.
-
-Runtime errors are slightly less obvious than syntax errors because they do not 
-exhibit flaws until the program is executed. A run-time error occurs when input
-values or data types do not agree with the expected computation that is
-currently executing (e.g. dividing by a zero or treating a string of characters
-as if it were a number). Runtime errors are usually easy to identify because
-they cause the execution environment of the program to halt. A thorough testing
-phase will be able to catch most runtime errors.
-
-The presense of logic errors in software code constitutes a chief difference
-between software engineering and other, more physical engineering disciplines.
-Logic errors occur when a developer's intention is not perfectly exhibited by
-the code. A logic flaw can occur even if the code is entirely syntactically
-correct. The program will compile and run as normal, and valid values for
-variables will occur within expected ranges most of the time, but the program
-will not behave as expected. Consider the hypothetical code snippet listed in
-Figure \ref{fig:logic_bug}. In this example, the developer probably intended to
-increment the variable \verb!value! by one each iteration of the loop. But
-instead of using the addition \verb!+! symbol, he used the multiplication
-\verb!*! symbol. This is syntactically correct code and the values of the
-variables will appear within range, but the program will definately not behave
-as the developer intended it to.
-
 \begin{figure}
 \singlespacing
 \makebox[\textwidth]{\hrulefill}
@@ -99,9 +68,40 @@ for (int i = 0; i < limit; i++)
 \label{fig:logic_bug}
 \end{figure}
 
+Defects in software, commonly referred to as ``bugs'', manifest themselves in
+different ways: (1) syntax errors, (2) runtime or execution errors, and (3)
+logic errors.
+
+Syntax errors occur when a software developer makes a mistake by 
+typing incorrect symbols, tokens, or characters in the source code. These types
+of errors or normally detected by the code-editing environment before errors
+propagate.
+
+Runtime errors are slightly less obvious than syntax errors because they do not 
+exhibit flaws until the program is executed. A run-time error occurs when input
+values or data types do not agree with the expected computation that is
+currently executing (e.g. dividing by a zero or treating a string of characters
+as if it were a number). Runtime errors are usually easy to identify because
+they cause the execution environment of the program to halt. A thorough testing
+phase will be able to catch most runtime errors.
+
+The presence of logic errors in software code constitutes a chief difference
+between software engineering and other, more physical engineering disciplines.
+Logic errors occur when a developer's intention is not perfectly exhibited by
+the code. A logic flaw can occur even if the code is entirely syntactically
+correct. The program will compile and run as normal, and valid values for
+variables will occur within expected ranges most of the time, but the program
+will not behave as expected. Consider the hypothetical code snippet listed in
+Figure \ref{fig:logic_bug}. In this example, the developer probably intended to
+increment the variable \verb!value! by one each iteration of the loop. But
+instead of using the addition \verb!+! symbol, he used the multiplication
+\verb!*! symbol. This is syntactically correct code and the values of the
+variables will appear within range, but the program will definitely not behave
+as the developer intended it to.
+
 Most errors in mechanically engineered machines are detectable. Engineers can
 test physical flaws in their components and the system will exhibit them if they
-are not repaired. Because there is no physical componentry in software,
+are not repaired. Because there are no physical components in software,
 software engineers must use extra precaution in other areas of the software
 development lifecycle to compensate for this testability handicap.
 
@@ -126,8 +126,8 @@ development process is described in general below, but more specifically in
 The original treatment of the waterfall model appears in \cite{Royce1970} and
 describes a specification-driven approach to software development. Figure
 \ref{fig:waterfall} shows different phases that flow steadily downwards (like a
-waterfall). The model stresses a sequential occurence of events in software
-development, but also includes an iterative treatement to account for the
+waterfall). The model stresses a sequential occurrence of events in software
+development, but also includes an iterative treatment to account for the 
 evolving software development process.
 
 Under the waterfall model, our solutions fits specifically in the ``coding''
@@ -147,10 +147,10 @@ the waterfall model, see \cite{Royce1970}.
 \end{figure}
 
 The spiral model, as described in \cite{Boehm1986}, builds on refinements made
-to the waterfall model. Boehm explains that the sofware process as an iteration
+to the waterfall model. Boehm explains that the software process as an iteration
 of four phases of activity -- shown as quadrants -- which can be retrofitted to
 particularize to a variety of methods and approaches. As illustrated in Figure
-\ref{fig:spiral}, the radial dimension represents the cumulative osts incurred
+\ref{fig:spiral}, the radial dimension represents the cumulative costs incurred
 in accomplishing the steps to date while the angular dimension represents the
 progress made in completing each spiral.
 
