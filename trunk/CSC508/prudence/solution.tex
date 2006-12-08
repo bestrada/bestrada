@@ -27,7 +27,7 @@ other programmers. In the case of a legal dispute, lawyers and analysts will
 want access to all forms of documentation, including comments, to interpret the
 safety precautions taken by the implementers.
 
-\subsection{Goals}
+\subsection{Goals}\label{goals}
 Software in the safety-critical realm is especially vulnerable to negligence
 liabilities. Because of this, we believe that it is in an organization's best
 interest to document, or comment, on the activities of the persons doing
@@ -38,7 +38,7 @@ place, but leave it up to the organization to specify what they need to record
 in this database. The design goals for this system are shown in Figure 
 \ref{fig:design_criteria}.
 
-\begin{figure}
+\begin{figure}[t]
 \makebox[\textwidth]{\hrulefill}
 \begin{itemize}
   \item \textbf{Constraints on system}
@@ -65,36 +65,41 @@ system (in this case, the software developers working on a safety-critical
 project).There are two defining goals for this system. First, the system must
 allow for ``easy'' commenting capabilities in real-time. This means that
 developers must be able to easily write free-text prose in a natural language
-while they writing code. Also, the comments that the developers produce must be
-able to be explicitly associated with multiple lines of code in the source.
-These lines can exist in the different functions, classes, and even different
-files if necessary. This allows the utilizing organization be very flexible in
-specifying what it wants to record.
+while they writing code. This requirement is needed because a system that is too
+difficult to use discourages safe and responsible documentation practices. Also,
+the comments that the developers produce must be able to be explicitly
+associated with multiple lines of code in the source. These lines can exist in
+different functions, classes, and even different files if necessary. This allows
+the utilizing organization be very flexible in specifying what it wants
+to record. In addition, retrospective investigation, if necessary, will be aided
+by the fact that each line of safety-critical code is (hopefully) commented by
+the responsible developer.
 
 We also specify constraints on the representation of data and implementation (as
 of the time of this paper's writing, a prototype implementation has yet to be
 built). In order to satisfy the ``easy'' requirement, commenting abilities must
-be integrated into the IDE. The next implementation constraint is sufficient for
-satisfying the second goal of the system. By physically separating comments from
-the source code, we overcome the limiting attributes of traditional comments and
-allow the ability to put link associations into place. These associations will
-be stored in some sort of database (most likely through a relational database
-schema). If this system is to be useful, then an organization must be able to
-query this database based on code references, authors of code, or different
-versions of the software release. In order to achieve this, the system must
-store this information, and maintain it across changes in the code.
+also be integrated into the IDE. The next implementation constraint is 
+sufficient for satisfying the second goal of the system. By physically
+separating comments from the source code, we overcome the limiting attributes of
+traditional comments and allow the ability to put link associations into place.
+These associations will be stored in some sort of database (most likely through
+a relational database schema). If this system is to be useful, then an
+organization must be able to query this database based on code references,
+authors of code, or different versions of the software release. In order to
+achieve this, the system must store this information and maintain it across
+changes in the code.
 
-\subsection{Comment Classification}
-
-\begin{figure}
+\begin{figure}[t]
 \begin{narrow}{-1.5in}{-1.5in}
 \begin{center}
-\includegraphics[scale=0.75]{images/comments.eps}
+\includegraphics[width=\textwidth]{images/comments.eps}
 \end{center}
 \end{narrow}
 \caption{Overview of comment-to-code association}
 \label{comment_to_code}
 \end{figure}
+
+\subsection{Comment Classification}\label{comment_class}
 
 A \textbf{software comment} is a fragment of natural language intended for human
 consumption. More formally, a comment is ``\textit{explanatory text embedded in
@@ -102,18 +107,16 @@ program source intended to help human readers understand it."} \cite{FOLDOC}.
 For the purposes of this research, we distinguish comments into two separate 
 classes: 
 \begin{enumerate}
-  \item code comments
-  \item documentation comments
+  \item \textbf{Code comments} refer to the in-line comments that programmers 
+  write to describe specific behavior of small snippets of code. In Java or C,
+  these types of comments are normally preceded by `\verb!//!' or surrounded by
+  a preceding `\verb!/*!' and a trailing `\verb!*/!'.
+  \item \textbf{Documentation comments} refer to comments used as reference
+  material intended for human consumption to describe entire functions, classes,
+  and packages. Javadoc \cite{Javadoc} is a popular representation of 
+  documentation comments. In Java, they are distinguished by a preceding
+  `\verb!/**!' and a trailing `\verb!*/!'.
 \end{enumerate}
-
-\textbf{Code comments} refer to the in-line comments that programmers write to
-describe specific behavior of small snippets of code. In Java or C, these types
-of comments are normally preceded by `\verb!//!' or surrounded by a preceding 
-`\verb!/*!' and a trailing `\verb!*/!'. \textbf{Documentation comments} refer to
-comments used as reference material intended for human consumption to describe 
-entire functions, classes, and packages. Javadoc \cite{Javadoc} is a popular
-representation of documentation comments. In Java, they are distinguished by a
-preceding `\verb!/**!' and a trailing `\verb!*/!'.
 
 Figure \ref{comment_to_code} shows how our system associates documentation
 comments to source code. The source code of the program can still contain
@@ -125,12 +128,23 @@ created in a many-to-many fashion. A single comment can be associated with many
 lines of code (which do not have to be contiguous lines). In addition, a single
 line of code (or an area of code) can be associated with multiple comments.
 
+Storing comments in this way helps satisfy the design goals for the system 
+defined in Section \ref{goals}. Clearly, this type of comment storage allows
+comments to be associated with multiple areas of the source code explicitly. The
+many-to-many relationship between code and comments features explicit 
+line-number associations. In addition, this type of comment storage is arguably
+``easier'' than previous commenting practices. Since the system is automatic,
+comments are graphically associated with areas of code, improving readabilty and
+reducing redundancy in the number of comments. We envision an implementation of
+the system that incorporates a GUI with a window-by-window view of code and
+comments.
+
 \subsection{A Prudent Process}
 
-\begin{figure}[th]
+\begin{figure}[t]
 \begin{narrow}{-1.25in}{0in}
 \begin{center}
-\includegraphics[scale=0.75]{images/prudence.eps}
+\includegraphics[width=\textwidth]{images/prudence.eps}
 \end{center}
 \end{narrow}
 \caption{Development phase for safety-critical projects}
@@ -139,13 +153,26 @@ line of code (or an area of code) can be associated with multiple comments.
 
 The process model shown in Figure \ref{fig:prudence} illustrates the how
 software accountability can be achieved by an organization through an iterative
-approach of the development phase. There are two subprocess areas in this model:
-(1) legal checks performed by analysts and legal team members, and (2)
-implementation efforts, including the active commenting capabilities introduced
-by our system, performed by members of the development team. In addition, there
-are three persistent datasets that are modified in this model. First,
-requirements documentation comes in from previous phases. A comment database is
-created in maintained by this system, and, of course, source code.
+approach of the development phase. Formal process models have more
+descriptive phases beyond strictly development, but we are concerned with only
+this phase. In a waterfall model, described in Section \ref{waterfall}), our
+coding stage defines the internals of the ``coding'' block shown in Figure 
+\ref{fig:waterfall}. In a spiral model described in Section \ref{spiral} and 
+illustrated by figure \ref{fig:spiral}, our implementation efforts and active
+commenting blocks encompass steps described in the two eastern quadrants of the
+spiral. The legal checks and requirements documentation updates are paralleled 
+by the two western quadrants of the spiral model. We propose to restructure this
+development phase with a cycle of subprocesses to be performed by different
+parties in an organization. There are two subprocess areas in this model: 
+\begin{enumerate}
+  \item legal checks performed by analysts and legal team members
+  \item implementation efforts, including the active commenting capabilities 
+  introduced by our system, performed by members of the development team.
+\end{enumerate}
+In addition, there are three persistent datasets that are modified in this
+model. First, requirements documentation comes in from previous phases. A 
+comment database is created in maintained by this system, and, of course, source
+code.
 
 Software developers will begin implementing the specification laid out by the
 requirements documents. As they write code, they record their activities in the
@@ -156,4 +183,13 @@ The legal team updates the requirements documentation to account for the safety
 concern -- a decision is made, a fix is created, or the safety concern is
 recorded and a best-effort is made -- and advises the development team to
 proceed. This process continues throughout the entirety of the development
-phase. 
+phase.
+
+Official safety considerations are documented in the requirements documentation.
+During the development phase, if a safety consideration comes up, the
+requirements are altered to accommodate for the previously unconsidered
+scenario. Developers will proceed to write code that conforms with this now
+altered requirements documentation. These developers will record their comments
+regarding the implementation and safety considerations in the comment database,
+which is explicitly linked with the code they wrote. An organization may choose
+to specify formally what should be recorded in this linked comment database.

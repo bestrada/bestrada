@@ -37,19 +37,27 @@ there is no chance that a copy of software can ever be a diversion from the
 original design. A bug found in any particular instance of a software program
 will exhibit itself in all copies of that piece of software, including the
 ``original''. This is because the formal design of the software \textit{is} the
-product.
+product. This property of software makes it extremely difficult to classify
+software defects as strict products liable.
 
 \subsubsection*{Fast Turnaround}
 
 More and more clients are demanding speed in implementation. Software developers
 often deliver what is requested of them for immediate profit over long-term
-gain. Stakeholders see no immediate benefit from quality documentation.
+gain, but what they deliver is a rushed, potentially unsafe product. This
+mentality spreads throughout the organization. Stakeholders see no immediate
+benefit from quality documentation. In addition, development teams will often
+deliver implementations that satisfy specification, leading clients to expect
+this level of performance all of the time. Because of this, developers are
+indirectly discouraged to produce quality documentation because investors will
+see this time spent as an unnecessary cost.
 
 \subsubsection*{Testability}
 
 Documentation is not testable. By their very nature, documentation and code
 comments are open-ended artifacts with few restrictions or templates. This makes
-it very difficult to validate the sufficiency of the documents created.
+it very difficult to validate the sufficiency of the documents created and
+enforce an attitude of producing quality documents.
 
 \subsubsection*{Bugs}
 
@@ -106,23 +114,21 @@ software engineers must use extra precaution in other areas of the software
 development lifecycle to compensate for this testability handicap.
 
 \subsection{The Software Development Process}
+
 In order to build a quality software systems, many organizations follow a
 formal, methodological approach to the development process. Our solution relies
 heavily on mature software processes and developers conforming to them. The
 development process is described in general below, but more specifically in 
 \cite{Royce1970}, \cite{Boehm1986}, \cite{CMM11}, and \cite{Kehoe1996}.
 
-
 \subsubsection{Waterfall Model}\label{waterfall}
-
-\begin{figure}
+\begin{figure}[t]
 \begin{center}
-\includegraphics[scale=0.66]{images/waterfall.eps}
+\includegraphics[scale=0.7]{images/waterfall.eps}
 \end{center}
 \caption{Waterfall Model of the Software Process}
 \label{fig:waterfall}
 \end{figure}
-
 The original treatment of the waterfall model appears in \cite{Royce1970} and
 describes a specification-driven approach to software development. Figure
 \ref{fig:waterfall} shows different phases that flow steadily downwards (like a
@@ -137,10 +143,9 @@ implementation efforts exhibit social responsibility. For more information on
 the waterfall model, see \cite{Royce1970}.
 
 \subsubsection{Spiral Model}\label{spiral}
-
 \begin{figure}[t]
 \begin{center}
-\includegraphics[scale=0.66]{images/spiral.eps}
+\includegraphics[scale=0.7]{images/spiral.eps}
 \end{center}
 \caption{Spiral Model of the Software Process}
 \label{fig:spiral}

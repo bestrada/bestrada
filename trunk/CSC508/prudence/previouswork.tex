@@ -27,7 +27,10 @@ cases, and user manuals).'' \cite{CMM11}
 
 The techniques laid out by CMM will help undisciplined organizations manage
 software projects. By using the infrastructure in the CMM, organizations can 
-avoid software projects that finish late or over budget.
+avoid software projects that finish late or over budget. While the CMM is not
+concerned specifically for safety-critical software, their techniques are
+considered state-of-the-art and socially responsible in practice for most
+organizations.
 
 For more information about CMM as it applies to software, please refer to
 \cite{CMM11}.
@@ -36,7 +39,8 @@ For more information about CMM as it applies to software, please refer to
 The International Standards Organization put forth a quality management standard
 known as ISO 9001 to describe a set of guidelines that will help organizations
 achieve standards of quality that are recognized and respected throughout the
-world. The ISO 9000-3 is the application of ISO 9001 to the field of software
+world. These standards are not exclusive guidelines for organizations that use
+software. The ISO 9000-3 is the application of ISO 9001 to the field of software
 engineering. They describe \textbf{software engineering} as: 
 
 \begin{quote}
@@ -55,6 +59,10 @@ process that (among other things):
 support and facilitate continued enhancements to and maintenance of the product
 as well as provide the basis for estimating future efforts.'' \cite{Kehoe1996}
 \end{quote}
+
+Our solution borrows this motivation for quality documentation, and seeks to
+formalize it through documentation comments\footnote{See Section
+\ref{comment_class} for more on comment classification.}.
 
 \subsubsection{NASA-STD-8719.13A}
 The National Aeronautics and Space Administration publishes a set of guidelines
@@ -75,12 +83,14 @@ hazard or allow a hazardous condition to exist.'' \cite{NASA1997}
 Among other requirements, NASA demands of its software implementations that
 safety-critical code ``shall be commented in such a way that future changes can
 be made with a reduced likelihood of invoking a hazardous state.'' We take this
-requirement in stride with our system's design.
+requirement in stride with our system's design. We believe that an accurate
+history of comments will help improve the quality of code produced and exhibit
+socially responsible behavior on the part of its implementors.
 
 \subsection{Legal Research}
-\begin{figure}
+\begin{figure}[t]
 \begin{center}
-\includegraphics[scale=0.66]{images/enhancement.eps}
+\includegraphics{images/enhancement.eps}
 \end{center}
 \caption{Enhancement to existing software development stages}
 \label{fig:enhancement}
@@ -97,19 +107,22 @@ that both aspects of liability be addressed. This research focuses on defects in
 the process model vulnerable to negligence allegations.
  
 There has already been work that tries to address this overall problem. Clark
-Turner, et. al. has researched the implications of safety-critical systems in
-\cite{Turner1996, Turner2000, Turner2001} and as deduced that a popular
-approach to this problem is the retroactive investigation of attorneys when a
-legal dispute ensues. But this is both inefficient and oftentimes ineffective
-because important historical information may be missing and unrecoverable. They
-briefly propose an enhanced process model shown in Figure \ref{fig:enhancement}
-that will addresses negligence considerations early in the software development
-lifecycle \cite{Turner2001}. Their model encapsulates encapsulates any arbitrary
-stage of the software development lifecycle\footnote{phases of software
-development are described in Sections \ref{waterfall} and \ref{spiral}} with a
-research phase and an archive phase. But their model fails to specify how this
-is done. Our solution seeks to refine this ``evidence generation, archiving,
-traceability'' stage.
+Turner, et. al. have researched the implications of safety-critical systems in
+\cite{Turner1996, Turner2000, Turner2001} and deduced that a popular approach to
+this problem is the retroactive investigation of attorneys when a legal dispute
+ensues. But this is both inefficient and oftentimes ineffective because 
+important historical information may be missing and unrecoverable. They briefly
+propose an enhanced process model shown in Figure \ref{fig:enhancement} that
+will addresses negligence considerations early in the software development 
+lifecycle \cite{Turner2001}. Their model surrounds an arbitrary stage of the 
+software development lifecycle\footnote{Phases of software development are 
+described in Sections \ref{waterfall} and \ref{spiral}.} with a research phase
+and an archive phase. But their model fails to specify how this is done. Their
+research calls for an evidence database to archive important legal 
+considerations. The system proposed in this research picks up on this idea and
+contributes to a portion of this database by providing evidence in the form of
+documentation comments written by developers. Our solution seeks to refine the
+``evidence generation, archiving, traceability'' stage.
 
 \subsection{Documentation Solutions}
 
@@ -182,4 +195,7 @@ quantifiably scores the accuracy of its matches.
 Unfortunately, their solution is crippled by its reliance on programmer
 mnemonics. Although identifiers are the only user-defined tokens in source
 code other than comments, much more semantic information can be drawn from the 
-code itself beyond mere identifier extraction.
+code itself beyond mere identifier extraction. Our solution relies on the human
+mindset to extract this information explicitly in the form of comments. In this
+way, an organization can specify exactly what kind of information it wants to be
+recording during development time.
