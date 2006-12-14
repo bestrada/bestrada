@@ -1,0 +1,38 @@
+\documentclass[12pt]{report}
+
+\usepackage{fullpage}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{listings}
+\lstset{language=java}
+
+\begin{document}
+
+\title{Coursebook: A Distributed System Case Study}
+\author{Bryan G. Estrada and Christine H. Le}
+\date{Department of Computer Science\\
+      California Polytechnic State University\\
+      San Luis Obispo, CA  93407}
+      
+\begin{titlepage}
+%\vfill
+\maketitle\thispagestyle{empty}
+%\vfill
+\end{titlepage}
+
+\pagenumbering{roman}
+\doublespace
+\tableofcontents
+\listoffigures
+
+\pagenumbering{arabic}
+\input{introduction}
+\input{generalPatterns}
+\input{distributedPatterns}
+\input{futurePatterns}
+
+\bibliographystyle{acm}
+\bibliography{references}
+
+\end{document}
