@@ -1,4 +1,4 @@
-\documentclass[12pt]{report}
+\documentclass[11pt]{article}
 
 \usepackage{fullpage}
 \usepackage{setspace}
@@ -24,14 +24,18 @@
 \pagenumbering{roman}
 \doublespace
 \tableofcontents
+\newpage
 \listoffigures
+\newpage
 
 \pagenumbering{arabic}
 \input{introduction}
 \input{generalPatterns}
 \input{distributedPatterns}
 \input{futurePatterns}
+\input{conclusion}
 
+%\nocite{*}
 \bibliographystyle{acm}
 \bibliography{references}
 
