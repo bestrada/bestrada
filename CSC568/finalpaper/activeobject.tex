@@ -1,8 +1,8 @@
-\section{Active Object}
+\subsection{Active Object}
 
 The Active Object design pattern aims to enhance concurrency in a multi-threaded
 distributed system. Much different from \textit{passive objects}, which execute
-a method in the same thread of control in which it was invokd, active objects
+a method in the same thread of control in which it was invoked, active objects
 separate these two mechanisms. Douglas Schmidt describes:
 
 \begin{quote}
@@ -11,7 +11,7 @@ invocation in order to simplify synchronized access to an object that resides in
 its own thread of control.'' \cite{Schmidt96}
 \end{quote}
 
-The Active Object design patttern operates under the principles that (1) methods
+The Active Object design pattern operates under the principles that (1) methods
 invoked on an object should not block, (2) synchronized access to shared objects
 should be simple, and (3) applications should leverage the parallelism available
 on the platform \cite{Schmidt96}. If an application needs access to some
@@ -38,7 +38,7 @@ The components in this diagram are separated into two distinct threads of
 control: one visible to clients and one invisible to clients. In general, the
 Proxy object is responsible for providing an interface compliant with the target
 object for the client. The scheduler, which resides in its own thread of
-controll, manages a queue method requests and decides which method to dequeue
+control, manages a queue method requests and decides which method to dequeue
 and execute. The sequence diagram in Figure \ref{fig:activeObjectSequence}
 illustrates the general flow of control. Again, the sequence diagram
 separates the two separate threads of control: the thread in the client and the
@@ -63,7 +63,7 @@ instance, which invokes the method on the target object. The servant will return
 the result and update the data in the future object which the client holds a
 reference to.
 
-\subsection{Active Object in Coursebook}
+\subsubsection{Active Object in Coursebook}
 
 \begin{figure}[t]
 \singlespacing
@@ -93,14 +93,14 @@ for (Node n: nodes)
 \label{fig:REST_code}
 \end{figure}
 
-In coursebook, we use the Active Object design pattern, namely the Proxy 
+In Coursebook, we use the Active Object design pattern, namely the Proxy 
 component, to communicate with the different distributed modules of our system.
-For exapmle, Coursebook consists of several disperate services including a MySQL
+For example, Coursebook consists of several disparate services including a MySQL
 Database, the WordNet API, and Facebook web services. We will discuss how
 Coursebook exemplifies the Active Object design pattern through its use of the
 Facebook REST service.
 
-REST, or Representational State Transfer, is a simple stateless, caceheable,
+REST, or Representational State Transfer, is a simple stateless, cacheable,
 client/server architectural style for distributed hypermedia systems 
 \cite{Fielding00}. The goal of REST is to minimize latency and network
 communication while maximizing independence and scalability of component 
