@@ -3,6 +3,17 @@
 \usepackage{fullpage}
 \usepackage{setspace}
 
+% this is an environment so we can make wide figures and tables
+\newenvironment{narrow}[2]{
+  \begin{list}{}{
+    \setlength{\topsep}{0pt}
+    \setlength{\leftmargin}{#1}
+    \setlength{\rightmargin}{#2}
+    \setlength{\listparindent}{\parindent}
+    \setlength{\itemindent}{\parindent}
+    \setlength{\parsep}{\parskip}}
+  \item[]}{\end{list}}
+
 \begin{document}
 
 \title{Negligence in Software:\\Evaluating the Burden of Prevention}
@@ -20,15 +31,18 @@
 \pagenumbering{roman}
 \doublespace
 \tableofcontents
-% \listoffigures
+\listoffigures
 % \listoftables
 \newpage
 
 \pagenumbering{arabic}
 \input{introduction}
+\input{intended}
 \input{background}
 \input{motivation}
+\input{software}
 \input{relatedwork}
+\input{future}
 \input{conclusions}
 
 \newpage
