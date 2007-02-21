@@ -6,8 +6,19 @@ engineers in the safety-critical realm.
 
 The term \textit{products liability} broadly applies to the liability of a
 manufacturer or seller (defendant) for injury to a buyer (plaintiff) caused by
-a product that has been sold. While many forms of products liability exist, we
-apply negligence law to our research.
+a product that has been sold. While many forms of products liability
+exist\footnote{\textit{Strict Liability} applies to any product that is
+defective, regardless of the amount of care used in the process to manufacture
+it. \textit{Contract} law applies when a manufacturer's product fails to match
+the promises made in some written contract.}, we apply negligence law to our
+research\footnote{Negligence is concerned with process, not with product. The
+question is not whether software development can be applied to negligence law,
+but if negligence law can apply to software development.}.
+
+\section{Current Practices in Software Safety}
+Despite the evidence of ineffective safety assurance \cite{Leveson93,Maisel05},
+current trends in the software industry illustrate that efforts are being made
+to ensure the safety of mission critical software applications.
 
 \section{Negligence}
 The legal term negligence refers to, in general, careless conduct. Scholars
@@ -32,6 +43,30 @@ precautions to his students in wood shop may be liable for negligence. An
 engineer who does not adequately inspect his high-integrity product can be
 negligent to his clients. This research focuses on the negligence constrains as
 they apply to products liability.
+
+According to the Learned Hand test, an organization that develops 
+safety-critical software has a duty to spend the amount of time and resources
+equivalent to the product of the severity of harm and the likelihood that it
+will happen. If they do not, then their actions are negligent.
+
+\begin{figure}
+\begin{narrow}{-1.5in}{-1.5in}\begin{center}
+\begin{tabular}{|l|}
+\hline
+	Let \textbf{B} be the burden (expense) of preventing a potential accident.\\
+	Let \textbf{L} be the severity of the loss if the accident occurs.\\
+	Let \textbf{P} be the probability of the accident.\\[6pt]
+	Then \textit{failure to attempt to prevent a potential accident is 
+	unreasonable if}\\[8pt]
+
+      \centerline{\(B < P \times L\)}
+\\[3pt]
+\hline
+\end{tabular}
+\end{center}\end{narrow}
+\caption{the Learned Hand test for Negligence}
+\label{fig:handtest}
+\end{figure}
 
 \subsection{Elements of Negligence}
 The applicability of negligence may be ambiguous and the laws of negligence can
@@ -78,52 +113,4 @@ The remaining elements are assumptions that this research seeks to evaluate.
 Performing tests is a large part of quality assurance for software and doing it
 correctly can mitigate the risk of unreasonably breaching a duty of care.
 
-\section{Legal Requirements}
 
-It has been established that software developers in the safety-critical realm
-owe a duty of care to the intended users of their software. Part of this duty
-of care is the manufacturer's duty to test its products. Applicable law states
-that:
-
-\begin{quote}
-a manufacturer has a duty to test and inspect its products, at least where the
-nature of the product is such that an injury from its use is foreseeable if the
-product is defective, and where tests or inspections are practicable and would
-be effective.''
-\end{quote}
-
-Since safety-critical software can cause injury, it is subject to this
-stipulation. But as previously mentioned, the unique characteristics of
-software offer new problems in testing that make it difficult to create a
-mapping with traditional methods of engineering and the legal requirements for
-testing. These legal requirements include ensuring the product is operable for
-the purpose intended, securing the production of a finished and safe article,
-using the most effective methods known and available, and testing and
-inspecting during and after the course of manufacture.
-
-The safety of testing processes are legally scrutinized over the following four
-non-functional metrics: 
-
-\begin{description}
-\item[Verifiability] the software should be verified against its own
-requirements. Is the product reasonably fit for its intended purposes? Did the
-tests match the severity of the product's expected use? Verifiability measures
-how well the end software article complies with the requirements set up before
-development.
-\item[Completeness] the tests and inspections of the software should exhibit
-complete coverage to the extent that is reasonably feasible. Were the methods
-used conclusive and effective for demonstrating the products safety?
-Completeness measures how thorough the tests were done for exhibiting product
-safety.
-\item[Credibility] the testing process used should be at least on par with what
-is considered the state-of-the-art by other reasonably prudent software
-engineers. Did the manufacturer exercise the most effective known or best
-available methods in their test strategy? Credibility refers to the conduct of
-the testing manner customarily followed by others in the industry.
-\item[Maintainability] software tests should not be a single stage of
-development, but a pervasive process exercised throughout the product's
-lifecycle. Did the manufacturer perform tests even after the product was
-considered ``complete''? If defects were found after the fact, did they release
-fixes? Maintainability measures how well the manufacturer preserves the quality
-of their product throughout its life.
-\end{description}
