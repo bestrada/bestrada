@@ -1,6 +1,6 @@
 \chapter{Software and the Law}
 
-\section{Legal Requirements}
+\section{Legal Requirements for Testing Software}
 
 It has been established that software developers in the safety-critical realm
 owe a duty of care to the intended users of their software. Part of this duty
@@ -8,10 +8,10 @@ of care is the manufacturer's duty to test its products. Applicable law states
 that:
 
 \begin{quote}
-a manufacturer has a duty to test and inspect its products, at least where the
-nature of the product is such that an injury from its use is foreseeable if the
-product is defective, and where tests or inspections are practicable and would
-be effective.''
+``\textit{a manufacturer has a duty to test and inspect its products, at least
+where the nature of the product is such that an injury from its use is 
+foreseeable if the product is defective, and where tests or inspections are 
+practicable and would be effective.}'' \cite{Testing2005}
 \end{quote}
 
 Since safety-critical software can cause injury, it is subject to this
@@ -22,30 +22,41 @@ testing. These legal requirements include ensuring the product is operable for
 the purpose intended, securing the production of a finished and safe article,
 using the most effective methods known and available, and testing and
 inspecting during and after the course of manufacture.
+\singlespace
+\begin{itemize}
+  \item Is the product reasonably fit for its intended purposes?
+  \item Were the methods used conclusive and effective for demonstrating the
+  products safety?
+  \item Did the manufacturer exercise the most effective known or best available
+  methods in their test strategy?
+  \item Did the manufacturer perform tests even after the product was considered
+  ``complete''?
+\end{itemize}
+\doublespace
 
-The safety of testing processes are legally scrutinized over the following four
-non-functional metrics: 
+\section{The Justice in Testing}
+
+
+There are many aspects of testing software that satisfy these legal
+requirements. When analyzing the legality of an organizations testing processes,
+the following considerations should be made:
 
 \begin{description}
-\item[Verifiability] the software should be verified against its own
-requirements. Is the product reasonably fit for its intended purposes? Did the
-tests match the severity of the product's expected use? Verifiability measures
-how well the end software article complies with the requirements set up before
-development.
+\item[Verifiability] the software should be verified against its own 
+requirements. The software's commodity considers if it is appropriate for it's
+intended use. Did the tests match the severity of the product's expected
+use? Verifiability measures how well the end software article complies with the
+requirements set up before development.
 \item[Completeness] the tests and inspections of the software should exhibit
-complete coverage to the extent that is reasonably feasible. Were the methods
-used conclusive and effective for demonstrating the products safety?
-Completeness measures how thorough the tests were done for exhibiting product
+complete coverage to the extent that is reasonably feasible. Completeness measures how thorough the tests were done for exhibiting product
 safety.
 \item[Credibility] the testing process used should be at least on par with what
 is considered the state-of-the-art by other reasonably prudent software
-engineers. Did the manufacturer exercise the most effective known or best
-available methods in their test strategy? Credibility refers to the conduct of
+engineers. Credibility refers to the conduct of
 the testing manner customarily followed by others in the industry.
 \item[Maintainability] software tests should not be a single stage of
 development, but a pervasive process exercised throughout the product's
-lifecycle. Did the manufacturer perform tests even after the product was
-considered ``complete''? If defects were found after the fact, did they release
+lifecycle. If defects were found after the fact, did they release
 fixes? Maintainability measures how well the manufacturer preserves the quality
 of their product throughout its life.
 \end{description}
