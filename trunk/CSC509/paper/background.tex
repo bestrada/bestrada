@@ -1,26 +1,64 @@
-\chapter{Background}
+\chapter{Background}\label{C:Background}
 The analysis of the legality of testing processes for software demands a
-discussion of the constraints laid out by the law. Topics comprised in products
-liability and negligence applicably lays out the obligations of software
-engineers in the safety-critical realm.
+discussion of constraints. This chapter first examines the current practices in
+software engineering testing processes, then looks at the laws that apply to
+these processes.
 
-The term \textit{products liability} broadly applies to the liability of a
-manufacturer or seller (defendant) for injury to a buyer (plaintiff) caused by
-a product that has been sold. While many forms of products liability
-exist\footnote{\textit{Strict Liability} applies to any product that is
-defective, regardless of the amount of care used in the process to manufacture
-it. \textit{Contract} law applies when a manufacturer's product fails to match
-the promises made in some written contract.}, we apply negligence law to our
-research\footnote{Negligence is concerned with process, not with product. The
-question is not whether software development can be applied to negligence law,
-but if negligence law can apply to software development.}.
-
-\section{Current Practices in Software Safety}
+\section{Current Practices in Software Testing}
 Despite the evidence of ineffective safety assurance \cite{Leveson93,Maisel05},
-current trends in the software industry illustrate that efforts are being made
-to ensure the safety of mission critical software applications.
+current standards in the software industry illustrate that efforts are being
+made to ensure the safety of mission critical software applications.
 
-\section{Negligence}
+
+\subsection{ISO 9000-3}
+The International Standards Organization put forth a quality management standard
+known as ISO 9001 to describe a set of guidelines that will help organizations
+achieve standards of quality that are recognized and respected throughout the
+world. The ISO 9001 guidelines are not specifically designed for safety-critical
+software (or even software at all), but provide models for quality assurence
+in the design, development, production, installation, and servicing of systems
+in general \cite{Kehoe96}.
+
+The ISO 9000-3 is the application of ISO 9001 the development, supply, and
+maintenence of software. In terms of testing, the ISO 9000-3 standard adopts a
+phase approach, similar to the waterfall model explained in \cite{Royce70}. The
+six phases, at a high level, are:
+\singlespace
+\begin{enumerate}
+  \item System Engineering/System Analysis
+  \item Software Requirements Analysis
+  \item Design
+  \item Implementation
+  \item Testing
+  \item Maintenance
+\end{enumerate}
+\doublespace
+Acording to ISO 9000-3, testing is a pervasive effort, taking place during the
+entiere product-development cycle. For example: during the requirements phase, a
+team must develop a preliminary test plan and identify test cases. During the
+design phase, the team develops test cases and updates the test plan. During
+implementation, system-level test cases are populated and unit-level test cases
+are executed. And during the test phase, the tem conducts functional,
+integration, and system tests and performs regression testing as needed. For
+more information, refer to \cite{Kehoe96}.
+
+\subsection{CMM}
+
+\subsection{IEEE/ANSI Standards}
+
+
+\section{Negligence}\label{S:Negligence}
+The term \textit{products liability} broadly applies to the liability of a
+manufacturer or seller for injury to a buyer caused by a product that has been
+sold. While many forms of products liability exist\footnote{\textit{Strict
+Liability} applies to any product that is defective, regardless of the amount of
+care used in the process to manufacture it. \textit{Contract} law applies when a
+manufacturer's product fails to match the promises made in some written
+contract.}, we apply negligence law to our research\footnote{Negligence is
+concerned with process, not with product. The question is not whether software
+development can be applied to negligence law, but if negligence law can apply to
+software development.}.
+
 The legal term negligence refers to, in general, careless conduct. Scholars
 describe negligence more specifically as:
 
@@ -68,7 +106,7 @@ will happen. If they do not, then their actions are negligent.
 \label{fig:handtest}
 \end{figure}
 
-\subsection{Elements of Negligence}
+\subsection{Elements of Negligence}\label{SS:Elements}
 The applicability of negligence may be ambiguous and the laws of negligence can
 only be invoked in certain situations. The prerequisites, or prima facie
 elements, of a negligence case are \cite{Dobbs01}:
@@ -86,20 +124,21 @@ elements, of a negligence case are \cite{Dobbs01}:
 First, a negligence case calls for an actual duty of care owed to a plaintiff.
 There may be a question about how much care is owed in a given situation, but
 there are circumstances in which there is no duty owed that bears on the harm a
-plaintiff suffers.
+plaintiff suffers. Judges decide whether or not this duty exists \cite{Dobbs01}.
 
 Also, there must be a breach of this duty of care owed. A defendant who behaves
 reasonably and exercises the necessary care required by law will not be
-negligent even if the plaintiff is harmed.
+negligent even if the plaintiff is harmed \cite{Dobbs01}.
 
 The defendant's negligence must be the cause of the harm suffered by the
 plaintiff. An careless engineer who does not test his product is not negligent
 to the user who is injured by tripping over the machine. In addition, the cause
 must not only be cause in fact, but a proximate, or primary, cause of the harm
-suffered.
+suffered \cite{Dobbs01}.
 
 Finally, actual damages or injuries must be suffered for a negligence case to
-follow suit. This can include personal injury or damages to property.
+follow suit. This can include personal injury or damages to property
+\cite{Dobbs01}.
 
 \subsection{Software Fulfills the Prima Facie}
 
@@ -112,5 +151,4 @@ a reasonably prudent amount of care from its developers.
 The remaining elements are assumptions that this research seeks to evaluate.
 Performing tests is a large part of quality assurance for software and doing it
 correctly can mitigate the risk of unreasonably breaching a duty of care.
-
 

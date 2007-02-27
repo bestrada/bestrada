@@ -2,6 +2,18 @@
 
 \usepackage{fullpage}
 \usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{dblfnote}
+\usepackage{fnpos}
+
+\newcommand{\footnoteremember}[2]{
+  \footnote{#2}
+  \newcounter{#1}
+  \setcounter{#1}{\value{footnote}}
+}
+\newcommand{\footnoterecall}[1]{
+  \footnotemark[\value{#1}]
+}
 
 % this is an environment so we can make wide figures and tables
 \newenvironment{narrow}[2]{
@@ -46,9 +58,9 @@
 \input{conclusions}
 
 \appendix
+\input{terminology}
 \input{killerrobot/document}
 
-\newpage
 \bibliographystyle{acm}
 \bibliography{references}
 
