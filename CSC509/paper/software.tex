@@ -1,11 +1,13 @@
-\chapter{Software and the Law}
+\chapter{Software and the Law}\label{C:Software}
 
 \section{Legal Requirements for Testing Software}
 
-It has been established that software developers in the safety-critical realm
-owe a duty of care to the intended users of their software. Part of this duty
-of care is the manufacturer's duty to test its products. Applicable law states
-that:
+It is arguable that software developers in the safety-critical realm owe a duty
+of care to the intended users of their software. Ultimately, judges make the
+decision as to whether or not a duty of care is owed in the first place
+\cite{Dobbs01} and this research assumes that this criterion is met. That
+stated, part of this duty of care is the manufacturer's duty to test its
+products. Applicable law states that:
 
 \begin{quote}
 ``\textit{a manufacturer has a duty to test and inspect its products, at least
@@ -14,28 +16,84 @@ foreseeable if the product is defective, and where tests or inspections are
 practicable and would be effective.}'' \cite{Testing2005}
 \end{quote}
 
-Since safety-critical software can cause injury, it is subject to this
-stipulation. But as previously mentioned, the unique characteristics of
+Since safety-critical software can cause foreseeable injury, it is subject to
+this duty to test. But as previously mentioned, the unique characteristics of
 software offer new problems in testing that make it difficult to create a
 mapping with traditional methods of engineering and the legal requirements for
-testing. These legal requirements include ensuring the product is operable for
-the purpose intended, securing the production of a finished and safe article,
-using the most effective methods known and available, and testing and
-inspecting during and after the course of manufacture.
+testing. These problems will become apparent during the discussion of legal
+requirements. The legal requirements for testing in general include ensuring the
+product is operable for the purpose intended, securing the production of a
+finished and safe article, using the most effective methods known and available,
+and testing and inspecting during and after the course of manufacture
+\cite{Testing2005}.
+
+First, the law demands that a manufacturer test its product to be reasonably fit
+for its intended purpose\footnoteremember{Huff_v_White}{\textit{Huff v. White Motor Corp.},
+  565 F.2d 104. In \textit{Huff v. White Motor Corp.}, the court reversed its previous decision
+regarding ``intended purposes''. In the original case, Jesse Huff died from
+severe burns suffered from an accident that happened while driving a 
+truck-tractor manufactured by White Motor Corporation. The fuel tank ruptured 
+and engulfed the cab, occupied by Huff, in flames. The court's original decision
+held that the plaintiff (Huff's wife), had no claim for relief because the
+faulty design did not cause or contribute to injury (it enhanced the injury 
+received) and being involved in a collision is not included in the automobile's
+``intended purposes''. In the appellate court, this decision was reversed. The 
+original construction of ``intended purposes'' was too narrow and unrealistic. 
+Borrowing from a previous decision\footnotemark, the court determined that the injuries suffered
+from accident are ``readily foreseeable as an incident to the normal and
+expected use of an automobile''.}.
+\footnotetext{\textit{Larsen v. General Motors Corp.}, 391 F.2d 495} This is a
+difficult judgement to make in software. How does one determine what is
+``reasonably fit''? Who even determines the ``intended purposes'' of of a piece
+of software?
+
+The law also measures the tests performed by a software development team against
+that of a ``reasonably prudent manufacturer under the same or similar 
+circumstances\footnote{\textit{Schenck v. Pelkey}, 176 Conn. 245,
+405 A.2d 665, 25 U.C.C Rep. Serv. 416, 6 A.L.R.4th 481. Russel Schenck charged
+the Pelkey family (and later, the manufacturer Goshen) with negligence after
+sustaining quadriplegic injuries from sliding head-first down a pool slide.
+Since there were no standards for pool slides, the court correctly charged the
+jury to decide if a ``reasonably-prudent corporation'' under the same 
+circumstances would have conducted tests for such an injury.}'' This stipulation
+is of particular importance for software engineers because, unlike other forms
+of engineering, there are no standards for software testing processes to be
+judged against\footnoteremember{sw-license}{An article in IEEE Software answers
+common questions about standards for licensing software engineers \cite{Moore03}
+and work is being done to make this happen \cite{Knight00}.}. How does one
+determine what a prudent manufacturer would do? What is it that constitutes a
+``prudent'' software developer?
+
+Finally, the law demands that a manufacturer perform adequate testing both
+during and after the process of manufacture\footnote{\textit{Nicklaus v. Hughes
+Tool Company}, 417 F.2d 983}. This is important because software is an
+always-evolving artifact. Software is quick to change and easy to alter, so
+adequate testing must be a pervasive effort.
+
+\subsection{Summary}
+When evaluating the legality of potentially negligent manufacturing processes,
+specifically relating to how the product was tested, the following questions
+should be asked:
+
 \singlespace
 \begin{itemize}
   \item Is the product reasonably fit for its intended purposes?
   \item Were the methods used conclusive and effective for demonstrating the
-  products safety?
+  product's safety?
   \item Did the manufacturer exercise the most effective known or best available
   methods in their test strategy?
-  \item Did the manufacturer perform tests even after the product was considered
-  ``complete''?
+  \item Did the manufacturer adequately perform tests during the course of
+  manufacture \textit{and} after the product was considered ``complete''?
 \end{itemize}
 \doublespace
 
-\section{The Justice in Testing}
+This list is not intended to be exhaustive, but is an abridgement of focused
+legal considerations that should be made when judging an organization's testing
+processes. Our approach does not produce explicit answers to these questions,
+but instead provides a more detailed set of questions that can be used to
+evaluate the actual answers to these questions.
 
+\section{The Justice in Testing}
 
 There are many aspects of testing software that satisfy these legal
 requirements. When analyzing the legality of an organizations testing processes,
@@ -48,8 +106,8 @@ intended use. Did the tests match the severity of the product's expected
 use? Verifiability measures how well the end software article complies with the
 requirements set up before development.
 \item[Completeness] the tests and inspections of the software should exhibit
-complete coverage to the extent that is reasonably feasible. Completeness measures how thorough the tests were done for exhibiting product
-safety.
+complete coverage to the extent that is reasonably feasible. Completeness
+measures how thorough the tests were done for exhibiting product safety.
 \item[Credibility] the testing process used should be at least on par with what
 is considered the state-of-the-art by other reasonably prudent software
 engineers. Credibility refers to the conduct of
@@ -60,3 +118,55 @@ lifecycle. If defects were found after the fact, did they release
 fixes? Maintainability measures how well the manufacturer preserves the quality
 of their product throughout its life.
 \end{description}
+
+\subsection{Verifiability}
+In software engineering, validation and verification test ensure that software
+engineers take into account the appropriate intended purpose of the product and
+that the implementation actually safely fulfills this purpose.
+
+\subsection{Completeness}
+The law also holds that such tests be thorough and complete to the point of
+adequately demonstrating the product's safety. 
+
+\subsection{Credibility}
+
+Software suffers from this same problem. There are no real industry accepted
+standards for testing or software processes in
+general\footnoterecall{sw-license}, so juries must decide if the processes used
+for testing software are credible in comparison to prudent software engineering. 
+
+\subsection{Maintainability}
+
+\section{Evaluating the \textit{B}}
+
+Unfortunately, there is no silver bullet \cite{Brooks87} to building quality
+softare. There is no real way for us to provide sufficient conditions that will
+guarantee prudent behavior or explicitly qualify the expense taken to prevent
+harm. What we can provide is a heirarchy of organized questions that may be 
+useful when trying to ensure or determine due care.
+
+\singlespace
+\begin{enumerate}
+  \item Is the software reasonably fit for its intended purposes?
+  \begin{enumerate}
+    \item Did the organization create valid requirements?
+    \item Did the implementation verify against the software's own requirements?
+  \end{enumerate}
+  \item Were the testing methods reasonable for determining safety?
+    \begin{enumerate}
+    \item Did the coverage of tests match the severity of use that the
+    software is expected to encounter?
+    \end{enumerate}
+  \item Did the manufacturer use the best methods known or available?
+    \begin{enumerate}
+      \item What programming paradigms did the developers employ (e.g.
+      Object-Oriented, Aspect-Oriented, Procedural) and were they appropriate
+      for the application?
+      \item What testing processes did the software company employ?
+      \item Did the testing process employ current best practices like unit,
+      integration, and system testing?
+    \end{enumerate}
+  \item Did the manufacturer perform tests during and after the course of
+  manufacture? 
+\end{enumerate}
+  \doublespace
