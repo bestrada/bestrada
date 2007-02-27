@@ -1,8 +1,8 @@
 \chapter{Background}\label{C:Background}
 The analysis of the legality of testing processes for software demands a
-discussion of constraints. This chapter first examines the current practices in
-software engineering testing processes, then looks at the laws that apply to
-these processes.
+discussion of constraints. The first part of this chapter examines the current
+practices in software engineering testing processes We then look at the laws
+that apply to these processes.
 
 \section{Current Practices in Software Testing}
 Despite the evidence of ineffective safety assurance \cite{Leveson93,Maisel05},
@@ -46,16 +46,17 @@ more information, refer to \cite{Kehoe96}.
 
 \subsection{IEEE/ANSI Standards}
 
-
 \section{Negligence}\label{S:Negligence}
 The term \textit{products liability} broadly applies to the liability of a
 manufacturer or seller for injury to a buyer caused by a product that has been
-sold. While many forms of products liability exist\footnote{\textit{Strict
-Liability} applies to any product that is defective, regardless of the amount of
-care used in the process to manufacture it. \textit{Contract} law applies when a
-manufacturer's product fails to match the promises made in some written
-contract.}, we apply negligence law to our research\footnote{Negligence is
-concerned with process, not with product. The question is not whether software
+sold. While many forms of products liability exist\footnote{Other forms of
+liability that safety-critical software developers risk are \textit{Strict
+Liability} and \textit{Breach of Contract} liabilities. \textit{Strict Liability}
+applies to any product that is defective, regardless of the amount of care used
+in the process to manufacture it. \textit{Contract} law applies when a 
+manufacturer's product fails to match the promises made in some written 
+contract.}, we apply negligence law to our research\footnote{Negligence is 
+concerned with process, not with product. The question is not whether software 
 development can be applied to negligence law, but if negligence law can apply to
 software development.}.
 
@@ -82,10 +83,19 @@ engineer who does not adequately inspect his high-integrity product can be
 negligent to his clients. This research focuses on the negligence constrains as
 they apply to products liability.
 
-According to the Learned Hand test, an organization that develops 
-safety-critical software has a duty to spend the amount of time and resources
-equivalent to the product of the severity of harm and the likelihood that it
-will happen. If they do not, then their actions are negligent.
+According to the Learned Hand test\footnote{This evaluation originated in the
+case of \textit{United States v. Carroll Towing Co.} (159 F.2d 169) by Judge
+Learned Hand who created this guideline to determine the amount of duty owed.
+In the case, the United States sought compensation for flour that was lost when
+a barge carrying the cargo sunk. The barge company was partly responsible
+because no workers were present on the barge when it sank, which may have
+prevented the barge from sinking. Qualitatively, the amount it would have costed
+to keep a worker on the barge would have been less than the product of the
+probability that the barge sank and the amount of damages incurred from it
+sinking.}, shown in Figure \ref{fig:handtest}, an organization that develops 
+safety-critical software has a duty to spend at least the amount of time and
+resources equivalent to the product of the severity of harm and the likelihood 
+that it will happen. If they do not, then their actions are negligent.
 
 \begin{figure}
 \begin{narrow}{-1.5in}{-1.5in}\begin{center}
