@@ -1,8 +1,8 @@
 \chapter{Background}\label{C:Background}
-The analysis of the legality of testing processes for software demands a
-discussion of constraints. The first part of this chapter examines the current
-practices in software engineering testing processes We then look at the laws
-that apply to these processes.
+The analysis of the sufficiency of safety-critical testing processes for
+software demands a discussion of constraints. The first part of this chapter
+examines the current practices in software engineering testing processes. We
+then look at the negligence concerns regarding these processes.
 
 \section{Current Practices in Software Testing}
 Despite the evidence of ineffective safety assurance \cite{Leveson93,Maisel05},
@@ -46,16 +46,23 @@ more information, refer to \cite{Kehoe96}.
 
 \subsection{IEEE/ANSI Standards}
 
-\section{Negligence}\label{S:Negligence}
+\section{Products Liability}
 The term \textit{products liability} broadly applies to the liability of a
 manufacturer or seller for injury to a buyer caused by a product that has been
-sold. While many forms of products liability exist\footnote{Other forms of
-liability that safety-critical software developers risk are \textit{Strict
-Liability} and \textit{Breach of Contract} liabilities. \textit{Strict Liability}
-applies to any product that is defective, regardless of the amount of care used
-in the process to manufacture it. \textit{Contract} law applies when a 
-manufacturer's product fails to match the promises made in some written 
-contract.}, we apply negligence law to our research\footnote{Negligence is 
+sold\footnote{59 A.L.R.5th 461}. A \textit{product} usually refers to
+merchandise that can be purchased. In the case of safety-critical systems,
+software is usually embedded in some machine or device that is sold as a product
+\cite{Leveson95}. Many forms of products liability exist, including
+\textit{Strict}, \textit{Contract}, and \textit{Negligence}.
+
+\textit{Strict Liability} applies to any product that is defective, regardless
+of the amount of care used in the process to manufacture it\footnote{63 Am. Jur.
+2d Products Liability \S 90}. While strict liability is interesting, this
+research is concerned with the processes and tradeoff analysis involved with
+developing and testing software. 
+
+\subsection{Negligence}\label{S:Negligence}
+We apply negligence law to our research\footnote{Negligence is 
 concerned with process, not with product. The question is not whether software 
 development can be applied to negligence law, but if negligence law can apply to
 software development.}.
@@ -116,7 +123,7 @@ that it will happen. If they do not, then their actions are negligent.
 \label{fig:handtest}
 \end{figure}
 
-\subsection{Elements of Negligence}\label{SS:Elements}
+\subsubsection{Elements of Negligence}\label{SS:Elements}
 The applicability of negligence may be ambiguous and the laws of negligence can
 only be invoked in certain situations. The prerequisites, or prima facie
 elements, of a negligence case are \cite{Dobbs01}:
@@ -150,7 +157,7 @@ Finally, actual damages or injuries must be suffered for a negligence case to
 follow suit. This can include personal injury or damages to property
 \cite{Dobbs01}.
 
-\subsection{Software Fulfills the Prima Facie}
+\subsubsection{Software Fulfills the Prima Facie}
 
 It is not a stretch to conclude that defective software in a safety-critical
 situation will be subject to negligence allegations. The developing
