@@ -2,6 +2,7 @@
 
 \usepackage{fullpage}
 \usepackage{setspace}
+\usepackage{multibbl}
 \usepackage{graphicx}
 \usepackage{dblfnote}
 \usepackage{fnpos}
@@ -26,7 +27,11 @@
     \setlength{\parsep}{\parskip}}
   \item[]}{\end{list}}
 
+
 \begin{document}
+
+\newbibliography{refs}
+\newbibliography{cases}
 
 \title{Negligence in Software:\\Evaluating the Burden of Prevention}
 \author{Bryan G. Estrada}
@@ -61,8 +66,11 @@
 \input{terminology}
 \input{killerrobot/document}
 
-\bibliographystyle{acm}
-\bibliography{references}
 
+\bibliographystyle{refs}{acm}
+\bibliography{refs}{references}{Works Cited}
+
+\bibliographystyle{cases}{alpha}
+\bibliography{cases}{cases}{Cases and Legal Works}
 
 \end{document}
