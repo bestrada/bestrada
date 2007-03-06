@@ -5,7 +5,7 @@ examines the current practices in software engineering testing processes. We
 then look at the negligence concerns regarding these processes.
 
 \section{Current Practices in Software Testing}
-Despite the evidence of ineffective safety assurance \cite{Leveson93,Maisel05},
+Despite the evidence of ineffective safety assurance \cite{refs}{Leveson93,Maisel05},
 current standards in the software industry illustrate that efforts are being
 made to ensure the safety of mission critical software applications.
 
@@ -17,11 +17,11 @@ achieve standards of quality that are recognized and respected throughout the
 world. The ISO 9001 guidelines are not specifically designed for safety-critical
 software (or even software at all), but provide models for quality assurence
 in the design, development, production, installation, and servicing of systems
-in general \cite{Kehoe96}.
+in general \cite{refs}{Kehoe96}.
 
 The ISO 9000-3 is the application of ISO 9001 the development, supply, and
 maintenence of software. In terms of testing, the ISO 9000-3 standard adopts a
-phase approach, similar to the waterfall model explained in \cite{Royce70}. The
+phase approach, similar to the waterfall model explained in \cite{refs}{Royce70}. The
 six phases, at a high level, are:
 \singlespace
 \begin{enumerate}
@@ -40,7 +40,7 @@ design phase, the team develops test cases and updates the test plan. During
 implementation, system-level test cases are populated and unit-level test cases
 are executed. And during the test phase, the tem conducts functional,
 integration, and system tests and performs regression testing as needed. For
-more information, refer to \cite{Kehoe96}.
+more information, refer to \cite{refs}{Kehoe96}.
 
 \subsection{CMM}
 
@@ -52,7 +52,7 @@ manufacturer or seller for injury to a buyer caused by a product that has been
 sold\footnote{59 A.L.R.5th 461}. A \textit{product} usually refers to
 merchandise that can be purchased. In the case of safety-critical systems,
 software is usually embedded in some machine or device that is sold as a product
-\cite{Leveson95}. Many forms of products liability exist, including
+\cite{refs}{Leveson95}. Many forms of products liability exist, including
 \textit{Strict}, \textit{Contract}, and \textit{Negligence}.
 
 \textit{Strict Liability} applies to any product that is defective, regardless
@@ -90,19 +90,19 @@ engineer who does not adequately inspect his high-integrity product can be
 negligent to his clients. This research focuses on the negligence constrains as
 they apply to products liability.
 
-According to the Learned Hand test\footnote{This evaluation originated in the
-case of \textit{United States v. Carroll Towing Co.} (159 F.2d 169) by Judge
-Learned Hand who created this guideline to determine the amount of duty owed.
-In the case, the United States sought compensation for flour that was lost when
-a barge carrying the cargo sunk. The barge company was partly responsible
-because no workers were present on the barge when it sank, which may have
-prevented the barge from sinking. Qualitatively, the amount it would have costed
-to keep a worker on the barge would have been less than the product of the
-probability that the barge sank and the amount of damages incurred from it
-sinking.}, shown in Figure \ref{fig:handtest}, an organization that develops 
-safety-critical software has a duty to spend at least the amount of time and
-resources equivalent to the product of the severity of harm and the likelihood 
-that it will happen. If they do not, then their actions are negligent.
+According to the Learned Hand test\footnote{This evaluation originated in
+\cite{cases}{159_F.2d_169} by Judge Learned Hand who created this guideline to
+determine the amount of duty owed. In the case, the United States sought
+compensation for flour that was lost when a barge carrying the cargo sunk. The
+barge company was partly responsible because no workers were present on the
+barge when it sank, which may have prevented the barge from sinking.
+Qualitatively, the amount it would have costed to keep a worker on the barge
+would have been less than the product of the probability that the barge sank and
+the amount of damages incurred from it sinking.}, shown in Figure
+\ref{fig:handtest}, an organization that develops safety-critical software has a
+duty to spend at least the amount of time and resources equivalent to the
+product of the severity of harm and the likelihood that it will happen. If they
+do not, then their actions are negligent.
 
 \begin{figure}
 \begin{narrow}{-1.5in}{-1.5in}\begin{center}
@@ -126,7 +126,7 @@ that it will happen. If they do not, then their actions are negligent.
 \subsubsection{Elements of Negligence}\label{SS:Elements}
 The applicability of negligence may be ambiguous and the laws of negligence can
 only be invoked in certain situations. The prerequisites, or prima facie
-elements, of a negligence case are \cite{Dobbs01}:
+elements, of a negligence case are \cite{refs}{Dobbs01}:
 
 \singlespace
 \begin{enumerate}
@@ -141,21 +141,21 @@ elements, of a negligence case are \cite{Dobbs01}:
 First, a negligence case calls for an actual duty of care owed to a plaintiff.
 There may be a question about how much care is owed in a given situation, but
 there are circumstances in which there is no duty owed that bears on the harm a
-plaintiff suffers. Judges decide whether or not this duty exists \cite{Dobbs01}.
+plaintiff suffers. Judges decide whether or not this duty exists \cite{refs}{Dobbs01}.
 
 Also, there must be a breach of this duty of care owed. A defendant who behaves
 reasonably and exercises the necessary care required by law will not be
-negligent even if the plaintiff is harmed \cite{Dobbs01}.
+negligent even if the plaintiff is harmed \cite{refs}{Dobbs01}.
 
 The defendant's negligence must be the cause of the harm suffered by the
 plaintiff. An careless engineer who does not test his product is not negligent
 to the user who is injured by tripping over the machine. In addition, the cause
 must not only be cause in fact, but a proximate, or primary, cause of the harm
-suffered \cite{Dobbs01}.
+suffered \cite{refs}{Dobbs01}.
 
 Finally, actual damages or injuries must be suffered for a negligence case to
 follow suit. This can include personal injury or damages to property
-\cite{Dobbs01}.
+\cite{refs}{Dobbs01}.
 
 \subsubsection{Software Fulfills the Prima Facie}
 
