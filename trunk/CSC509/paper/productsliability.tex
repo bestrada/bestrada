@@ -2,12 +2,12 @@
 The term \textit{products liability} broadly applies to the liability of a
 manufacturer or seller for injury to a buyer caused by a product that has been
 sold \cite{Testing2005}. A \textit{product} usually refers to physical 
-merchandise that can be purchased\footnote{\textit{Winter v. G.P. Putnam's
-Sons}, 938 F.2d 1033.\\In this case, Wilhelm Winter became critically ill
-from eating mushrooms that he picked relying on the information in a book
-published by Putnam. The judge favored in the side of Putnam, claiming that the
-contents of \textit{The Encyclopedia of Mushrooms} is not a product that can be
-liable because the law does not take into consideration the unique
+merchandise that can be purchased\footnoteremember{putnam}{\textit{Winter v. 
+G.P. Putnam's Sons}, 938 F.2d 1033.\\In this case, Wilhelm Winter became
+critically ill from eating mushrooms that he picked relying on the information
+in a book published by Putnam. The judge favored in the side of Putnam, claiming
+that the contents of \textit{The Encyclopedia of Mushrooms} is not a product 
+that can be liable because the law does not take into consideration the unique
 characteristics of ideas and expression. However, the plaintiff's argument was
 strong when the book was analogized to aeronautical charts - graphical
 depictions of technical and mechanical data. They are intended to be used while
@@ -22,36 +22,42 @@ context of their distribution and use is sufficiently analogous to the
 distribution and use of tangible personal property\ldots}\footnote{Restatement
 Third, Torts: Products Liability \S 19(a).}''
 \end{quote}
+
 In the case of safety-critical systems, software is usually embedded in
-some machine or hardware device \cite{Leveson95} that is sold as a product
-\footnote{59 A.L.R.5th 461.}. When viewed from this standpoint, software is less
-analogous to pure thoughts and expressions and may be considered a product for
-products liability cases. Many forms of products liability exist, including
-\textit{Contract}, \textit{Strict}, and \textit{Negligence}.
+some machine or hardware device \cite{Leveson95} that is sold as a 
+product\footnote{59 A.L.R.5th 461.}. When viewed from this standpoint, software
+is less analogous to pure thoughts and expressions and may be considered a
+product for products liability cases\footnoterecall{putnam}. Many forms of
+products liability exist, including \textit{contract}, \textit{strict}, and
+\textit{negligence}.
 
 \textit{Contracts}, as in software warranties or End User License Agreements
 (EULAs), are issued to assure customers that the products purchased will perform
 as stated \cite{Armour93}. Contract law can be dismissed because, as described
 in the next section, negligence liability applies regardless of what terms are
-steted in any contract. Even if a contract disclaims risk, manufacturers are
-still held accountable and cannot absolve themselves from liability from
-defects \cite{Ryan03}.
+steted in any contract. Even if a contract disclaims end-user risk, 
+manufacturers are still held accountable and cannot absolve themselves from
+liability from defects \cite{Ryan03}.
 
 \textit{Strict Liability} applies to any product that is defective, regardless
 of the amount of care used in the process to manufacture it\footnote{63 Am. Jur.
 2d Products Liability \S 90.}. While strict liability is interesting
 \cite{Turner00}, this research is concerned with the \textit{processes} and
-\textit{tradeoff} analysis involved with developing and testing software. These
-aspects of software engineering fall under the jurisdiction of negligence law.
+\textit{tradeoff} analysis involved with developing and testing software. Since
+these aspects of software engineering are behavioral, they fall under the
+jurisdiction of negligence law.
 
 \subsection{Negligence}\label{SS:Negligence}
-We apply negligence law to our research\footnote{Negligence is 
-concerned with process, not with product. The question is not whether software 
-development can be applied to negligence law, but if negligence law can apply to
-software development.}.
-
-The legal term negligence refers to, in general, careless conduct. Scholars
-describe negligence more specifically as:
+While the development of products liability based on breach of warranty and
+strict products liability doctrines have, to an extent, reduced the utility of
+negligence because in these forms the proof of specific negligence is
+unnecessary\footnote{Am. Law. Prod. Liab. 3d, Chapter 10, \S 10:1.}, we apply
+negligence law to our research. Negligence is concerned with process, not with
+product. The question is not whether software development can be applied to
+negligence law, but if negligence law can apply to software development. The
+legal term \textit{negligence} refers to, in general, careless conduct. 
+Scholars describe negligence more specifically as\footnote{57A Am. Jur. 2d
+Negligence \S 5.}:
 
 \singlespace
 \begin{itemize}
@@ -66,26 +72,32 @@ describe negligence more specifically as:
 \doublespace
 
 Negligence can be applied to many different scenarios beyond products
-liability. An intoxicated driver who disobeys traffic laws is negligent towards
-other citizens of the road. A teacher who fails to demonstrate safety
-precautions to his students in wood shop may be liable for negligence. An
-engineer who does not adequately inspect his high-integrity product can be
-negligent to his clients. This research focuses on the negligence constrains as
-they apply to products liability.
+liability. An intoxicated driver who disobeys traffic laws may be negligent
+towards other citizens of the road\footnote{\textit{People v. Townsend}, 214
+Mich. 267, 272, 183 N.W. 177.}. A teacher who fails to demonstrate safety
+precautions to his students in wood shop may be liable for
+negligence\footnote{\textit{Voorhies v. Conroe Independent School Dist.}, 610
+F.Supp. 868.}. An engineer who does not adequately inspect his high-integrity
+product can be negligent to his clients\footnote{\textit{Ford Motor Co. v.
+Mondragon}, 271 F.2d 342.}. This research focuses on the negligence constrains
+as they apply to products liability.
 
-According to the Learned Hand test\footnote{\textit{United States v. Carroll
-Towing Co.}, 159 F.2d 169.\\ Judge Learned Hand created this guideline to
-determine the amount of duty owed in a negligence dispute. In the case, the
-United States sought compensation for flour that was lost when a barge carrying
-the cargo sunk. The barge company was partly responsible because no workers were
-present on the barge when it sank, which may have prevented the barge from
-sinking. Qualitatively, the amount it would have cost to keep a worker on the
-barge would have been less than the product of the probability that the barge
-sank and the amount of damages incurred from it sinking.}, shown in Figure
-\ref{fig:handtest}, an organization that develops safety-critical software has a
-duty to spend at least the amount of time and resources equivalent to the
-product of the severity of harm and the likelihood that it will happen. If they
-do not, then their actions are negligent.
+Negligence is easiest to determine when some standard of care stated by the
+profession is available. Since no such standard exists for software engineering,
+a more qualitative approach must be taken. Figure \ref{fig:handtest} shows a
+formula that equates negligence in terms of unreasonable behavior.  According to
+the Learned Hand test\footnote{\textit{United States v. Carroll Towing Co.}, 159
+F.2d 169.\\ Judge Learned Hand created this guideline to determine the amount of
+duty owed in a negligence dispute. In the case, the United States sought
+compensation for flour that was lost when a barge carrying the cargo sunk. The
+barge company was partly responsible because no workers were present on the
+barge when it sank, which may have prevented the barge from sinking.
+Qualitatively, the amount it would have cost to keep a worker on the barge would
+have been less than the product of the probability that the barge sank and the
+amount of damages incurred from it sinking.}, an organization that develops
+safety-critical software has a duty to spend at least the amount of time and
+resources equivalent to the product of the severity of harm and the likelihood 
+that it will happen. If they do not, then their actions are negligent.
 
 \begin{figure}
 \begin{narrow}{-1.5in}{-1.5in}\begin{center}
@@ -107,9 +119,9 @@ do not, then their actions are negligent.
 \end{figure}
 
 \subsubsection{Elements of Negligence}\label{SS:Elements}
-The applicability of negligence may be ambiguous and the laws of negligence can
-only be invoked in certain situations. The prerequisites, or prima facie
-elements, of a negligence case are \cite{Dobbs01}:
+The applicability of negligence requires that certain conditions exist and the
+laws of negligence can only be invoked in these situations. The prerequisites,
+or prima facie elements, of a negligence case are \cite{Dobbs01}:
 
 \singlespace
 \begin{enumerate}
@@ -124,21 +136,20 @@ elements, of a negligence case are \cite{Dobbs01}:
 First, a negligence case calls for an actual duty of care owed to a plaintiff.
 There may be a question about how much care is owed in a given situation, but
 there are circumstances in which there is no duty owed that bears on the harm a
-plaintiff suffers. Judges decide whether or not this duty exists \cite{Dobbs01}.
+plaintiff suffers. Judges decide whether or not this duty exists.
 
 Also, there must be a breach of this duty of care owed. A defendant who behaves
 reasonably and exercises the necessary care required by law will not be
-negligent even if the plaintiff is harmed \cite{Dobbs01}.
+negligent even if the plaintiff is harmed.
 
 The defendant's negligence must be the cause of the harm suffered by the
 plaintiff. An careless engineer who does not test his product is not negligent
 to the user who is injured by tripping over the machine. In addition, the cause
 must not only be cause in fact, but a proximate, or primary, cause of the harm
-suffered \cite{Dobbs01}.
+suffered.
 
 Finally, actual damages or injuries must be suffered for a negligence case to
-follow suit. This can include personal injury or damages to property
-\cite{Dobbs01}.
+follow suit. This can include personal injury or damages to property.
 
 \subsubsection{Software Fulfills the Prima Facie}
 
