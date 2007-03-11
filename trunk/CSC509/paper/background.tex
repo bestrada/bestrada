@@ -13,17 +13,38 @@ regarding these processes.
 Despite the evidence of ineffective safety assurance \cite{Leveson93,Maisel05},
 current standards in the software industry illustrate that efforts are being
 made to ensure the safety of mission critical software applications. Though
-unapproved and unofficial to any governing body, the motivation of these efforts
-are best illustrated by principle 1.04 of the Software Engineering Code of
-Ethics. This principle mandates that software engineers act consistently with
-the public interest and, specifically, shall:
+unapproved and unofficial to any governing body, the Software Engineering Code
+of Ethics motivates these efforts towards safer software. The first principle of
+the code requires that software engineers work consistently with the public
+interest. More specifically, public interest principles state that software
+engineers shall: 
 
 \begin{quote}
-``\textit{Approve software only if they have a well-founded belief that it is
-safe, meets specifications, passes appropriate tests, and does not diminish
+``\textit{Moderate the interests of the software engineer, the employer, the
+client and the users with the public good.}''\cite{SECODE}
+\end{quote}
+and
+\begin{quote}
+``\textit{1.03 Approve software only if they have a well-founded belief that it
+is safe, meets specifications, passes appropriate tests, and does not diminish
 quality of life, diminish privacy or harm the environment. The ultimate effect
 of the work should be to the public good.}''\cite{SECODE}
 \end{quote}
+and
+\begin{quote}
+``\textit{Disclose to appropriate persons or authorities any actual or
+potential danger to the user, the public, or the environment, that they
+reasonably believe to be associated with software or related
+documents.}''\cite{SECODE}
+\end{quote}
+
+With these (and other) principles in mind\footnote{The preamble, the entire
+listing of ``Principle 1: PUBLIC'', and the short version of the remaining
+principles of the Software Engineering Code of Ethics and Professional Practice
+are listed in Appendix \ref{A:SECode}}, groups like the International Standards
+Organization, the Software Engineering Institute, and the Institute of
+Electrical and Electronics Engineers have developed standards and guidelines for
+developers to improve software processes.
 
 \subsection{ISO 9000-3}
 The International Standards Organization put forth a quality management standard
@@ -48,6 +69,16 @@ six phases, at a high level, are:
   \item Maintenance
 \end{enumerate}
 \doublespace
+
+The ISO 9000-3 guideline does not dictate the use of any procedure or process in
+particular, but rather identifies commonly accepted and sound practices that are
+suggested for use in product development and maintenance. Each organization will
+have to apply these suggestions to their processes as they see fit. Included in
+the standard is a section on ``Testing and Validation''. The ISO lists
+techniques for testing from the unit tests through system-level testing and on
+to field tests. The guidelinee exhibits what a reasonable software developer
+would do to test and validate his software.
+
 According to ISO 9000-3, testing is a pervasive effort, taking place during the
 entire product-development cycle. For example: during the requirements phase, a
 team must develop a preliminary test plan and identify test cases. During the
@@ -103,164 +134,40 @@ The goals for this key process area are enumerated below: \singlespace
         the software project are addressed by senior management.
 \end{itemize}
 \doublespace
+
 The CMM generally lays out goals and activities that an organization can
 undertake to achieve process maturity. Again, though the CMM is not targetted
 specifically for safety-critical systems, it provides a good place to start to
 ensure that the best available practices are being utilized.
 
-\subsection{IEEE/ANSI Standards}
+\subsection{IEEE Std 1012-1998}
+The IEEE Standard for Software Verification and Validation \cite{IEEE-std-verif}
+outlines processes to determine whether software products of a given activity
+conform to the requirements of that activity and whether the software itself
+satsifies the intended use and user needs.
 
-\section{Products Liability}\label{S:Liability}
-The term \textit{products liability} broadly applies to the liability of a
-manufacturer or seller for injury to a buyer caused by a product that has been
-sold \cite{Testing2005}. A \textit{product} usually refers to physical 
-merchandise that can be purchased\footnote{\textit{Winter v. G.P. Putnam's
-Sons}, 938 F.2d 1033.\\In this case, Wilhelm Winter became critically ill
-from eating mushrooms that he picked relying on the information in a book
-published by Putnam. The judge favored in the side of Putnam, claiming that the
-contents of \textit{The Encyclopedia of Mushrooms} is not a product that can be
-liable because the law does not take into consideration the unique
-characteristics of ideas and expression. However, the plaintiff's argument was
-strong when the book was analogized to aeronautical charts - graphical
-depictions of technical and mechanical data. They are intended to be used while
-engaging in hazardous activity. The discussion also mentions that
-\textit{software} may be considered a product for this same reason. Software
-that ``\textit{fails to yield the result for which it was designed}'' may be
-considered under products liability}. Officially, a product is defined as 
-\begin{quote}
-``\textit{\ldots tangible personal property distributed commercially for use or
-consumption and other items, such as real property and electricity, when the
-context of their distribution and use is sufficiently analogous to the
-distribution and use of tangible personal property\ldots}\footnote{Restatement
-Third, Torts: Products Liability \S 19(a).}''
-\end{quote}
-In the case of safety-critical systems, software is usually embedded in
-some machine or hardware device \cite{Leveson95} that is sold as a product
-\footnote{59 A.L.R.5th 461.}. When viewed from this standpoint, software is less
-analogous to pure thoughts and expressions and may be considered a product for
-products liability cases. Many forms of products liability exist, including
-\textit{Contract}, \textit{Strict}, and \textit{Negligence}.
+The standard lists four levels of integrity (low, moderate, major, and high)
+that denote the criticality of the selected software function based on its
+intended use and application. High integrity systems (what we call 
+safety-critical) will require larger set and more rigorous applicaiton of
+verification and validation tasks.
 
-\textit{Contracts}, as in software warranties or End User License Agreements
-(EULAs), are issued to assure customers that the products purchased will perform
-as stated \cite{Armour93}. Contract law can be dismissed because, as described
-in the next section, negligence liability applies regardless of what terms are
-steted in any contract. Even if a contract disclaims risk, manufacturers are
-still held accountable and cannot absolve themselves from liability from
-defects \cite{Ryan03}.
-
-\textit{Strict Liability} applies to any product that is defective, regardless
-of the amount of care used in the process to manufacture it\footnote{63 Am. Jur.
-2d Products Liability \S 90.}. While strict liability is interesting
-\cite{Turner00}, this research is concerned with the \textit{processes} and
-\textit{tradeoff} analysis involved with developing and testing software. These
-aspects of software engineering fall under the jurisdiction of negligence law.
-
-\subsection{Negligence}\label{SS:Negligence}
-We apply negligence law to our research\footnote{Negligence is 
-concerned with process, not with product. The question is not whether software 
-development can be applied to negligence law, but if negligence law can apply to
-software development.}.
-
-The legal term negligence refers to, in general, careless conduct. Scholars
-describe negligence more specifically as:
-
-\singlespace
-\begin{itemize}
- \item the existence and violation of a legal duty to use care, proximately 
- causing injury to another.
- \item the failure to exercise the degree of care demanded by the circumstances.
- \item the breach of a duty to another to protect him or her from the particular
- harm that ensued.
- \item the want of that care the law prescribes under the particular
- circumstances existing at the time of the act or omission which is involved.
-\end{itemize}
-\doublespace
-
-Negligence can be applied to many different scenarios beyond products
-liability. An intoxicated driver who disobeys traffic laws is negligent towards
-other citizens of the road. A teacher who fails to demonstrate safety
-precautions to his students in wood shop may be liable for negligence. An
-engineer who does not adequately inspect his high-integrity product can be
-negligent to his clients. This research focuses on the negligence constrains as
-they apply to products liability.
-
-According to the Learned Hand test\footnote{\textit{United States v. Carroll
-Towing Co.}, 159 F.2d 169.\\ Judge Learned Hand created this guideline to
-determine the amount of duty owed in a negligence dispute. In the case, the
-United States sought compensation for flour that was lost when a barge carrying
-the cargo sunk. The barge company was partly responsible because no workers were
-present on the barge when it sank, which may have prevented the barge from
-sinking. Qualitatively, the amount it would have cost to keep a worker on the
-barge would have been less than the product of the probability that the barge
-sank and the amount of damages incurred from it sinking.}, shown in Figure
-\ref{fig:handtest}, an organization that develops safety-critical software has a
-duty to spend at least the amount of time and resources equivalent to the
-product of the severity of harm and the likelihood that it will happen. If they
-do not, then their actions are negligent.
-
-\begin{figure}
-\begin{narrow}{-1.5in}{-1.5in}\begin{center}
-\begin{tabular}{|l|}
-\hline
-	Let \textbf{B} be the burden (expense) of preventing a potential accident.\\
-	Let \textbf{L} be the severity of the loss if the accident occurs.\\
-	Let \textbf{P} be the probability of the accident.\\[6pt]
-	Then \textit{failure to attempt to prevent a potential accident is 
-	unreasonable if}\\[8pt]
-
-      \centerline{\(B < P \times L\)}
-\\[3pt]
-\hline
-\end{tabular}
-\end{center}\end{narrow}
-\caption{The Learned Hand Test for Negligence}
-\label{fig:handtest}
-\end{figure}
-
-\subsubsection{Elements of Negligence}\label{SS:Elements}
-The applicability of negligence may be ambiguous and the laws of negligence can
-only be invoked in certain situations. The prerequisites, or prima facie
-elements, of a negligence case are \cite{Dobbs01}:
-
+Based on the software integrity level, the standard tabulates different
+activities in the process areas of management, acquisition, supply, development,
+operation, and maintenance. Efforts in test verification and validation are
+applied from the following list:
 \singlespace
 \begin{enumerate}
- \item there exists a duty of care (or duty to protect)
- \item the defendant breaches this duty with unreasonably risky conduct
- \item the defendant's conduct resulted in harm to the plaintiff
- \item the negligent conduct was a proximate cause of harm
- \item legally recognized damages or injury exist
+  \item Task: Traceability Analysis
+  \item Task: Acceptance V\&V Test Procedure Generation and Verification
+  \item Task: Integration V\&V Test Execution and Verification
+  \item Task: System V\&V Test Execution and Verification
+  \item Task: Acceptance V\&V Test Execution and Verification
+  \item Task: Hazard Analysis
+  \item Task: Risk Analysis
 \end{enumerate}
 \doublespace
+This research will take a closer look into these activities and relate them to
+the legally imposed constraints in Chapter \ref{C:Software}.
 
-First, a negligence case calls for an actual duty of care owed to a plaintiff.
-There may be a question about how much care is owed in a given situation, but
-there are circumstances in which there is no duty owed that bears on the harm a
-plaintiff suffers. Judges decide whether or not this duty exists \cite{Dobbs01}.
-
-Also, there must be a breach of this duty of care owed. A defendant who behaves
-reasonably and exercises the necessary care required by law will not be
-negligent even if the plaintiff is harmed \cite{Dobbs01}.
-
-The defendant's negligence must be the cause of the harm suffered by the
-plaintiff. An careless engineer who does not test his product is not negligent
-to the user who is injured by tripping over the machine. In addition, the cause
-must not only be cause in fact, but a proximate, or primary, cause of the harm
-suffered \cite{Dobbs01}.
-
-Finally, actual damages or injuries must be suffered for a negligence case to
-follow suit. This can include personal injury or damages to property
-\cite{Dobbs01}.
-
-\subsubsection{Software Fulfills the Prima Facie}
-
-It is not a stretch to conclude that defective software in a safety-critical
-situation will be subject to negligence allegations. The developing
-organization clearly owes a duty of care to its customers. Since the software
-will be used to perform tasks that can potentially cause harm, its users expect
-a reasonably prudent amount of care from its developers.
-
-The remaining elements are assumptions that this research seeks to evaluate.
-Performing tests is a large part of quality assurance for software and doing it
-correctly can mitigate the risk of unreasonably breaching a duty of care.
-
+\input{productsliability}
