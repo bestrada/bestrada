@@ -1,8 +1,8 @@
-\documentclass[11pt]{book}
+\documentclass[11pt,legal]{book}
 
 \usepackage{fullpage}
 \usepackage{setspace}
-\usepackage{multibbl}
+%\usepackage{multibbl}
 \usepackage{graphicx}
 \usepackage{dblfnote}
 \usepackage{fnpos}
@@ -30,8 +30,8 @@
 
 \begin{document}
 
-\newbibliography{refs}
-\newbibliography{cases}
+%\newbibliography{refs}
+%\newbibliography{cases}
 
 \title{Negligence in Software:\\Evaluating the Burden of Prevention}
 \author{Bryan G. Estrada}
@@ -62,15 +62,16 @@
 \input{future}
 \input{conclusions}
 
-\appendix
-\input{terminology}
-\input{killerrobot/document}
+%\appendix
+%\input{terminology}
+%\input{killerrobot/document}
 
 
-\bibliographystyle{refs}{acm}
-\bibliography{refs}{references}{Works Cited}
+\bibliographystyle{acm}
+\bibliography{references}
+%\bibliography{refs}{references}{References}
 
-\bibliographystyle{cases}{alpha}
-\bibliography{cases}{cases}{Cases and Legal Works}
+%\bibliographystyle{cases}{alpha}
+%\bibliography{cases}{cases}{Cases and Legal Works}
 
 \end{document}

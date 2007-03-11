@@ -1,27 +1,42 @@
 \chapter{Background}\label{C:Background}
-The analysis of the sufficiency of safety-critical testing processes for
-software demands a discussion of constraints. The first part of this chapter
-examines the current practices in software engineering testing processes. We
-then look at the negligence concerns regarding these processes.
+The analysis of the sufficiency of testing processes for safety-critical
+software systems demands a discussion of constraints. Of particular concern are
+the constraints enforced upon software \textit{process}. While there certainly
+are liabilities for releasing a product that is defective\footnote{Section 
+\ref{S:Liability} details the different forms of liability that software is
+vulnerable to.}, the \textit{behavior} of the developer is what is under
+scrutiny here. The first part of this chapter reviews the current practices in
+software engineering testing processes. We then examine the negligence concerns
+regarding these processes.
 
 \section{Current Practices in Software Testing}
-Despite the evidence of ineffective safety assurance \cite{refs}{Leveson93,Maisel05},
+Despite the evidence of ineffective safety assurance \cite{Leveson93,Maisel05},
 current standards in the software industry illustrate that efforts are being
-made to ensure the safety of mission critical software applications.
+made to ensure the safety of mission critical software applications. Though
+unapproved and unofficial to any governing body, the motivation of these efforts
+are best illustrated by principle 1.04 of the Software Engineering Code of
+Ethics. This principle mandates that software engineers act consistently with
+the public interest and, specifically, shall:
 
+\begin{quote}
+``\textit{Approve software only if they have a well-founded belief that it is
+safe, meets specifications, passes appropriate tests, and does not diminish
+quality of life, diminish privacy or harm the environment. The ultimate effect
+of the work should be to the public good.}''\cite{SECODE}
+\end{quote}
 
 \subsection{ISO 9000-3}
 The International Standards Organization put forth a quality management standard
 known as ISO 9001 to describe a set of guidelines that will help organizations
 achieve standards of quality that are recognized and respected throughout the
 world. The ISO 9001 guidelines are not specifically designed for safety-critical
-software (or even software at all), but provide models for quality assurence
+software (or even software at all), but provide models for quality assurance
 in the design, development, production, installation, and servicing of systems
-in general \cite{refs}{Kehoe96}.
+in general \cite{Kehoe96}.
 
 The ISO 9000-3 is the application of ISO 9001 the development, supply, and
-maintenence of software. In terms of testing, the ISO 9000-3 standard adopts a
-phase approach, similar to the waterfall model explained in \cite{refs}{Royce70}. The
+maintenance of software. In terms of testing, the ISO 9000-3 standard adopts a
+phase approach, similar to the waterfall model explained in \cite{Royce70}. The
 six phases, at a high level, are:
 \singlespace
 \begin{enumerate}
@@ -33,35 +48,115 @@ six phases, at a high level, are:
   \item Maintenance
 \end{enumerate}
 \doublespace
-Acording to ISO 9000-3, testing is a pervasive effort, taking place during the
-entiere product-development cycle. For example: during the requirements phase, a
+According to ISO 9000-3, testing is a pervasive effort, taking place during the
+entire product-development cycle. For example: during the requirements phase, a
 team must develop a preliminary test plan and identify test cases. During the
 design phase, the team develops test cases and updates the test plan. During
 implementation, system-level test cases are populated and unit-level test cases
-are executed. And during the test phase, the tem conducts functional,
+are executed. And during the test phase, the team conducts functional,
 integration, and system tests and performs regression testing as needed. For
-more information, refer to \cite{refs}{Kehoe96}.
+more information, refer to \cite{Kehoe96}.
 
 \subsection{CMM}
+The Capability Maturity Model (CMM) helps organizations achieve mature software
+development practices. A mature organization, acording to the CMM, possesses an
+organization-wide ability to manage software processes, communicates appropriate
+planned processes to staff and employees, and updates its processes when
+necessary \cite{CMM11}. Process is important because the law of negligence is
+specifically concerned with process\footnote{See Section \ref{SS:Negligence}.}.
+
+The Software Engineering Institute (SEI)\footnote{The SEI and Carnegie Mellon
+University developed and released the CMM \cite{CMM11}.} defines process as
+``\textit{a set of activities, methods, practices, and transformations that 
+people use to develop and maintain software and the associated 
+products}''\cite{CMM11}. A software organizations \textit{capability} describes
+the range of expected results the organization is expected to achieve based on
+its processes and its \textit{maturity} is the extent at which its processes are
+defined, managed, measured, controlled, and effective \cite{CMM11}.
+
+\begin{figure}[t]
+\begin{center}
+\includegraphics{figures/CMMMaturityLevels.eps}
+\end{center}
+\caption{The Five Levels of Software Process Maturity}
+\label{fig:cmm-levels}
+\end{figure}
+
+The CMM guides organizations towards control of their processes and a culture of
+software engineering excellence. This is done by determining an organization's
+level of maturity and identifying the critical areas that it can improve. The
+CMM assigns five levels of maturity (shown in figure \ref{fig:cmm-levels}) to
+the software processes of organizations. Each level is at least as mature as the
+level before it. Maturity levels indicate process capability and if they are to
+be reached an organization must identify and address the goals laid out in the
+level's key process areas. Of particular concern in this research is
+\textit{Quality Assurance}, a key process area for Level 2: Repeatable maturity.
+The goals for this key process area are enumerated below: \singlespace
+\begin{itemize}
+  \item \textbf{Goal 1.} Software quality assurance activities are planned.
+  \item \textbf{Goal 2.} Adherence of software products and activities to the
+        applicable standards, procedures, and requirements is verified
+        objectively.
+  \item \textbf{Goal 3.} Affected groups and individuals are informed of
+        software quality assurance activities and results.
+  \item \textbf{Goal 4.} Noncompliance issues that cannot be resolved within
+        the software project are addressed by senior management.
+\end{itemize}
+\doublespace
+The CMM generally lays out goals and activities that an organization can
+undertake to achieve process maturity. Again, though the CMM is not targetted
+specifically for safety-critical systems, it provides a good place to start to
+ensure that the best available practices are being utilized.
 
 \subsection{IEEE/ANSI Standards}
 
-\section{Products Liability}
+\section{Products Liability}\label{S:Liability}
 The term \textit{products liability} broadly applies to the liability of a
 manufacturer or seller for injury to a buyer caused by a product that has been
-sold\footnote{59 A.L.R.5th 461}. A \textit{product} usually refers to
-merchandise that can be purchased. In the case of safety-critical systems,
-software is usually embedded in some machine or device that is sold as a product
-\cite{refs}{Leveson95}. Many forms of products liability exist, including
-\textit{Strict}, \textit{Contract}, and \textit{Negligence}.
+sold \cite{Testing2005}. A \textit{product} usually refers to physical 
+merchandise that can be purchased\footnote{\textit{Winter v. G.P. Putnam's
+Sons}, 938 F.2d 1033.\\In this case, Wilhelm Winter became critically ill
+from eating mushrooms that he picked relying on the information in a book
+published by Putnam. The judge favored in the side of Putnam, claiming that the
+contents of \textit{The Encyclopedia of Mushrooms} is not a product that can be
+liable because the law does not take into consideration the unique
+characteristics of ideas and expression. However, the plaintiff's argument was
+strong when the book was analogized to aeronautical charts - graphical
+depictions of technical and mechanical data. They are intended to be used while
+engaging in hazardous activity. The discussion also mentions that
+\textit{software} may be considered a product for this same reason. Software
+that ``\textit{fails to yield the result for which it was designed}'' may be
+considered under products liability}. Officially, a product is defined as 
+\begin{quote}
+``\textit{\ldots tangible personal property distributed commercially for use or
+consumption and other items, such as real property and electricity, when the
+context of their distribution and use is sufficiently analogous to the
+distribution and use of tangible personal property\ldots}\footnote{Restatement
+Third, Torts: Products Liability \S 19(a).}''
+\end{quote}
+In the case of safety-critical systems, software is usually embedded in
+some machine or hardware device \cite{Leveson95} that is sold as a product
+\footnote{59 A.L.R.5th 461.}. When viewed from this standpoint, software is less
+analogous to pure thoughts and expressions and may be considered a product for
+products liability cases. Many forms of products liability exist, including
+\textit{Contract}, \textit{Strict}, and \textit{Negligence}.
+
+\textit{Contracts}, as in software warranties or End User License Agreements
+(EULAs), are issued to assure customers that the products purchased will perform
+as stated \cite{Armour93}. Contract law can be dismissed because, as described
+in the next section, negligence liability applies regardless of what terms are
+steted in any contract. Even if a contract disclaims risk, manufacturers are
+still held accountable and cannot absolve themselves from liability from
+defects \cite{Ryan03}.
 
 \textit{Strict Liability} applies to any product that is defective, regardless
 of the amount of care used in the process to manufacture it\footnote{63 Am. Jur.
-2d Products Liability \S 90}. While strict liability is interesting, this
-research is concerned with the processes and tradeoff analysis involved with
-developing and testing software. 
+2d Products Liability \S 90.}. While strict liability is interesting
+\cite{Turner00}, this research is concerned with the \textit{processes} and
+\textit{tradeoff} analysis involved with developing and testing software. These
+aspects of software engineering fall under the jurisdiction of negligence law.
 
-\subsection{Negligence}\label{S:Negligence}
+\subsection{Negligence}\label{SS:Negligence}
 We apply negligence law to our research\footnote{Negligence is 
 concerned with process, not with product. The question is not whether software 
 development can be applied to negligence law, but if negligence law can apply to
@@ -90,15 +185,15 @@ engineer who does not adequately inspect his high-integrity product can be
 negligent to his clients. This research focuses on the negligence constrains as
 they apply to products liability.
 
-According to the Learned Hand test\footnote{This evaluation originated in
-\cite{cases}{159_F.2d_169} by Judge Learned Hand who created this guideline to
-determine the amount of duty owed. In the case, the United States sought
-compensation for flour that was lost when a barge carrying the cargo sunk. The
-barge company was partly responsible because no workers were present on the
-barge when it sank, which may have prevented the barge from sinking.
-Qualitatively, the amount it would have costed to keep a worker on the barge
-would have been less than the product of the probability that the barge sank and
-the amount of damages incurred from it sinking.}, shown in Figure
+According to the Learned Hand test\footnote{\textit{United States v. Carroll
+Towing Co.}, 159 F.2d 169.\\ Judge Learned Hand created this guideline to
+determine the amount of duty owed in a negligence dispute. In the case, the
+United States sought compensation for flour that was lost when a barge carrying
+the cargo sunk. The barge company was partly responsible because no workers were
+present on the barge when it sank, which may have prevented the barge from
+sinking. Qualitatively, the amount it would have cost to keep a worker on the
+barge would have been less than the product of the probability that the barge
+sank and the amount of damages incurred from it sinking.}, shown in Figure
 \ref{fig:handtest}, an organization that develops safety-critical software has a
 duty to spend at least the amount of time and resources equivalent to the
 product of the severity of harm and the likelihood that it will happen. If they
@@ -126,7 +221,7 @@ do not, then their actions are negligent.
 \subsubsection{Elements of Negligence}\label{SS:Elements}
 The applicability of negligence may be ambiguous and the laws of negligence can
 only be invoked in certain situations. The prerequisites, or prima facie
-elements, of a negligence case are \cite{refs}{Dobbs01}:
+elements, of a negligence case are \cite{Dobbs01}:
 
 \singlespace
 \begin{enumerate}
@@ -141,21 +236,21 @@ elements, of a negligence case are \cite{refs}{Dobbs01}:
 First, a negligence case calls for an actual duty of care owed to a plaintiff.
 There may be a question about how much care is owed in a given situation, but
 there are circumstances in which there is no duty owed that bears on the harm a
-plaintiff suffers. Judges decide whether or not this duty exists \cite{refs}{Dobbs01}.
+plaintiff suffers. Judges decide whether or not this duty exists \cite{Dobbs01}.
 
 Also, there must be a breach of this duty of care owed. A defendant who behaves
 reasonably and exercises the necessary care required by law will not be
-negligent even if the plaintiff is harmed \cite{refs}{Dobbs01}.
+negligent even if the plaintiff is harmed \cite{Dobbs01}.
 
 The defendant's negligence must be the cause of the harm suffered by the
 plaintiff. An careless engineer who does not test his product is not negligent
 to the user who is injured by tripping over the machine. In addition, the cause
 must not only be cause in fact, but a proximate, or primary, cause of the harm
-suffered \cite{refs}{Dobbs01}.
+suffered \cite{Dobbs01}.
 
 Finally, actual damages or injuries must be suffered for a negligence case to
 follow suit. This can include personal injury or damages to property
-\cite{refs}{Dobbs01}.
+\cite{Dobbs01}.
 
 \subsubsection{Software Fulfills the Prima Facie}
 
