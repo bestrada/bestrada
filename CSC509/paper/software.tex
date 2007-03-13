@@ -1,4 +1,8 @@
 \chapter{Software Testing and the Law}\label{C:Software}
+Legal doctrine dictates the care that an organization tests and inspects the
+products that it develops. This chapter will examine the legal requirements for
+testing software, then apply activities and standards that can fulfill these
+requirements.
 
 \section{Legal Requirements for Testing Software}
 
@@ -21,7 +25,7 @@ this duty to test. But as previously mentioned, the unique characteristics of
 software offer new problems in testing that make it difficult to create a
 mapping with traditional methods of engineering and the legal requirements for
 testing. These problems will become apparent during the discussion of legal
-requirements. The legal requirements for testing in general include ensuring the
+requirements. The legal requirements for testing in general include insuring the
 product is operable for the purpose intended, securing the production of a
 finished and safe article, using the most effective methods known and available,
 and testing and inspecting during and after the course of manufacture
@@ -90,113 +94,120 @@ should be asked:
 This list is not intended to be exhaustive, but is an abridgement of focused
 legal considerations that should be made when judging an organization's testing
 processes. Our approach does not produce explicit answers to these questions,
-but instead provides a more detailed set of questions that can be used to
-evaluate the actual answers to these questions.
+but instead organizes these legal constraints into the life-cycle stages and
+verification activities according to \cite{CSUR-testing}. We then provide
+suggested standards of practice to follow that may fulfill these process
+requirements.
 
-\section{The Justice in Testing}
+\section{The Justice in Testing Software}
+There are many aspects of testing software that satisfy these legal 
+requirements. Accepted methods of testing are outlined in \cite{CSUR-testing}.
+According to the ACM\ldots When analyzing the legality of an organizations
+testing processes, the following considerations should be made\singlespace
 
-There are many aspects of testing software that satisfy these legal
-requirements. When analyzing the legality of an organizations testing processes,
-the following considerations should be made:
+\subsection{Requirements}
+the software should be verified against its own requirements. The software's
+commodity considers if it is appropriate for it's intended use. Did the tests
+match the severity of the product's expected use? Verifiability measures how 
+well the end software article complies with the requirements set up before
+development.
 
-\begin{description}
-\item[Verifiability] the software should be verified against its own 
-requirements. The software's commodity considers if it is appropriate for it's
-intended use. Did the tests match the severity of the product's expected
-use? Verifiability measures how well the end software article complies with the
-requirements set up before development.
-\item[Completeness] the tests and inspections of the software should exhibit
-complete coverage to the extent that is reasonably feasible. Completeness
-measures how thorough the tests were done for exhibiting product safety.
-\item[Credibility] the testing process used should be at least on par with what
-is considered the state-of-the-art by other reasonably prudent software
-engineers. Credibility refers to the conduct of
-the testing manner customarily followed by others in the industry.
-\item[Maintainability] software tests should not be a single stage of
-development, but a pervasive process exercised throughout the product's
-lifecycle. If defects were found after the fact, did they release
-fixes? Maintainability measures how well the manufacturer preserves the quality
-of their product throughout its life.
-\end{description}
-
-\subsection{Verifiability}
-In software engineering, validation and verification test ensure that software
+In software engineering, validation and verification test insure that software 
 engineers take into account the appropriate intended purpose of the product and
 that the implementation actually safely fulfills this purpose.
 
-\subsection{Completeness}
-The law also holds that such tests be thorough and complete to the point of
-adequately demonstrating the product's safety. 
+\subsection{Design}
+The tests and inspections of the software should exhibit complete coverage to
+the extent that is reasonably feasible. Completeness measures how thorough the
+tests were done for exhibiting product safety. The law holds that such tests be
+thorough and complete to the point of adequately demonstrating the product's
+safety.
 
-\subsection{Credibility}
+\subsection{Construction}
+the testing process used should be at least on par with what is considered the
+state-of-the-art by other reasonably prudent software engineers. Credibility
+refers to the conduct of the testing manner customarily followed by others in
+the industry. There are no real industry accepted standards for testing or
+software processes in general\footnoterecall{sw-license}, so juries must decide
+if the processes used for testing software are credible in comparison to prudent
+software engineering.
 
-Software suffers from this same problem. There are no real industry accepted
-standards for testing or software processes in
-general\footnoterecall{sw-license}, so juries must decide if the processes used
-for testing software are credible in comparison to prudent software engineering. 
+\subsection{Operation and Maintenance}
+software tests should not be a single stage of development, but a pervasive
+process exercised throughout the product's lifecycle. If defects were found
+after the fact, did they release fixes? Maintainability measures how well the 
+manufacturer preserves the quality of their product throughout its life.
 
-\subsection{Maintainability}
-
-\section{Evaluating the \textit{B}}
+\section{Satisfying the \textit{B}}
 
 Unfortunately, there is no silver bullet \cite{Brooks87} to building quality
-softare. There is no real way for us to provide sufficient conditions that will
+software. There is no real way for us to provide sufficient conditions that will
 guarantee prudent behavior or explicitly qualify the expense taken to prevent
-harm. What we can provide is a heirarchy of organized social constraints that
+harm. What we can provide is a hierarchy of organized social constraints that
 may be useful when trying to ensure due care and list possible practices that
 can fulfill these legal requirements.
-
 \singlespace
-\begin{enumerate}
-  \item Is the software reasonably fit for its intended purposes?
-  \begin{enumerate}
-    \item Did the organization create valid requirements?
-    \item Did the implementation verify against the software's own requirements?
-  \end{enumerate}
-  \item Were the testing methods reasonable for determining safety?
-    \begin{enumerate}
-    \item Did the coverage of tests match the severity of use that the
-    software is expected to encounter?
-    \end{enumerate}
-  \item Did the manufacturer use the best methods known or available?
-    \begin{enumerate}
-      \item What programming paradigms did the developers employ (e.g.
-      Object-Oriented, Aspect-Oriented, Procedural) and were they appropriate
-      for the application?
-      \item What testing processes did the software company employ?
-      \item Did the testing process employ current best practices like unit,
-      integration, and system testing?
-    \end{enumerate}
-  \item Did the manufacturer perform tests during and after the course of
-  manufacture? 
-\end{enumerate}
-\doublespace
+\begin{longtable}{| p{2in} | p{2in} | p{2in} |}
+\caption{Activities, Constraints, and Standards}\label{thetable}\\
 
-\begin{center}
-\begin{table}
-\caption{Software Testing and the Law}
-\begin{tabular}{|p{1in}|p{2.5in}|p{2.5in}|}
 \hline
-\textbf{Maxim} & \textbf{Law or Social Constraint} & \textbf{Standard or Practice} \\[3pt]
+\textbf{Verification Activity} & \textbf{Social Constraints} & \textbf{Standard or Practice}\\
 \hline
-\multicolumn{3}{|l|}{\textit{Reasonably fit for intended purposes}} \\
+\endhead
+
+\hline \multicolumn{3}{r}{{Continued on next page}} \\ \hline
+\endfoot
+
+\hline \hline
+\endlastfoot
+
+\multicolumn{3}{|c|}{\textit{1. Requirements}}\\
 \hline
-valid requirements & dude & sweet \\
-verified implementation & dude & sweet \\
+a. Determine verification approach & \multirow{2}{2in}{Insure that the product is reasonably fit
+for its intended purposes} & \multirow{2}{2in}{TODO1}\\
+\cline{1-1}
+b. Determine adequacy of requirements & & \\
 \hline
-\multicolumn{3}{|l|}{\textit{Resonable testing methods}} \\
+c. Generate functional test data & Tests and inspections match the severity of
+the product’s expected use & TODO2\\
 \hline
-matched severity & dude & sweet \\
+\multicolumn{3}{|c|}{\textit{2. Design}}\\
 \hline
-\multicolumn{3}{|l|}{\textit{Best methods known or available}} \\
+a. Determine consistency of design with requirements & Insure that the product
+is reasonably fit for its intended purposes & TODO3\\
 \hline
-programming paradigm & dude & sweet \\
-testing processes & dude & sweet \\
-unit test & dude & sweet \\
-integration test & dude & sweet \\
-system test & dude & sweet \\
+b. Determine adequacy of design & Utilize most practical and technically
+feasible alternative design & TODO4\\
 \hline
-\end{tabular}
-\label{table2}
-\end{table}
-\end{center}
+c. Generate structural and functional test data & Tests and inspections match
+the severity of the product’s expected use & TODO5\\
+\hline
+\multicolumn{3}{|c|}{\textit{3. Construction}}\\
+\hline
+a. Determine consistency with design & Insure that the product is reasonably
+fit for its intended purposes & TODO6\\
+\hline
+b. Determine adequacy of implementation & Secure the production of a safe
+product & TODO7\\
+\hline
+c. Generate structural and functional test data & Tests and inspections match
+the severity of the product’s expected use & TODO8\\
+\hline
+d. Apply test data & Conclusive and effective to demonstrate the product’s
+safety & TODO9\\
+\hline
+\multicolumn{3}{|c|}{\textit{4. Operation and Maintenance}}\\
+\hline
+\multirow{4}{2in}{a. Reverify, commensurate with the level of redevelopment} & Make such tests and inspections during and after the process of manufacture &
+TODO10\\
+\cline{2-3}
+ & Test and inspect at the time(s) and place where the tests and inspections
+will be effective & TODO11\\
+\cline{2-3}
+ & Discover latent hazards involved in the use of the product & TODO12\\
+\cline{2-3}
+ & Conduct tests and inspections following changes in the construction of the
+product and/or field complaints of the defects & TODO13\\
+\hline
+\end{longtable}
+\doublespace
