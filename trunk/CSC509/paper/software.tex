@@ -100,21 +100,30 @@ suggested standards of practice to follow that may fulfill these process
 requirements.
 
 \section{The Justice in Testing Software}
-There are many aspects of testing software that satisfy these legal 
-requirements. Accepted methods of testing are outlined in \cite{CSUR-testing}.
-According to the ACM\ldots When analyzing the legality of an organizations
-testing processes, the following considerations should be made\singlespace
+Much of software quality is achieved through testing. Though product testing is 
+traditionally applied after manufacture, the abstraction of software allows (and
+arguably necessitates) that testing occur on a more iterative and flexible
+fashion \cite{Boehm86}. Though software has exponentially evolved and improved,
+the methods of validation, verification, and testing have not changed much. The
+survey \cite{CSUR-testing} of this area designates key life-cycle stages that we
+use to designate legal requirements and standards of practice.
 
 \subsection{Requirements}
-the software should be verified against its own requirements. The software's
-commodity considers if it is appropriate for it's intended use. Did the tests
-match the severity of the product's expected use? Verifiability measures how 
-well the end software article complies with the requirements set up before
-development.
+Though it occurs in the very beginning, the requirements definition stage of
+development also contains verification, validation, and testing activities that
+are important to the process as a whole. During the requirements definition
+stage, software engineers gather requirements and validate that they are 
+actually the correct and appropriate requirements as stated (or implied) by the
+intended user. In addition, the team generates test data to be used in future
+stages.
 
-In software engineering, validation and verification test insure that software 
-engineers take into account the appropriate intended purpose of the product and
-that the implementation actually safely fulfills this purpose.
+In terms of social constraints, courts will ask several questions related to
+the requirements stage. Are the requirements as laid out reasonably fit for the
+intended purposes of the software? Did the organization prepare test data that
+is commensurate with the severity of the expected use of the software? 
+Requirements testing insures that software engineers took these factors into
+account.
+
 
 \subsection{Design}
 The tests and inspections of the software should exhibit complete coverage to
