@@ -24,14 +24,15 @@ What are some of the necessary social constraints for testing safety-critical
 software and what standards or practices can software engineers use to fulfill
 them?
 
-\section{The Case of the Killer Robot}
+\section{The Case of the Killer Robot}\label{killer}
 ``\textit{The Case of the Killer Robot}'' \cite{Epstein96} is a fictional  
-scenario detailing software engineering with computer eithics that will be the
+scenario detailing software engineering with computer ethics that will be the
 focus of observation in this paper. The hypothetical scenario consists of seven
 newspaper articles, one journal article, and one magazine interview; each of
-which are listed fully in Appendix \ref{A:Killer}.
+which are listed fully in Appendix \ref{A:Killer}. Section \ref{killerfacts}
+summarizes the events that occured in the story.
 
-\subsection{Facts}
+\subsection{Facts}\label{killerfacts}
 
 Silicon Techtronics, a software company in Silicon Valley, manufactured and
 sold models of the Robbie CX30 industrial robot to several other companies. Each
@@ -45,26 +46,34 @@ The defect was isolated to a specific piece of code written in the C programming
 language by Silicon Techtronics programmer Randy Samuels. Jane McMurdock,
 prosecuting attorney for the city of Silicon Valley, alleges that Samuels
 ``negligently misinterpreted'' a mathematical formula provided by the project
-physicist when programming Robbie's software. Though Samuels was indicted for
-manslaughter, other aspects of Silicon Techtronics' operating procedures could
-have contributed to this defect and the eventual incident resulting in Bart
-Matthew's death.
+physicist when programming the software that controls the robot's arm motion. 
+Though Samuels was indicted for manslaughter, other aspects of Silicon
+Techtronics' operating procedures could have contributed to this defect and the
+eventual incident resulting in Bart Matthew's death.
 
 According to an anonymous Silicon Techtronics insider, the Robbie CX30 robot
 project was rushed and company friction between management and engineering 
 caused delays and new hirings of engineers. This friction, as confirmed by
-Silicon Techtronics software tester Cindy Yardley, also provoked testers to
-fabricate software test results in order to ship the robot sooner. The Robbie
-CX30 team also used the ``waterfall'' \cite{Royce70} process model rather than
-a ``prototyping'' model. This meant that end users were not able to operate the
-machine until late in the process of development. In addition, Ruth
-Witherspoon, spokesperson for the \textit{Justice for Randy Samuels Committee},
-alleges that Silicon Techtronic's quality assurance methods were ``lax'', and
-that the company did not adequately train the operators of its robots as
-promised in the Robbie CX30 requirements documentation. As a fail-safe, the User
-Interface (UI) of the Robbie CX30 robot allows operators to halt the motion of
-the robot ``long before bodily injury can actually occur''. But the sequence of
-commands to halt the robot were complex and the UI was, according to UI expert
-Dr. Horace Gritty, culpable for having caused the incident.
+Silicon Techtronics software tester Cindy Yardley, also compelled management to
+pressure testers into fabricating software test results so the company could 
+ship the robot sooner. The Robbie CX30 team also used the ``waterfall''
+\cite{Royce70} process model rather than a ``prototyping'' model. This meant
+that end users were not able to operate the machine until late in the process of
+development. In addition, Ruth Witherspoon, spokesperson for the \textit{Justice
+for Randy Samuels Committee}, alleges that Silicon Techtronic's quality 
+assurance methods were ``lax'', and that the company did not adequately train
+the operators of its robots as promised in the Robbie CX30 requirements
+documentation. As a fail-safe, the User Interface (UI) of the Robbie CX30 robot
+allows operators to halt the motion of the robot ``long before bodily injury can
+actually occur''. But the sequence of commands to halt the robot were complex
+and the UI was, according to UI expert Dr. Horace Gritty, culpable for having
+caused the incident.
 
 \subsection{Issues}
+
+The scenario arouses several liability concerns. Is Samuels the sole culprit of
+Matthews' death? How sound were the processes used to manage the project? Did
+the test team make a ``fair'' tradeoff in their test fabrications? Was the
+design adequate for what it was to be used for? The next chapters will reveal
+more facts of the case and examine the issues related to testing in this
+scenario in more detail.

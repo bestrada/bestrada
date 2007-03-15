@@ -23,14 +23,14 @@ engineers shall:
 ``\textit{1.02. Moderate the interests of the software engineer, the
 employer, the client and the users with the public good.}''\cite{SECODE}
 \end{quote}
-and
+\begin{center}and\end{center}
 \begin{quote}
 ``\textit{1.03. Approve software only if they have a well-founded belief that it
 is safe, meets specifications, passes appropriate tests, and does not diminish
 quality of life, diminish privacy or harm the environment. The ultimate effect
 of the work should be to the public good.}''\cite{SECODE}
 \end{quote}
-and
+\begin{center}and\end{center}
 \begin{quote}
 ``\textit{1.04 Disclose to appropriate persons or authorities any actual or
 potential danger to the user, the public, or the environment, that they
@@ -88,7 +88,7 @@ are executed. And during the test phase, the team conducts functional,
 integration, and system tests and performs regression testing as needed. For
 more information, refer to \cite{Kehoe96}.
 
-\subsection{CMM}
+\subsection{Capability Maturity Model for Software, Version 1.1}
 The Capability Maturity Model (CMM) helps organizations achieve mature software
 development practices. A mature organization, acording to the CMM, possesses an
 organization-wide ability to manage software processes, communicates appropriate
@@ -142,7 +142,7 @@ undertake to achieve process maturity. Again, though the CMM is not targetted
 specifically for safety-critical systems, it provides a good place to start to
 ensure that the best available practices are being utilized.
 
-\subsection{IEEE Std 1012-1998}
+\subsection{IEEE Std 1012-2004}
 The IEEE Standard for Software Verification and Validation \cite{IEEE-std-verif}
 outlines processes to determine whether software products of a given activity
 conform to the requirements of that activity and whether the software itself
@@ -156,20 +156,22 @@ verification and validation tasks.
 
 Based on the software integrity level, the standard tabulates different
 activities in the process areas of management, acquisition, supply, development,
-operation, and maintenance. Efforts in test verification and validation are
-applied from the following list:
-\singlespace
+operation, and maintenance. A \textit{process}, according to the IEEE, is 
+``\textit{a sequence of steps performed for a given purpose}''
+\cite{IEEE-glossary}. Activities from ``Process 5.4: Development'' of the
+standard map clearly with the lifecycles of software that we focus on in this
+research. for software verification and validation. At a high level, these
+activities are:\singlespace
 \begin{enumerate}
-  \item Task: Traceability Analysis
-  \item Task: Acceptance V\&V Test Procedure Generation and Verification
-  \item Task: Integration V\&V Test Execution and Verification
-  \item Task: System V\&V Test Execution and Verification
-  \item Task: Acceptance V\&V Test Execution and Verification
-  \item Task: Hazard Analysis
-  \item Task: Risk Analysis
+  \item Concept V\&V
+  \item Requirements V\&V
+  \item Design V\&V
+  \item Implementation V\&V
+  \item Test V\&V
+  \item Installation and checkout V\&V
 \end{enumerate}
 \doublespace
 This research will take a closer look into these activities and relate them to
-the legally imposed constraints in Chapter \ref{C:Software}.
+maxims and legally imposed constraints in Chapter \ref{C:Software}.
 
 \input{productsliability}

@@ -17,7 +17,8 @@ products. Applicable law states that:
 ``\textit{a manufacturer has a duty to test and inspect its products, at least
 where the nature of the product is such that an injury from its use is 
 foreseeable if the product is defective, and where tests or inspections are 
-practicable and would be effective.}'' \cite{Testing2005}
+practicable and would be effective.}''\footnote{Am. Law. Prod. Liab. 3d, Chapter
+11, \S 11:1}
 \end{quote}
 
 Since safety-critical software can cause foreseeable injury, it is subject to
@@ -28,8 +29,8 @@ testing. These problems will become apparent during the discussion of legal
 requirements. The legal requirements for testing in general include insuring the
 product is operable for the purpose intended, securing the production of a
 finished and safe article, using the most effective methods known and available,
-and testing and inspecting during and after the course of manufacture
-\cite{Testing2005}.
+and testing and inspecting during and after the course of 
+manufacture\footnote{Am. Law. Prod. Liab. 3d, Chapter 11}.
 
 First, the law demands that a manufacturer test its product to be reasonably fit
 for its intended purpose\footnoteremember{Huff_v_White}{\textit{Huff v. White Motor Corp.},
@@ -45,11 +46,10 @@ received) and being involved in a collision is not included in the automobile's
 original construction of ``intended purposes'' was too narrow and unrealistic. 
 Borrowing from a previous decision\footnotemark, the court determined that the injuries suffered
 from accident are ``readily foreseeable as an incident to the normal and
-expected use of an automobile''.}.
-\footnotetext{\textit{Larsen v. General Motors Corp.}, 391 F.2d 495.} This is a
-difficult judgement to make in software. How does one determine what is
-``reasonably fit''? Who even determines the ``intended purposes'' of of a piece
-of software?
+expected use of an automobile''.}. This is a difficult judgement to make in
+software. How does one determine what is ``reasonably fit''? Who even determines
+the ``intended purposes'' of of a piece of software?
+\footnotetext{\textit{Larsen v. General Motors Corp.}, 391 F.2d 495.} 
 
 The law also measures the tests performed by a software development team against
 that of a ``reasonably prudent manufacturer under the same or similar 
@@ -64,7 +64,7 @@ is of particular importance for software engineers because, unlike other forms
 of engineering, there are no standards for software testing processes to be
 judged against\footnoteremember{sw-license}{An article in IEEE Software answers
 common questions about standards for licensing software engineers \cite{Moore03}
-and work is being done to make this happen \cite{Knight00}.}. How does one
+and research has been done to investigate this \cite{Knight00}.}. How does one
 determine what a prudent manufacturer would do? What is it that constitutes a
 ``prudent'' software developer?
 
@@ -105,8 +105,14 @@ traditionally applied after manufacture, the abstraction of software allows (and
 arguably necessitates) that testing occur on a more iterative and flexible
 fashion \cite{Boehm86}. Though software has exponentially evolved and improved,
 the methods of validation, verification, and testing have not changed much. The
-survey \cite{CSUR-testing} of this area designates key life-cycle stages that we
-use to designate legal requirements and standards of practice.
+survey \cite{CSUR-testing} of this area designates key life-cycle stages
+(Requirements, Design, Construction, and Operations and Maintenance) that we
+use to correlate legal requirements\footnote{mostly adopted from Am. Law. Prod.
+Liab. 3d and Am. Jur. 2d Products Liability} and standards of 
+practice\footnote{from listings in \cite{CMM11,IEEE-std-verif}} to different
+areas of verification, validation, and testing software. We also apply our
+analysis to the hypothetical described in Section \ref{killer} and listed
+fully in Appendix \ref{A:Killer}.
 
 \subsection{Requirements}
 Though it occurs in the very beginning, the requirements definition stage of
@@ -117,44 +123,170 @@ actually the correct and appropriate requirements as stated (or implied) by the
 intended user. In addition, the team generates test data to be used in future
 stages.
 
+\subsubsection*{Social Constraints}
 In terms of social constraints, courts will ask several questions related to
 the requirements stage. Are the requirements as laid out reasonably fit for the
-intended purposes of the software? Did the organization prepare test data that
-is commensurate with the severity of the expected use of the software? 
+intended purposes of the software?\footnote{Am. Law. Prod. Liab. 3d, Chapter 11,
+\S 11:1} Did the organization prepare test data that
+is commensurate with the severity of the expected use of the
+software?\footnote{Am. Jur. 2d Products Liability \S 319} 
 Requirements testing insures that software engineers took these factors into
 account.
 
+\subsubsection*{Standards or Practices}
+Requirements activities standards span across multiple areas of activity.
+Determining the verification approach is handled by \textit{test plan
+generation} and determining the adequacy of requirements is handled by
+\textit{software requirements evaluation}. To generate functional test data that
+matches the severity of the software's expected use, a prudent software engineer
+would use \textit{criticality analysis}. \textit{Criticality analysis} is the
+process of determining the level of criticality that the piece software can be
+classified as and then deciding the rigor and intensity to be applied to
+verification and validation tasks\footnote{\cite{IEEE-std-verif} \S 4}. The IEEE
+Std 1012-2004 suggests that software engineers perform this criticality analysis
+throughout most of the activities involved in the development process.
+
+\subsubsection*{The Case of the Killer Robot}
+The Killer Robot case is arguably good in the requirements area. Silicon 
+Techtronics created a seemingly prudent requiments document. As described in
+article five, the requirements document states: ``\textit{The robot will be safe
+to operate and even under exceptional conditions (see Section 5.2) the robot
+will cause no bodily injury to the human operator.}''
+
+However, Silicon Techtronics may not have been as successful in 
+generating test data and scenarios that match the severity of use. The
+requirements also state that ``\textit{\ldots the human operator will be able to
+enter a sequence of command codes\ldots which will arest robot motion long
+before bodily injury can actually occur.}'' This requirement, though well-meant,
+may not have been a good way to implement the safety feature. According to the
+article, Matthews was ``\textit{\ldots confused and could not enter the codes
+successfully.}''
 
 \subsection{Design}
-The tests and inspections of the software should exhibit complete coverage to
-the extent that is reasonably feasible. Completeness measures how thorough the
-tests were done for exhibiting product safety. The law holds that such tests be
-thorough and complete to the point of adequately demonstrating the product's
-safety.
+During the design stage sofware architects actually frame the development work
+that needs to be done on a project. To test these efforts, software organizations
+should acquire tools for validation support and develop test procedures. The
+software organization should also generate data for use in tests for later
+activities. The design itself should also be analyzed for adequacy by using
+walk-throughs or inspections. Requirements should be validated against user
+needs.
+
+\subsubsection*{Social Constraints}
+\subsubsection*{Standards or Practices}
+Section 5.4.3 of IEEE Std 1012-2004 commits software developers to address
+software architectural design and continue test planning. The standard states
+that Design V\&V endeavors to demonstrate that a design is correct, accurate,
+and complete. Consistency with requirements is achieved through software design
+evaluation and interface analysis and later in component test execution. Hazard,
+security, and risk analysis are tasks that occur throughout every activity in
+the development process to determine the adequacy of the software's design. And
+test plan and test design generation are both tasks that are part of the
+software's design activities.
+
+\subsubsection*{The Case of the Killer Robot}
+In terms of design, the User Interface (UI) of the Robbie CX30 was arguably
+faulty. When held to a ``reasonable person standard'', Silicon Techtronics
+designers did not behave in accordance to how a reasonably prudent manufacturer
+would. UI expert Horace Gritty in article six, the UI, though perfectly implemented
+according to the design, was poorly designed and violated Ben Shneiderman's
+eight golden rules of user interface design, a well-read subject for computer
+interface experts.
+
+To list these design violations quickly, the CX30 UI: was inconsistent with the
+presentation of error messages, did not allow shortcuts for frequent users, did
+not provide feedback for the completion of certain dangerous actions, made error
+recovery ``\textit{tedious, frustrating, and at times infuriating}'', did not
+allow easy reversal of actions, presented a low feeling of user control over the
+system, and contained large menus that relied too heavily on the user's memory.
 
 \subsection{Construction}
-the testing process used should be at least on par with what is considered the
-state-of-the-art by other reasonably prudent software engineers. Credibility
-refers to the conduct of the testing manner customarily followed by others in
-the industry. There are no real industry accepted standards for testing or
-software processes in general\footnoterecall{sw-license}, so juries must decide
-if the processes used for testing software are credible in comparison to prudent
-software engineering.
+Actual code execution with test data generated from the requirements and design
+stages occurs during construction. Software engineers should verify the
+implementation against the design and requirements, generate test data, and
+actually apply the data to test cases. Specific techniques are as important as
+choosing the correct technique according to what is appropriate for the software
+system being tested.
+
+\subsubsection*{Social Constraints}
+\subsubsection*{Standards or Practices}
+Most software construction verification and validation tasks will occur during
+the implementation activity, according to IEEE Std 1012-2004. This stage of V\&V
+sets out to verify that the transformation from design to implementation is
+correct, accurate, and complete. A traceability analysis will determine
+consistency with design. Test case and test procedure generation will set up an
+organization for test activities later. Integration, system, and acceptence
+test execution (from the plans made in this and previous stages) will determine
+the adequacy of the software's implementation when applied to test data.
+
+\subsubsection*{The Case of the Killer Robot}
+The processes used to construct and execute realistic test data may have been
+unethical in this scenario. The primary argument against good judgement in terms
+of testing during the construction stage has to do with Silicon Techtronics'
+tradeoff decisions. The team decided to release the product without it passing
+all test cases in order to make more money from a sooner release date. Tester
+Cindy Yardlay confirms this in her email to Robotics Division Chief Ray Johnson
+when she writes:
+
+\begin{quote}
+``\textit{I have finished creating the software test results for that
+troublesome robot software, as per your idea of using a simulation rather than
+the actual software. Attached you will find the modified test document, showing
+the successful simulation.}''
+\end{quote}
+
+The tradeoff was justified by the UI that would supposedly allow the operator to
+halt the robot's motion. By not investing in the repairs that would secure the
+passing of all tests, Silicon Techtronics may not have spent enough resource to
+justify the risk of an accident happening.
 
 \subsection{Operation and Maintenance}
-software tests should not be a single stage of development, but a pervasive
-process exercised throughout the product's lifecycle. If defects were found
-after the fact, did they release fixes? Maintainability measures how well the 
-manufacturer preserves the quality of their product throughout its life.
+Operation and maintenance stages occur after the software product is
+``complete'' according to the development plan. But a software organization is
+still responsible for installing, testing, and maintaining the software at the
+client's site. Modifications and adjustments will, as is normally the case,
+occur after installation and the developers are responsible for regression
+testing commensurate with the changes made.
+
+\subsubsection*{Social Constraints}
+
+\subsubsection*{Standards or Practices}
+Operations and maintenance usually occur at a customer site to test and inspect
+the software product running in its target environment. In order to reverify the
+software product commensurate with the level of changes made from the transition
+to the production environment, the IEEE Std 1012-2004 instructs testers to
+perform an installation configuration audit and installation checkout. Hazard
+analysis should also occur throughout all activities in the development process.
+
+Beyond the development process, there is also a short process on operation
+within the IEEE Std 1012-2004. Tasks and activities in this process satisfy the
+legal constraint to test following changes in the construction of the product
+and field complaints of defects.
+
+\subsubsection*{The Case of the Killer Robot}
+The articles in ``\textit{The Case of the Killer Robot}'' reported no violations
+in maintenence tasks other than than the company's failure to adequately train
+end-users of their software. This activity belongs in the maintenance and
+operations stage of development, and Silicon Techtronics ``\textit{only spent
+one work day of approximately eight hours}'' to train operators while the
+requirements state that that ``\textit{Only employees of the customer who have
+passed [certifying tests] shall be allowed to operate the Robbie CX30 robot in
+an industrual setting.}''
 
 \section{Satisfying the \textit{B}}
 
 Unfortunately, there is no silver bullet \cite{Brooks87} to building quality
-software. There is no real way for us to provide sufficient conditions that will
-guarantee prudent behavior or explicitly qualify the expense taken to prevent
-harm. What we can provide is a hierarchy of organized social constraints that
-may be useful when trying to ensure due care and list possible practices that
-can fulfill these legal requirements.
+software. The onus of providing a $B$ that is greater than or equal to $P \times
+L$ is on the developer. But There is no real way for us to provide sufficient
+conditions that will guarantee prudent behavior or explicitly qualify the
+expense taken to prevent harm. What we can provide is a hierarchy of organized
+social constraints that may be useful when trying to ensure that due care is met
+and list possible practices that can fulfill these legal requirements.
+
+Table \ref{thetable} classifies judicious behavior of software engineers
+according to the activities presented in \cite{CSUR-testing}, relates them with
+social constraints obtained from the law according to \cite{Prosser}, and
+suggests tasks that may satisfice from \cite{CMM11} and \cite{IEEE-std-verif}.
+\newpage
 \singlespace
 \begin{longtable}{| p{2in} | p{2in} | p{2in} |}
 \caption{Activities, Constraints, and Standards}\label{thetable}\\
@@ -170,53 +302,119 @@ can fulfill these legal requirements.
 \hline \hline
 \endlastfoot
 
-\multicolumn{3}{|c|}{\textit{1. Requirements}}\\
+\multicolumn{3}{|c|}{\textit{\textbf{1. Requirements}}}\\
 \hline
 a. Determine verification approach & \multirow{2}{2in}{Insure that the product is reasonably fit
-for its intended purposes} & \multirow{2}{2in}{TODO1}\\
-\cline{1-1}
-b. Determine adequacy of requirements & & \\
+for its intended purposes} & \underline{IEEE Std 1012-2004}:
+\begin{small}\begin{itemize}
+\item System test plan generation - 5.4.2(5)
+\item Acceptance test plan generation - 5.4.2(6)
+\end{itemize}\end{small}\\
+\cline{1-1} \cline{3-3}
+b. Determine adequacy of requirements & & \underline{IEEE Std 1012-2004}:
+\begin{small}\begin{itemize}
+\item Software requirements evaluation - 5.4.2(2)
+\end{itemize}\end{small}\\
 \hline
 c. Generate functional test data & Tests and inspections match the severity of
-the product’s expected use & TODO2\\
-\hline
-\multicolumn{3}{|c|}{\textit{2. Design}}\\
+the product’s expected use & \underline{IEEE Std 1012-2004}:
+\begin{small}\begin{itemize}
+\item Criticality analysis - 5.4.3(4)
+\item Component test plan generation - 5.4.3(5)
+\item Integration test plan generation - 5.4.3(6)
+\item Component test design generation - 5.4.3(7)
+\item Integration test design generation - 5.4.3(8)
+\item System test design generation - 5.4.3(9)
+\item Acceptance test design generation - 5.4.3(10)
+\end{itemize}\end{small}\\
+\hline \newpage
+\multicolumn{3}{|c|}{\textit{\textbf{2. Design}}}\\
 \hline
 a. Determine consistency of design with requirements & Insure that the product
-is reasonably fit for its intended purposes & TODO3\\
+is reasonably fit for its intended purposes & \underline{IEEE Std 1012-2004}:
+\begin{small}\begin{itemize}
+\item Traceability analysis - 5.4.3(1)
+\item Software design evaluation - 5.4.3(2)
+\item Interface analysis - 5.4.3(3)
+\end{itemize}\end{small}\\
 \hline
 b. Determine adequacy of design & Utilize most practical and technically
-feasible alternative design & TODO4\\
+feasible alternative design & \underline{IEEE Std 1012-2004}:
+\begin{small}\begin{itemize}
+\item Hazard analysis - 5.4.1(5), 5.4.2(8), 5.4.3(11), 5.4.4(13), 5.4.5(6), 5.4.6(3)
+\item Security analysis - 5.4.1(6), 5.4.2(9), 5.4.3(12), 5.4.4(14), 5.4.5(7), 5.4.6(4)
+\item Risk analysis - 5.4.1(7), 5.4.2(10), 5.4.3(13), 5.4.4(15), 5.4.5(8), 5.4.6(5)
+\end{itemize}\end{small}\\
 \hline
 c. Generate structural and functional test data & Tests and inspections match
-the severity of the product’s expected use & TODO5\\
-\hline
-\multicolumn{3}{|c|}{\textit{3. Construction}}\\
+the severity of the product’s expected use & \underline{IEEE Std 1012-2004}:
+\begin{small}\begin{itemize}
+\item Component test case generation - 5.4.4(5)
+\item Integration test case generation - 5.4.4(6)
+\item System test case generation - 5.4.4(7)
+\item Acceptance test case generation - 5.4.4(8)
+\end{itemize}\end{small}\\
+\hline \newpage
+\multicolumn{3}{|c|}{\textit{\textbf{3. Construction}}}\\
 \hline
 a. Determine consistency with design & Insure that the product is reasonably
-fit for its intended purposes & TODO6\\
+fit for its intended purposes & \underline{IEEE Std 1012-2004}:
+\begin{small}\begin{itemize}
+\item Traceability analysis - 5.4.4(1), 5.4.5(1)
+\end{itemize}\end{small}\\
 \hline
 b. Determine adequacy of implementation & Secure the production of a safe
-product & TODO7\\
+product & \underline{IEEE Std 1012-2004}:
+\begin{small}\begin{itemize}
+\item Component test execution = 5.4.4(12)
+\end{itemize}\end{small}\\
 \hline
 c. Generate structural and functional test data & Tests and inspections match
-the severity of the product’s expected use & TODO8\\
+the severity of the product’s expected use & 3.c.
+\underline{IEEE Std 1012-2004}:
+\begin{small}\begin{itemize}
+\item Component test procedure generation - 5.4.4(9)
+\item Integration test procedure generation - 5.4.4(10)
+\item System test procedure generation - 5.4.4(11)
+\item Acceptance test procedure generation - 5.4.5(2)
+\end{itemize}\end{small}\\
 \hline
 d. Apply test data & Conclusive and effective to demonstrate the product’s
-safety & TODO9\\
-\hline
-\multicolumn{3}{|c|}{\textit{4. Operation and Maintenance}}\\
+safety & \underline{IEEE Std 1012-2004}:
+\begin{small}\begin{itemize}
+\item Integration test execution - 5.4.5(3)
+\item System test execution - 5.4.5(4)
+\item Acceptance test execution - 5.4.5(5)
+\end{itemize}\end{small}\\
+\hline \newpage
+\multicolumn{3}{|c|}{\textit{\textbf{4. Operation and Maintenance}}}\\
 \hline
 \multirow{4}{2in}{a. Reverify, commensurate with the level of redevelopment} & Make such tests and inspections during and after the process of manufacture &
-TODO10\\
+\underline{IEEE Std 1012-2004}:
+\begin{small}\begin{itemize}
+\item Maintenance activities and tasks - 5.6
+\end{itemize}\end{small}\\
 \cline{2-3}
  & Test and inspect at the time(s) and place where the tests and inspections
-will be effective & TODO11\\
-\cline{2-3}
- & Discover latent hazards involved in the use of the product & TODO12\\
+will be effective & \underline{IEEE Std 1012-2004}:
+\begin{small}\begin{itemize}
+\item Installation and configuration audit - 5.4.6(1)
+\item Installation checkout - 5.4.6(2)
+\end{itemize}\end{small}\\
 \cline{2-3}
  & Conduct tests and inspections following changes in the construction of the
-product and/or field complaints of the defects & TODO13\\
+product and/or field complaints of the defects & \underline{IEEE Std 1012-2004}:
+\begin{small}\begin{itemize}
+\item Evaluation of new constraints - 5.5.1(1)
+\item Operating procedures evaluation - 5.5.1(2)
+\end{itemize}\end{small}\\
+\cline{2-3}
+ & Discover latent hazards involved in the use of the product & \underline{IEEE Std 1012-2004}:
+\begin{small}\begin{itemize}
+\item Hazard analysis - 5.5.1(3)
+\item Security analysis - 5.5.1(4)
+\item Risk analysis - 5.5.1(5)
+\end{itemize}\end{small}\\
 \hline
 \end{longtable}
 \doublespace
