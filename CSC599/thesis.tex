@@ -1,0 +1,150 @@
+\documentclass[12pt]{report}
+
+\usepackage{fullpage}
+\usepackage{setspace}
+\usepackage{graphicx}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COMMANDS THAT I USE TO DEFINE CONSTANTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\thetitle}{Software and the Law}
+\newcommand{\theauthor}{\textsc{Bryan G. Estrada}}
+\newcommand{\committeechair}{\textsc{Clark S. Turner}}
+\newcommand{\committeeA}{\textsc{\ldots}}
+\newcommand{\committeeB}{\textsc{\ldots}}
+\newcommand{\theuniversity}{California Polytechnic State University}
+\newcommand{\thecity}{San Luis Obispo}
+\newcommand{\thedegree}{Master of Science in Computer Science}
+\newcommand{\thedate}{June 2007}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COMMANDS FOR FOOTNOTES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\footnoteremember}[2]{
+  \footnote{#2}
+  \newcounter{#1}
+  \setcounter{#1}{\value{footnote}}
+}
+\newcommand{\footnoterecall}[1]{
+  \footnotemark[\value{#1}]
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% this is an environment so we can make wide figures and tables
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{narrow}[2]{
+  \begin{list}{}{
+    \setlength{\topsep}{0pt}
+    \setlength{\leftmargin}{#1}
+    \setlength{\rightmargin}{#2}
+    \setlength{\listparindent}{\parindent}
+    \setlength{\itemindent}{\parindent}
+    \setlength{\parsep}{\parskip}}
+  \item[]}{\end{list}}
+
+\begin{document}
+
+\title{\thetitle}
+\author{\theauthor}
+
+\doublespace
+
+\pagenumbering{roman}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TITLE PAGE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{center}
+
+\textsc{\LARGE \thetitle}\\[4cm]
+
+A Thesis\\
+Presented to\\
+the Faculty of \theuniversity\\
+\thecity\\[4cm]
+
+In Partial Fulfillment\\
+of the Requirements for the Degree\\
+\thedegree
+
+\vfill
+by\\
+\theauthor\\
+\thedate
+\end{center}
+
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% COPYRIGHT AUTHORIZATION PAGE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+\textsc{\large Authorization for Reproduction\\of Master's Thesis}\\[3cm]
+\end{center}
+
+\noindent I grant permission for the reproduction of this thesis in its entirety
+or any of its parts, without further authorization from me.\\[4cm]
+
+\singlespace
+\noindent\makebox[4in]{\hrulefill}\\
+Signature\\[2cm]
+
+\noindent\makebox[4in]{\hrulefill}\\
+Date
+\doublespace
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SIGNATURE PAGE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+The thesis of \theauthor,\\
+``\textsc{\large \thetitle}'',\\
+is approved.\\[4cm]
+\end{center}
+
+\singlespace
+\noindent\makebox[4in]{\hrulefill}\\
+Professor \committeeA\\[2cm]
+
+\noindent\makebox[4in]{\hrulefill}\\
+Professor \committeeB\\[2cm]
+
+\noindent\makebox[4in]{\hrulefill}\\
+Professor \committeechair, Committee Chair\\[4cm]
+
+\doublespace
+
+\newpage
+
+\begin{center}\textsc{\large Abstract}\\[1cm]\end{center}
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed vel massa.
+Pellentesque euismod ipsum et magna. Aenean posuere ligula sed eros. In hac
+habitasse platea dictumst. Duis dapibus tempus quam. Aenean tincidunt semper
+urna. Nunc in libero ut nibh elementum laoreet. Etiam laoreet nunc sed mi.
+Nullam ligula risus, gravida eget, sagittis sit amet, interdum a, lacus.
+Phasellus non risus. Aenean est.
+
+\newpage
+
+\begin{center}\textsc{\large Acknowledgements}\\[1cm]\end{center}
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed vel massa.
+Pellentesque euismod ipsum et magna. Aenean posuere ligula sed eros. In hac
+habitasse platea dictumst. Duis dapibus tempus quam. Aenean tincidunt semper
+urna. Nunc in libero ut nibh elementum laoreet. Etiam laoreet nunc sed mi.
+Nullam ligula risus, gravida eget, sagittis sit amet, interdum a, lacus.
+Phasellus non risus. Aenean est.
+
+\tableofcontents
+
+\input{intro}
+\input{background}
+\input{motivation}
+
+\bibliographystyle{acm}
+\bibliography{references}
+
+\end{document}
