@@ -58,24 +58,106 @@ will legal repercussions be dealt with in a new product's development lifecycle.
 When a judgment is made, it can then be applied to future scenarios, but usually
 only if a lawsuit is filed.
 
-\subsection{Economic Efficiency of the Common Law}
+\subsection{Common Law Characteristics}
+
+The common law ``\textit{is that part of the law that is within the province of
+the courts themselves to establish}'' \cite{Eisenberg88}. The common law
+exhibits many characteristics that make it just. Social propositions (those of
+morality, policy, or experience rather than state legal rules) are enforced
+impartially to any party. The courts practice a replicable system of litigation,
+allowing future disputants to have recieve legal advice and planning. The common
+law is also responsive to change as moral norms evolve over time 
+\cite{Eisenberg88}.
+
+Those who are affected by the common law should understand the principles of its
+underpinnings. Software engineers working on safety-critical projects are
+affected by the social expectations of reliable software and functional
+software. But because of its unique nature, defects in software are inevitable
+and typically more difficult to locate and handle than the physical flaws found
+in mechanical components \cite{Parnas90}. Defects in software used in
+safety-critical situations can be especially dangerous. The increasing use of
+software in machines and the demand for more product functions adds complexity
+and more room for error. Fortunately, the legal system can account for this
+inherent complexity.
 
 While the legal system is in place to (among other things) ensure the safety of
 products, it should be noted that the law understands the costs involved in
-safety measures and takes this into consideration when resolving disputes.
-Scholars posit that the law balances these economic forces and ensures safety
-to a reasonable cost of manufacturers \cite{Priest77}.
+ensuring safety measures and takes this into consideration when resolving
+disputes. Scholars posit that the law balances these economic forces and ensures
+safety to a reasonable cost of manufacturers \cite{Rubin77,Priest77}.
 
-Priest convincingly argues that the law evolves towards efficient decisions in
+Some lawyers contend that the law evolves towards efficient decisions in 
 accident disputes in courts, where ``\textit{efficient}'' in this context means
 that the defendants are more likely than the victims to win the suit if an
-accident occurs. This evolution comes from the pressures of the litigants who
-have a vested interest in the outcome of cases (because they are likely to be
-involved in similar disputes in the future). The party that is interested in
-precedent (in this case, the defendants) will litigate until a favorable
-decision is met. This means that manufacturers that are likely to be involved in
-accident disputes will make preventative efforts to improve the safety of their
-products so as to avoid liability in court cases \cite{Priest77}.
+accident occurs. This means, in terms of software engineering, that the
+organization that develops a safety-critical software product will, in the long
+run, tend towards winning (or possibly avoiding) dispute. This evolution towards
+efficiency comes from the pressures of the litigants who have a vested interest
+in the outcome of cases because they are likely to be involved in similar
+disputes in the future. The party that is interested in precedent (in this
+case, the defendant software development organization) will litigate until a
+favorable decision is met. This means that manufacturers that are likely to be
+involved in accident disputes will make preventative efforts to improve the
+safety of their products so as to avoid liability in court cases \cite{Rubin77}
+and more easily defend themselves in case of a dispute.
+
+\subsection{Products Liability}
+
+The term \textit{products liability} broadly applies to the liability of a
+manufacturer or seller for injury to a buyer caused by a product that has been
+sold \cite{Prosser}. A \textit{product} usually refers to physical 
+merchandise that can be purchased. Officially, a product is defined as 
+\begin{quote}
+``\textit{\ldots tangible personal property distributed commercially for use or
+consumption and other items, such as real property and electricity, when the
+context of their distribution and use is sufficiently analogous to the
+distribution and use of tangible personal property\ldots}(\cite{Rest3d}, 
+\S19(a))''
+\end{quote}
+
+In the case of safety-critical systems, software is usually embedded in
+some machine or hardware device \cite{Leveson95} that is sold as a product. When
+viewed from this standpoint, software is less analogous to pure thoughts and
+expressions and may be considered a product for products liability cases. Many
+forms of products liability exist, including \textit{contract}, \textit{strict},
+and \textit{negligence}.
+
+\subsection{The Court System}\label{s:courts}
+
+The court systems in America is a highly technical and sophisticated dispute
+resolution mechanism put into place to help disputants reach an agreement.
+Though many disputes are settled outside of court, the court system is the
+primary to set legal precedent in the common law system that pervades American
+Justice. While the exact hierarchy of courts may be much more complex, the
+general pattern is shown in Figure \ref{fig:courts}.
+
+\begin{figure}[t]
+\begin{center}
+\includegraphics{figures/courts.eps}
+\end{center}
+\flushright{\footnotesize{adopted from \cite{McAdams07}}}
+\caption{State and Federal Court Systems}
+\label{fig:courts}
+\end{figure}
+
+The left branch of the diagram shows the state court systems. At the base are
+trial courts, often referred to as district or superior courts. Most litigation
+that this research is concerned with begins at the state trial courts, but
+certain specialty areas (such as public utilities and workers' compensation)
+have their own reserved courts \cite{McAdams07}. At this level, the trial courts
+only hear a case and apply existing precedent to the case. If a disputant wishes
+to appeal, he submits a request which can be heard by a higher court. Some
+states provide an intermediate court of appeals between the state's highest
+court and the trial courts. It as at the appeallate level that legal precedent
+is set. When a judge or jury makes a decision at an appeallate court, an opinion
+is written and is stored for future cases to use \cite{Eisenberg88}. If the
+dispute regards a national or constitutional issue, a disputant may appeal to
+the U.S. Supreme Court \cite{McAdams07}.
+
+The middle and right branches of Figure \ref{fig:courts} provide the foundation
+of the federal judicial system. A similar heirarchy exists in these branches,
+but these courts hear cases involving federal law which does not include
+the tortious products liability disputes that this research concerned with.
 
 \subsection{Alternative Dispute Resolution}
 
@@ -107,6 +189,9 @@ computers and software creates pressure to adapt. Software evolves because
 individuals and organizations are integrating computers into their activities
 \cite{Lehman98}.
 
+Since the audience of this research is comprised of mostly technical
+intellectuals, we will only briefly discuss the cycle of innovation in software.
+
 \begin{figure}[t]
 \begin{center}
 \includegraphics{figures/technical.eps}
@@ -119,9 +204,9 @@ Figure \ref{fig:technical} is a broad generalization of how software evolves
 over time. A client (society) demands some functionality that can best be
 implemented using software. Requirements and designs are laid out, taking into
 consideration the needs of the client and the current capabilities of software.
-Implementors utilize the body of knowledge (software libraries) to construct
-the software and contribute and new knowledge back into the library. When
-testing is complete, the software is accepted and delivered.
+Implementors utilize the body of knowledge (software libraries) to construct the
+software and contribute and new knowledge back into the library. When testing is
+complete, the software is accepted and delivered.
 
 The the evolution of software is both a proactive, feed-forward system as well
 as a reactive, feedback system. Software developers use the demands of their
@@ -130,7 +215,7 @@ to innovate and create software that will be profitable. At the same time,
 testing occurs to detect errors and inadequacies and are reported back to
 requirements and design planning for corrections.
 
-\section{Combining Opposing Forces}
+\section{A Historical Analog}
 
 The amalgamation of these two forces -- (1) the demands of our legal system to
 ensure safety in products at a reasonable cost to manufacturers and (2) the
