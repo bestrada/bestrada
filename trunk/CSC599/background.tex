@@ -120,6 +120,140 @@ some machine or hardware device \cite{Leveson95} that is sold as a product. When
 viewed from this standpoint, software is less analogous to pure thoughts and
 expressions and may be considered a product for products liability cases.
 
+\subsubsection{Negligence}\label{SS:Negligence}
+While the development of products liability based on breach of warranty and
+strict products liability doctrines have, to an extent, reduced the utility of
+negligence because in these forms the proof of specific negligence is
+unnecessary (\cite{AmLaw} Chapter 10, \S 10:1.), we apply negligence law to our
+research. Negligence is concerned with process, not with product. The question
+is not whether software development can be applied to negligence law, but if
+negligence law can apply to software development. The legal term 
+\textit{negligence} refers to, in general, careless conduct. Scholars describe
+negligence more specifically as (57A \cite{AmJur}, Negligence \S 5.):\singlespace
+\begin{itemize}
+ \item the existence and violation of a legal duty to use care, proximately 
+ causing injury to another.
+ \item the failure to exercise the degree of care demanded by the circumstances.
+ \item the breach of a duty to another to protect him or her from the particular
+ harm that ensued.
+ \item the want of that care the law prescribes under the particular
+ circumstances existing at the time of the act or omission which is involved.
+\end{itemize}\doublespace
+Negligence can be applied to many different scenarios beyond products
+liability. An intoxicated driver who disobeys traffic laws may be negligent
+towards other citizens of the road\footnote{\textit{See: People v. Townsend},
+214 Mich. 267, 272, 183 N.W. 177.}. A instructor who fails to demonstrate safety
+precautions to his students in wood shop may be liable for
+negligence\footnote{\textit{See: Voorhies v. Conroe Independent School Dist.},
+610
+F.Supp. 868.}. An engineer who does not adequately inspect his high-integrity
+product can be negligent to his clients\footnote{\textit{See: Ford Motor Co. v.
+Mondragon}, 271 F.2d 342.}. This research focuses on the negligence constrains
+as they apply to products liability.
+
+Negligence is easiest to determine when some standard of care stated by the
+profession is available. Since no such standard exists for software engineering,
+a more qualitative approach must be taken. Figure \ref{fig:handtest} shows a
+formula that equates negligence in terms of unreasonable behavior.  According to
+the Learned Hand test\footnote{\textit{See: United States v. Carroll Towing
+Co.}, 159
+F.2d 169.\\ Judge Learned Hand created this guideline to determine the amount of
+duty owed in a negligence dispute. In the case, the United States sought
+compensation for flour that was lost when a barge carrying the cargo sunk. The
+barge company was partly responsible because no workers were present on the
+barge when it sank, which may have prevented the barge from sinking.
+Qualitatively, the amount it would have cost to keep a worker on the barge would
+have been less than the product of the probability that the barge sank and the
+amount of damages incurred from it sinking.}, an organization that develops
+safety-critical software has a duty to spend at least the amount of time and
+resources equivalent to the product of the severity of harm and the likelihood 
+that it will happen. If they do not, then their actions are negligent. The
+Learned Hand test is an important metric because it provides a way to evaluate
+the existence of negligence without the presence of a strict standard.
+
+\begin{figure}
+\begin{narrow}{-1.5in}{-1.5in}\begin{center}
+\begin{tabular}{|l|}
+\hline
+	Let \textbf{B} be the burden (expense) of preventing a potential accident.\\
+	Let \textbf{L} be the severity of the loss if the accident occurs.\\
+	Let \textbf{P} be the probability of the accident.\\[6pt]
+	Then \textit{failure to attempt to prevent a potential accident is 
+	unreasonable if}\\[8pt]
+
+      \centerline{\(B < P \times L\)}
+\\[3pt]
+\hline
+\end{tabular}
+\end{center}\end{narrow}
+\caption{The Learned Hand Test for Negligence}
+\label{fig:handtest}
+\end{figure}
+
+\paragraph{Elements of Negligence\\}
+The applicability of negligence requires that certain conditions exist and the
+laws of negligence can only be invoked in these situations. The prerequisites,
+or prima facie elements, of a negligence case are \cite{Dobbs01}:
+\singlespace
+\begin{enumerate}
+ \item there exists a duty of care (or duty to protect)
+ \item the defendant breaches this duty with unreasonably risky conduct
+ \item the defendant's conduct resulted in harm to the plaintiff
+ \item the negligent conduct was a proximate cause of harm
+ \item legally recognized damages or injury exist
+\end{enumerate}
+\doublespace
+First, a negligence case calls for an actual duty of care owed to a plaintiff.
+There may be a question about how much care is owed in a given situation, but
+there are circumstances in which there is no duty owed that bears on the harm a
+plaintiff suffers. Judges decide whether or not this duty exists.
+
+Also, there must be a breach of this duty of care owed. A defendant who behaves
+reasonably and exercises the necessary care required by law will not be
+negligent even if the plaintiff is harmed.
+
+The defendant's negligence must be the cause of the harm suffered by the
+plaintiff. An careless engineer who does not test his product is not negligent
+to the user who is injured by tripping over the machine. In addition, the cause
+must not only be cause in fact, but a proximate, or primary, cause of the harm
+suffered.
+
+Finally, actual damages or injuries must be suffered for a negligence case to
+follow suit. This can include personal injury or damages to property.
+
+\paragraph{Software Fulfills the Prima Facie\\}
+
+It is not a stretch to conclude that defective software in a safety-critical
+situation will be subject to negligence allegations. The developing
+organization clearly owes a duty of care to its customers. Since the software
+will be used to perform tasks that can potentially cause harm, its users expect
+a reasonably prudent amount of care from its developers.
+
+The remaining elements are assumptions that this research seeks to evaluate.
+Performing tests is a large part of quality assurance for software and doing it
+correctly can mitigate the risk of unreasonably breaching a duty of care.
+
+\paragraph{Professional Negligence and Software Licensing\\}
+Professional negligence, also commonly referred to as malpractice, requires that
+the defendant be a member of some profession \cite{Kaner96}. When judging a
+negligence case, the courts hold defendants to a certain standard of care.
+Professionals communicate their skills with some kind of license and are thusly
+held to a greater degree of care than expected of ordinary people. Though
+software engineers do possess special skills that ordinary people do not, they
+are not considered ``professions'' as the term is used
+doctrinally\footnote{\textit{See: Heidtman Steel Products, Inc. v. Compuware
+Computer Corporation}, 178 F. Supp. 2d 869.}.
+
+As of the time of writing this paper, there is no widely accepted standard body
+of knowledge that software engineers can be licensed upon \cite{Knight02}.
+Software is intrinsically different, which embodies most of the reason why there
+cannot exist a software engineering license. Though a license would enforce a
+\textit{strict} standard of care on all those who practice, it would be
+impractical and infeasible to impose this standard on such a comprehensive and
+growing field as software \cite{Knight02}. For this reason, we will focus our
+attention to the ``reasonable person standard'' (\cite{Prosser}, Chapter
+5 \S 32) as dictated by the law on ordinary people.
+
 \subsection{The Court System}\label{s:courts}
 
 The court systems in America is a highly technical and sophisticated dispute
@@ -157,21 +291,26 @@ of the federal judicial system. A similar heirarchy exists in these branches,
 but these courts hear cases involving federal law which does not include
 the tortious products liability disputes that this research concerned with.
 
-\subsection{Alternative Dispute Resolution}
+\subsection{Why hasn't our legal system addressed software negligence?}
 
 The American Legal System has still yet to resolve a \textit{real} dispute
 involving software. With software now being available for decades and already
 causing problems worthy of litigation \cite{Therac25}, why haven't our courts
 regulated for safer software?
 
-Perhaps the reason why our courts have not addressed the issue of software
-safety is because of the out-of-court measures that companies will take to
+One reason why our courts have not addressed the issue of software safety is
+because of the out-of-court measures that companies will take to
 settle disputes. Often times, disputes will be settled through mediation, 
 wherein a neutral third party facilitates a compromise of the situation
 \cite{McAdams07}. Unfortunately, the law does not get updated through mediation
 because a this kind of dispute resolution does not make a determination of right
-or wrong, it merely creates a settlement and agreement not to pursue trial
-litigation.
+or wrong, it merely creates an agreement not to pursue trial litigation.
+
+Often, cases will be dismissed because of out-of-court settlements wherein the
+defendant compensate the plaintiff at an amount agreed upon by both parties.
+Also, it is rare that a case falls under a single law or set of rules. Sometimes
+a decision will be made on a case that is based on some other precedent that
+allows the judge not to write an opinion regarding software liability.
 
 \section{Technical Evolution}
 
@@ -186,9 +325,6 @@ introduction of computers decades ago. Society's increasing reliance on
 computers and software creates pressure to adapt. Software evolves because
 individuals and organizations are integrating computers into their activities
 \cite{Lehman98}.
-
-Since the audience of this research is comprised of mostly technical
-intellectuals, we will only briefly discuss the cycle of innovation in software.
 
 \begin{figure}[t]
 \begin{center}
@@ -212,6 +348,54 @@ clients to write requirements for what they will implement. Society pushes them
 to innovate and create software that will be profitable. At the same time,
 testing occurs to detect errors and inadequacies and are reported back to
 requirements and design planning for corrections.
+
+\subsection{The Software Development Process}
+\begin{figure}[t]
+\begin{center}
+\includegraphics[scale=0.7]{figures/waterfall.eps}
+\end{center}
+\caption{Waterfall Model of the Software Process}
+\label{fig:waterfall}
+\end{figure}
+In order to build a quality software systems, many organizations follow a
+formal, methodological approach to the development process.
+
+\subsubsection{Waterfall Model}\label{waterfall}
+The original treatment of the waterfall model appears in \cite{Royce1970} and
+describes a specification-driven approach to software development. Figure
+\ref{fig:waterfall} shows different phases that flow steadily downwards, like a
+waterfall. The model stresses a sequential occurrence of events in software
+development, but also includes an iterative treatment to account for the 
+evolving software development process.
+
+This model shows the widely-accepted phases of the software development process,
+but the specific details within each phase are not set-in-stone. The model
+defines activities that should go on during requirements, analysis,
+implementation, etc. But societal demands may require other considerations to be
+made during these phases.
+
+\subsubsection{Spiral Model}\label{spiral}
+\begin{figure}[t]
+\begin{center}
+\includegraphics[scale=0.7]{figures/spiral.eps}
+\end{center}
+\caption{Spiral Model of the Software Process}
+\label{fig:spiral}
+\end{figure}
+
+The spiral model, as described in \cite{Boehm1986}, builds on refinements made
+to the waterfall model. Boehm explains that the software process as an iteration
+of four phases of activity -- shown as quadrants -- which can be retrofitted to
+particularize to a variety of methods and approaches. As illustrated in Figure
+\ref{fig:spiral}, the radial dimension represents the cumulative costs incurred
+in accomplishing the steps to date while the angular dimension represents the
+progress made in completing each spiral.
+
+Notice that each rotation around the spiral begins with objectives,
+consideration of alternatives, and the constraints on the system so (cost,
+schedule, interface, etc.). According to Boehm's model, software developers
+should take risks into consideration and these considerations should be
+documented.
 
 \section{A Historical Analog}
 

@@ -121,7 +121,7 @@ Professor \committeechair, Committee Chair\\[4cm]
 \newpage
 
 \begin{center}\textsc{\large Abstract}\\[1cm]\end{center}
-
+\addcontentsline{toc}{section}{Abstract}
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed vel massa.
 Pellentesque euismod ipsum et magna. Aenean posuere ligula sed eros. In hac
 habitasse platea dictumst. Duis dapibus tempus quam. Aenean tincidunt semper
@@ -132,7 +132,7 @@ Phasellus non risus. Aenean est.
 \newpage
 
 \begin{center}\textsc{\large Acknowledgements}\\[1cm]\end{center}
-
+\addcontentsline{toc}{section}{Acknowledgements}
 I would like to express the utmost gratitude to Professor Clark Turner. His
 enthusiasm has been inspiring and his insights invaluable. I owe much of my
 success, both academic and professional, to his genuine encouragement and
@@ -146,6 +146,7 @@ Finally, I would like to thank my parents, Jim and Lourdes. Without their
 support and direction I would not be the person I have become. I hope you are
 proud.
 
+
 \tableofcontents
 \listoffigures
 
@@ -157,8 +158,9 @@ proud.
 
 \appendix
 \input{secode}
+\input{case}
 
 \bibliographystyle{acm}
-\bibliography{references}
+\bibliography{references}\addcontentsline{toc}{chapter}{Bibliography}
 
 \end{document}
