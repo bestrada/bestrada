@@ -334,20 +334,31 @@ individuals and organizations are integrating computers into their activities
 \label{fig:technical}
 \end{figure}
 
-Figure \ref{fig:technical} is a broad generalization of how software evolves
-over time. A client (society) demands some functionality that can best be
-implemented using software. Requirements and designs are laid out, taking into
-consideration the needs of the client and the current capabilities of software.
-Implementors utilize the body of knowledge (software libraries) to construct the
-software and contribute and new knowledge back into the library. When testing is
-complete, the software is accepted and delivered.
+Figure \ref{fig:technical} is a broad generalization of how the state-of-the-art
+of software\footnote{though this model is general and simple enough to apply to
+many disciplines} gets updated over time. The process starts in education.
+Students learn and apply to current state-of-the-art through various
+educational facilities and resources. They will then either enter industry or
+conduct research. Industry workers also utilize the state-of-the-art in
+practice. \textit{Researchers}, in the general sense of the word, conduct
+``research'' in a variety of ways. Ideas can come from purely academic work or
+from work-related projects. When discoveries are made, the ideas are preserved
+so that the solution can be used to solve similar problems in the future. The
+state-of-the-art in software is a juried resource because it consists of
+materials reviewed by other experts in the field. Ideas are stored in the
+state-of-the-art through, but not limited to, publications (like those released
+by the IEEE or the ACM), standards and best-practices, textbooks, and Open
+Source libraries.
 
-The the evolution of software is both a proactive, feed-forward system as well
-as a reactive, feedback system. Software developers use the demands of their
-clients to write requirements for what they will implement. Society pushes them
-to innovate and create software that will be profitable. At the same time,
-testing occurs to detect errors and inadequacies and are reported back to
-requirements and design planning for corrections.
+This state-of-the-art gets employed when software projects are implemented.
+The sections that follow briefly present the existing models that describe the
+process of software development. In general, though, a client (society) demands
+some functionality that can best be implemented using software. Requirements and
+designs are laid out, taking into consideration the needs of the client and the
+current capabilities of software. Implementors utilize the body of knowledge
+(the state-of-the-art) to construct the software, sometimes leading to the
+contribution of new knowledge back into the library. When testing is complete,
+the software is accepted and delivered.
 
 \subsection{The Software Development Process}
 \begin{figure}[t]
@@ -357,8 +368,21 @@ requirements and design planning for corrections.
 \caption{Waterfall Model of the Software Process}
 \label{fig:waterfall}
 \end{figure}
+
 In order to build a quality software systems, many organizations follow a
-formal, methodological approach to the development process.
+formal, methodological approach to the development process. The models show that
+the the evolution of software is both a proactive, feed-forward system as well
+as a reactive, feedback system. The processes are proactive because software
+developers use the demands of their clients to write requirements for what they
+will implement. Society pushes them to innovate and create software that will be
+profitable. At the same time, the process is reactive because testing occurs to
+detect errors and inadequacies and are reported back to requirements and design
+planning for corrections.
+
+The waterfall and spiral models shown below model the software development
+process for individual projects. Both are acceptable models to use on a software
+development project, but the sprial model seems to be more accepted because it
+is a current, generalized version of many of the previous models.
 
 \subsubsection{Waterfall Model}\label{waterfall}
 The original treatment of the waterfall model appears in \cite{Royce1970} and

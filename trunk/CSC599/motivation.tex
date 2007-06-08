@@ -17,9 +17,12 @@ for error. Models to test, detect, and correct these errors exist and are
 continually improving \cite{Parnas90}.
 
 Currently, the software process does not explicitly take into account the legal
-requirements that society demands of software engineers. Turner suggests that
-requirements due to products liability in tort can be viewed as the requirements
-of ``remote customers'' of safety-critical consumer software \cite{Turner99}.
+requirements that society demands of software engineers. Professor Clark S. 
+Turner suggests that requirements due to products liability in tort can be
+viewed as the requirements of ``remote customers'' of safety-critical consumer
+software, which, as suggested in future work of \cite{Turner99}, 
+``\textit{allows a direct and natural integration of these important 
+considerations in the software process}''.
 
 \section{Research Question}
 
@@ -28,3 +31,53 @@ the software they will write in industry is vulnerable to. How does our legal
 system interact with the evolution and technical progress of software? What are
 the integration points between the socially imposed legal requirements and our
 software processes?
+
+\section{Case Study: An Example}
+
+In 2007, a software-defect related incident provoked a dispute between Upchurch
+Plumbing, Inc. and Greenwood Utilities Commission\footnote{\textit{See: Upchurch
+Plumbing, Inc. and Triconex Systems, Inc. v. Greenwood Utilities
+Commission}, Westlaw Citation -- 2007 WL 1150903 (Miss.). The actual case is
+listed in Appendix \ref{A:case}.}. The Municipal Energy
+Agency of Mississippi (MEAM) contracted General Electric Company (GE) to upgrade
+three generating units. With the consent of GE, MEAM contracted Greenwood
+Utilities Comission (Greenwood) to one portion of the contract who, in turn,
+contracted with Upchurch Plumbing, Inc. (Upchurch) to work on the control system
+for its General Electric Frame V combustion turbine. Upchurch subcontracted with
+Triconex Systems, Inc. (Triconex) to install a digital control system for the
+turbine. This subcontract is referred to as Contract 103.
+
+The dispute was over the combustion turbine. Engineers attempted to start the
+turbine at the rated speed of 4,860 RPM but the mechanical overspeed bolt
+tripped, shutting down the machine at a reported speed of 4,000 RPM -- according
+to the Triconex digital controls. The engineers adjusted the mechanical  
+overspeed trip bolt to allow faster speeds. It was later discovered, though,
+that the machine was actually operating at a speed of 6,560 RPM instead of the
+reported 4,860 RPM shown on the Triconex digital control system. The problem was
+a programming defect in the software that utilized a 1:1.35 ratio which
+corresponded to the auxiliary shaft instead of the appropriate 1:1 ratio used in
+the turbine shaft. The Triconex software, therefore, reported speeds slower than
+the actual operating speed of the turbine. When the engineers adjusted the
+mechanical overspeed bolt, they thought the reported speeds were accurate. This
+allowed the turbine to operate at dangerous speed of at least 6,932 RPM, causing
+irreparable damage to the turbine.
+
+The Leflore County Circuit Court in Mississippi ruled in favor of Greenwood and
+awarding them over \$2.5 million in damages against Upchurch and Triconex.
+Upchurch and Triconex appealed, but the Mississippi Supreme Court found no error
+in judgement.
+
+Though the case does not set a legal precedent for software engineers, it does
+provide an example of a software-related incedent that costed on the scale of
+millions of dollars. The court was unable to make a decision regarding products
+liability because the holding of the trial court was based upon breach of
+contract. Triconex and Upchurch were liable because they agreed to deliver a
+working product to Greenwood in a written contract. They failed to do this and 
+for this reason, the appellate court only addressed the breach of contract claim
+and was unable to address negligence.
+
+For most safety-critical products--those available to consumers and which are of
+primary focus in this research--no actual contract exist. Negligence is based on
+an unwritten, implied contract that exists because there is a duty of care that
+is owed, in the case of safety-critical software, to the users of the software
+products.
