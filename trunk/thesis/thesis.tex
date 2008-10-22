@@ -148,79 +148,123 @@ While this faith in software is warranted, it does not come without risk. Despit
 
 Because of its unique nature, defects in software are inevitable and typically more difficult to locate and handle than physical flaws in mechanical components \cite{FAKE}. Defects in the safety-critical realm can be especially dangerous. Software applications in products like video games, spreadsheets, and web browsers are understandably not dangerous to humans. But software can be and has been applied in medical machinery \cite{FAKE}, automobiles \cite{FAKE}, and space shuttles \cite{FAKE}.
 
-Using a complex artifact like software in safety-critical systems creates a predicament that our legal system is not fully prepared to handle. Yet despite its shallow history in software-related adjudication, the legal system imposes constraints on software engineering activity. The law imposes a standard of care that must be met by manufacturers to avoid liability \cite{FAKE}. This thesis closely examines the software development process and adopts legal constraints as requirements to this process. Effective processes drive software development and, when executed properly, can prevent future harm during the product's use. This research posits and addresses three general questions: 
-
-\singlespace 
+Using a complex artifact like software in safety-critical systems creates a predicament that our legal system is not fully prepared to handle. Yet despite its shallow history in software-related adjudication, the legal system imposes constraints on software engineering activity. The law imposes a standard of care that must be met by manufacturers to avoid liability \cite{FAKE}. This thesis closely examines the software development process and adopts legal constraints as requirements to this process. Effective processes drive software development and, when executed properly, can prevent future harm during the product's use. This research posits and addresses three general questions: \singlespace 
 \begin{enumerate} 
 \item What are the legal constraints that software engineers must abide by in building safety-critical software? 
 \item How do software engineers integrate these constraints into their processes? 
 \item Who or what determines the universal standard for software engineers to follow? 
-\end{enumerate} 
-\doublespace 
+\end{enumerate}\doublespace 
 
 \section{Contributions to Scholarship} 
 
-This research seeks to show software engineers that common law cases provide implicit constraints on the development activities they perform. Software development  creates a product just like any other manufacturing process and those involved in the engineering of the product are responsible for the safety of the its users. This work also explains the intrinsic differences of software that perhaps obscure the notions of legal liability.
+This research seeks to show software engineers that common law cases provide implicit constraints on the development activities they perform. Software development  creates a product just like any other manufacturing process and those involved in the engineering of the product are responsible for the safety of the its users. This work describes the social responsibilities that software engineers are held to and explains the intrinsic differences of software that perhaps obscure the notions of legal liability.
 
-Future chapters will show where in the software process these constraints should be considered and how best practices can be used fulfill these requirements. In fact, with the proper application of previously documented practices, software engineers in the safety-critical realm may already be fulfilling their legal duties.
+Future chapters will show where in the software process these legal constraints should be considered and how best practices can be used fulfill these requirements. In fact, with the proper application of previously documented development practices, software engineers in the safety-critical realm may already be fulfilling their legal duties.
 
 Finally, this research will show that these legal constraints can only be applied in the context of the software engineering ``state-of-the-art'', a capacity developed by software engineers themselves. In this sense, software engineers have control over the very legal requirements that they are held to.
 
-\chapter{Background} 
+\chapter{Legal Background} 
 
-Whether software engineers are aware of it or not, the programs they write are heavily regulated by the law. In software as with many other industries, there is a struggle between safety, cost, and utility. This chapter examines how legal regulation for safety can affect technical design and ultimately implementation. 
+Whether software engineers are aware of it or not, the programs they write are heavily regulated by the law. In software as with many other industries, there is a struggle between safety, cost, and utility. This chapter examines how legal regulation for safety affects technical design and ultimately implementation.
 
-\section{Legal Regulation} 
+\section{Legal Procedure} 
 
 \begin{quote}
 ``\textit{\ldots [the law], by the very necessity of its nature, is continually transmuting those moral standards into external or objective ones\ldots}''
 \flushright{\textsc{-Oliver Wendell Holmes} \cite{Holmes23}}
 \end{quote}
 
-The intent of the law is, broadly, to achieve and preserve justice. In order to assure the safety of products, the law often relies on common law principles. The common law regulates based on precedence from judgments found in previous courtroom decisions rather than exclusively on statutes adopted by legislative bodies. 
+The broad intent of the law is to achieve and preserve justice. In order to assure the safety of products, the law will likely rely on common law principles during disputes. The \textit{common law} regulates based on precedence from judgments found in previous courtroom decisions rather than exclusively on statutes adopted by legislative bodies. 
 
-In the context of safety-critical software engineering, in order for the legal system to be invoked, some sort of disputable accident causing injury must occur. Victims who have suffered loss file a claim. Facts are gathered by searching through evidence and recording testimonies. After all parties agree on the facts, a trial takes place and both sides make arguments calling into question the legality of what happened using precedent set from previous judgments stored in legal archives. A judge interprets what the law states and either he or a jury decides how it will apply in each individual case. Once the judge renders a decision, the case oftentimes undergoes an appeal wherein the unsatisfied party petitions a higher court to review the decisions of the lower court to correct potential errors. The parties make more arguments on the legality of the previous decision, but new facts, testimony, and evidence are not accepted. When an appellate decision is made, that holding enters legal archives and serves as precedent for future cases. This process is referred to as the \textit{Common Law}. 
+In the context of safety-critical software engineering, in order for the legal system to be invoked, some sort of disputable accident causing injury must occur. Victims who have suffered loss file a claim. Facts are gathered by searching through evidence and recording testimonies. After all parties agree on the facts, a trial takes place and both sides make arguments calling into question the legality of what occurred using precedent set from previous judgments stored in legal archives. A judge interprets what the law states and either he or a jury decides how it will apply in each individual case. Once the judge renders a decision, cases like this oftentimes undergo an appeal wherein the unsatisfied party petitions a higher court to review the decisions of the lower court to correct potential errors. The parties make more arguments on the legality of the previous decision, but new facts, testimony, and evidence are not accepted. When an appellate decision is made, that holding enters legal archives and serves as precedent for future cases. This process is referred to as the common law. 
 
 \begin{figure}[t] 
 \begin{center} 
 \includegraphics[scale=0.73]{figures/commonlaw.pdf} 
 \end{center} 
-\caption{common law process} 
+\caption{Common Law Process} 
 \label{fig:commonlaw} 
 \end{figure} 
 
-The model in Figure \ref{fig:commonlaw} is a simplification of how the common law system in the United States handles disputes, specifically disputes involving defective products, and updates itself through an iterative feedback process. Input data to the trial includes facts, testimony, and the legal archives which consist of rulings and opinions from previous disputes. These rulings can be used to make decisions in current and future cases and is how the common law updates itself. If an unprecedented situation comes to suit, then the courts interpret similar situations and apply them at the discretion of the judge. When a decision is made here, \textit{it} becomes a resource for future disputes.
+The model in Figure \ref{fig:commonlaw} is a simplification of how the common law system in the United States handles disputes, specifically disputes involving defective products, and updates itself through an iterative feedback process. Input data to the trial includes facts, testimony, and the legal archives which consist of rulings and opinions from previous disputes. These rulings can be used to make decisions in current and future cases and is how the common law updates itself. If an unprecedented situation comes to suit, then the courts interpret similar situations and apply at the discretion of the judge. When a decision is rendered here, it becomes a resource for future disputes.
 
-The particulars of the adjudication process are less important than the core of how the common law functions. What is noteworthy of the model in Figure \ref{fig:commonlaw} is the application of legal decisions to each scenario. Rather than creating statutes from theory, common law cases use actual incident to make decisions about disputes. This means that the litigators, witnesses, and parties involved in the dispute are, in part, responsible for setting precedent for future cases. Incidentally, this means that the common law is a reactive feedback system because only after accident or injury occurs will legal repercussions be dealt with. When a judgment is made, it can then be applied to future scenarios, but usually only if a lawsuit is filed first. 
+The particulars of the adjudication process are less important than the core of how the common law functions. What is noteworthy of the model in Figure \ref{fig:commonlaw} is the application of legal decisions to each scenario. Rather than creating statutes from theory, common law cases use actual incident to make decisions about disputes. This means that the litigators, witnesses, and the parties involved in the dispute are, in part, responsible for setting precedent for future cases. Incidentally, this means that the common law is a reactive system because only after accident or injury occurs will legal repercussions be dealt with. When a judgment is made, it can then be applied to future scenarios, but usually only if a lawsuit is filed first. 
 
-\subsection{Common Law Characteristics} 
+\section{Characteristics of the Common Law} 
 
 The common law is ``that part of the law that is within the province of the courts themselves to establish'' \cite{FAKE}. It exhibits many characteristics that make it just. Social propositions (those of morality, policy, or experience rather than state legal rules) are enforced impartially to any party. The courts practice a replicable system of litigation, allowing future disputants to receive legal advice. The common law is also responsive to change as moral norms evolve over time \cite{FAKE}. 
 
-Those who are affected by the common law should understand the basic principles of its underpinnings. Software engineers working on safety-critical projects are affected by the social expectations of reliable and functional software. But because of its unique nature, defects in software are inevitable and typically more difficult to locate and fix than the physical flaws found in mechanical components \cite{FAKE}. Defects in software used in safety-critical situations can be especially dangerous. The increasing use of software in machines and the demand for more products functions adds additional complexity and room for error.
+Those who are affected by the common law should understand the basic principles of its underpinnings. Software engineers working on safety-critical projects are pressured by the social expectations for reliable and functional software. But because of its unique nature, defects in software are inevitable and typically more difficult to locate and fix than the physical flaws found in mechanical components \cite{Parnas90}. Defects in software used in safety-critical situations can be especially dangerous. The increasing use of software in machines and the demand for more products functions adds additional complexity and room for error.
 
-I need to write a better transition here.
+Fortunately, the legal system can account for this inherent complexity. For disputes resulting in injury or death from defective software, the most appropriate claim a plaintiff can make against software engineers will be of tortious behavior of the defendant. A \textit{tort} is a civil (not criminal) wrong or breach of duty to another person. Courts chosen to resolve these types of disputes will tend towards regulation through products liability law \cite{FAKE}. Products liability is almost exclusively regulated by common law decisions, meaning that cases under it must be resolved by applying rules generated by prior decisions. In addition to being applicable to software related disputes, products liability law resolves some of the complexity found in safety-critical software because disputes are closely examined on a case-by-case basis and there are no strict universal statutes that would simplify a decision.
 
-Fortunately, the legal system can account for this inherent complexity.
+\section{Products Liability} 
+The term \textit{products liability} is the area in law that broadly applies to the liability of a manufacturer or seller for injury to a buyer caused by a product that they sold \cite{FAKE}. A \textit{product} usually refers to physical merchandise that can be purchased. Officially, a product is defined as 
 
-Some lawyers contend that the law evolves towards efficient decisions in accident disputes in courts, where ``\textit{efficient}'' in this context means the defendant-manufacturer is more likely than the plaintiff-victim to win the suit if an accident occurs. In terms of software engineering, this means that an organization that develops safety-critical software will, in the long run, tend towards winning or possibly avoiding dispute. This is a good thing because it means the quality and safety of software improves. In fact, software quality and safety must improve if the defendants are to win, and possibly avoid, dispute. The party that is interested in precedent (in this case, the defendant software developers) will litigate until a favorable decision is met. This means that manufactures that are likely to be involved in accident disputes will make preventative efforts to improve the safety of their products to avoid liability costs in court cases and more easily defend themselves in case of a dispute \cite{FAKE}.
+\begin{quote}
+``\textit{\ldots tangible personal property distributed commercially for use or consumption and other items, such as real estate property and electricity, when the context of their distribution and use is sufficiently analogous to the distribution and use of tangible personal property\ldots} (\cite{Rest3d}, \S19(a))'' 
+\end{quote}
 
+In the case of safety-critical systems, software is usually embedded in some machine or hardware device \cite{Leveson95} that is sold as a product. When viewed from this standpoint, software is less analogous to pure thoughts and expressions and is considered a product for products liability cases. Regardless, this research assumes that software is considered a product.
 
-While the legal system (among other things) ensures the safety of products, the law understands the costs involved in ensuring safety measures and takes this into account when resolving disputes. Scholars posit that the law balances these economic forces and ensures safety to a reasonable cost to manufacturers \cite{FAKE}.
+Within products liability, a tortious act can be classified as either strictly liable or negligent \cite{Turner99}. Strict liability applies to any product that is defective, regardless of the process used to manufacture. While strict liability is interesting, this research is concerned with the \textit{process} used to build software and how engineers employ it. Since process is behavioral, it falls under the jurisdiction of negligence.
 
-When and if a dispute occurs, the most appropriate claim a plaintiff can make against software engineers will be of tortious behavior of the defendant. A \textit{tort} is a civil (not criminal) wrong or breach of duty to another person. A software incident will likely fall under products liability.
+\subsection{Negligence}
 
-\subsection{Products Liability} 
-The term \textit{products liability} is the area in law that broadly applies to the liability of a manufacturer or seller for injury to a buyer caused by a product that they sold \cite{FAKE}. A \textit{product} usually refers to physical merchandise that can be purchased. Officially, a products is defined as 
+Negligence is more concerned with the process used to build a product, not the product itself. Because manufacturing or design based defects are difficult, in fact nearly impossible, to classify \cite{Turner99}, applying negligence is even more appropriate. In general, the legal term \textit{negligence} refers to careless conduct. Scholars describe negligence\footnote{\textit{See:} 57A Am. Jur. 2d Negligence \S 5} more specifically as:\singlespace
+\begin{itemize}
+ \item the existence and violation of a legal duty to use care, proximately 
+ causing injury to another.
+ \item the failure to exercise the degree of care demanded by the circumstances.
+ \item the breach of a duty to another to protect him or her from the particular
+ harm that ensued.
+ \item the want of that care the law prescribes under the particular
+ circumstances existing at the time of the act or omission which is involved.
+\end{itemize}\doublespace
+Negligence can be applied to many different scenarios beyond products liability. An intoxicated driver who disobeys traffic laws may be negligent towards other citizens of the road\footnote{\textit{See: People v. Townsend}, 214 Mich. 267, 272, 183 N.W. 177.}. A instructor who fails to demonstrate safety precautions to his students in wood shop may be liable for negligence\footnote{\textit{See: Voorhies v. Conroe Independent School Dist.}, 610 F.Supp. 868.}. An engineer who does not adequately inspect his safety-critical product can be negligent to his clients\footnote{\textit{See: Ford Motor Co. v. Mondragon}, 271 F.2d 342.}. This research focuses on the negligence constrains as they apply to products liability.
 
-``...tangible personal property distributed commercially for use or consumption and other items, such as real estate property and electricity, when the context of their distribution and use is sufficiently analogous to the distribution and use of tangible personal property...\cite{FAKE}'' 
+Negligence is easiest to determine when some standard of care stated by the profession is available. Lawyers are held to a standard defined by their state's Bar Association and doctors are licensed by the state's medical board. But while there are standards and best practices defined for software engineers \cite{FAKE}, no similarly legal official standard exists for software engineering. A more qualitative approach must be taken. The duty of software engineers are expected to fulfill is that of one who is reasonably prudent. Reasonably prudent software engineers would use the best available technologies at a reasonable cost and follow what is, at the time of implementation, considered to be the industry ``state-of-the-art''.
 
-In the case of safety-critical systems, software is usually embedded in some machine or hardware device \cite{FAKE} that is sold as a product. When viewed from this standpoint, software is less analogous to pure thoughts and expressions and is considered a product for products liability cases. Regardless, this research assumes that software is considered a product. 
+Figure \ref{fig:handtest} shows a formula that equates negligence in terms of unreasonable behavior.  According to the Learned Hand test\footnote{\textit{See: United States v. Carroll Towing Co.}, 159 F.2d 169.\\ Judge Learned Hand created this guideline to determine the amount of duty owed in a negligence dispute. In the case, the United States sought compensation for flour that was lost when a barge carrying the cargo sunk. The barge company was partly responsible because no workers were present on the barge when it sank, which may have prevented the barge from sinking. Qualitatively, the amount it would have cost to keep a worker on the barge would have been less than the product of the probability that the barge sank and the amount of damages incurred from it sinking.}, an organization that develops safety-critical software has a duty to spend at least the amount of time and resources equivalent to the product of the severity of harm and the likelihood that it will happen. If they do not, then their actions are negligent. The Learned Hand test is an important metric because it provides a way to evaluate the existence of negligence without the presence of a strict standard.
 
-Within products liability, a tortious act can be classified as either strictly liable or negligent. 
+\begin{figure}
+\begin{narrow}{-1.5in}{-1.5in}\begin{center}
+\begin{tabular}{|l|}
+\hline
+	Let \textbf{B} be the burden (expense) of preventing a potential accident.\\
+	Let \textbf{L} be the severity of the loss if the accident occurs.\\
+	Let \textbf{P} be the probability of the accident.\\[6pt]
+	Then \textit{failure to attempt to prevent a potential accident is 
+	unreasonable if}\\[8pt]
 
-\subsubsection{Negligence} 
-Negligence is bad. 
+      \centerline{\(B < P \times L\)}
+\\[3pt]
+\hline
+\end{tabular}
+\end{center}\end{narrow}
+\caption{The Learned Hand Test for Negligence}
+\label{fig:handtest}
+\end{figure}
+\subsubsection{Elements of Negligence}
+The laws of negligence can only be invoked under certain conditions. The prerequisites, or prima facie elements, of a negligence case are that \cite{Dobbs01}:
+\singlespace
+\begin{enumerate}
+ \item there exists a duty of care (or duty to protect)
+ \item the defendant breaches this duty with unreasonably risky conduct
+ \item the defendant's conduct resulted in harm to the plaintiff
+ \item the negligent conduct was a proximate cause of harm
+ \item legally recognized damages or injury exist
+\end{enumerate}
+\doublespace
+In \textit{The Case of the Killer Robot}\footnote{\textit{The Case of the Killer Robot} is a fictional scenario created by Richard G. Epstein to illustrate the complexity of building real-world software and the ethical issues introduced in the safety-critical realm. It is referenced in \cite{Epstein96} and reprinted with academic permission in Appendix \ref{appa}.}, employees of Silicon Techtronics Inc. wrote software for robotics that were to manufacture products at Cybernetics Inc. The software contained latent defects that ultimately lead to the death of Cibernetics employee Bart Matthews. This fictional scenario poses an ideal case study for the legal issues surrounding software development and the applicability of negligence.
+
+Negligence cases call for an actual duty of care owed to a plaintiff. There may be a question about how much care is owed in a given situation, but there are circumstances in which there is no duty owed that bears on the harm a plaintiff suffers. Judges decide whether or not this duty exists. In the killer robot example, Silicon Techtronics Inc. is held to a duty of care expected by users of their machinery. Since their software controls machines that are capable of injuring humans, it is reasonable for users to expect some amount of care to be taken to prevent this.
+
+Also, there must be a breach of this duty of care owed. A defendant who behaves reasonably and exercises the necessary care required by law will not be negligent even if the plaintiff is harmed. The facts in the killer robot case evidence that Silicon Techtronics breached this duty. Their development practices were questionable at best, but factors like utility and practicality should be brought into question.
+
+The defendant's negligence must be the cause of the harm suffered by the plaintiff. A careless engineer who does not test his product is not negligent to the user who is injured by tripping over the machine. In addition, the cost must not only be the cause in fact, but a proximate, or primary cause of the harm suffered. This requirement is difficult to apply in the killer robot case. While it can be argued that Silicon Techtronics' processes did not follow the software engineering state-of-the-art, it is difficult to prove that this allegedly negligent behavior actually lead to the mistakes that Randy Samuels made.
+
+Finally, actual damages or injures must be suffered for a negligence case to follow suit. This can include personal injury or damages to property.
 
 \subsubsection{Why hasn't our legal system addressed software negligence?} 
 
@@ -228,24 +272,27 @@ The American legal system has still yet to resolve a \textit{real} dispute invol
 
 One reason why our courts have not addressed the issue of software safety is because of out-of-court measures that companies will take to settle disputes. Oftentimes, disputes will be settled through mediation, wherein a neutral third party facilitates a compromise of the situation \cite{FAKE}. Unfortunately, the law does not get updated through mediation because this kind of dispute resolution does not make a determination of right or wrong, it merely creates an agreement not to pursue trial litigation. Authority that constrains trial court judges, and subsequently software engineers that face such trials, is only developed by appeals courts. Appellate review produces the legal requirements and constraints for real trials. 
 
-Often, cases will be dismissed in real trials because of out-of-court settlements wherein the defendant compensates the plaintiff at an amount agreed upon by both parties. 
+Often, cases will be dismissed in real trials because of out-of-court settlements wherein the defendant compensates the plaintiff at an amount agreed upon by both parties.
 
-\section{Software Processes} 
+\section{Addressing Cost}
+
+While the legal system (among other things) ensures the safety of products, the law understands the costs involved in ensuring safety measures and takes this into account when resolving disputes. Scholars posit that the law balances these economic forces and ensures safety to a reasonable cost to manufacturers \cite{FAKE}.
+
+Some lawyers contend that the law evolves towards efficient decisions in accident disputes in courts, where ``\textit{efficient}'' in this context means the defendant-manufacturer is more likely than the plaintiff-victim to win the suit if an accident occurs. In terms of software engineering, this means that an organization that develops safety-critical software will, in the long run, tend towards winning or possibly avoiding dispute. This is a good thing because it means the quality and safety of software improves. In fact, software quality and safety must improve if the defendants are to win, and possibly avoid, dispute. The party that is interested in precedent (in this case, the defendant software developers) will litigate until a favorable decision is met. This means that manufactures that are likely to be involved in accident disputes will make preventative efforts to improve the safety of their products to avoid liability costs in court cases and more easily defend themselves in case of a dispute \cite{FAKE}.
+
+\chapter{Software Processes} 
 In order to build quality software systems, many organizations follow a formal approach to the software development process including formal methods, best practices, and adoption of standards. One such methodology, the Spiral Model of Software Development and Enhancement, has withstood the test of time and is still widely accepted as the state-of-the-art in software process. Diligent adoption of this model, be it intentional or incidental, can in many ways fulfill the ``due care'' requirements set forth by judicial authorities. 
 
-\subsection{Basic Elements of the Software Process} 
+\section{Basic Models of the Software Process} 
 The following concepts are not explained in depth, as it is assumed that the audience of this section is already familiar with these basic ideas of software development. Later sections explain how prudent application of these practices fulfills the legal requirements set forth by the common law. 
 
-\subsubsection{Design} 
-Herb Simon would classify design in general as the formulation actions that will ``change existing situations into preferred ones''. From software engineering standpoint, designers are concerned with how things ought to be in order to attain goals and function \cite{simon}. Activities can include gathering requirements, developing external functions and interfaces, designing internal component structures, generating test plans, and ensuring functions are complete and achievable. 
+\textbf{Design}: Herb Simon would classify design in general as the formulation actions that will ``change existing situations into preferred ones''. From software engineering standpoint, designers are concerned with how things ought to be in order to attain goals and function \cite{simon}. Activities can include gathering requirements, developing external functions and interfaces, designing internal component structures, generating test plans, and ensuring functions are complete and achievable. 
 
-\subsubsection{Implement} 
-The implementation phase of the software cycle involves the translation of design into functional code. Sometimes referred to as software construction or coding, engineers will implement code to create a static description of the processes defined in the prior phase, usually in the form of a programming language. 
+\textbf{Implement}: The implementation phase of the software cycle involves the translation of design into functional code. Sometimes referred to as software construction or coding, engineers will implement code to create a static description of the processes defined in the prior phase, usually in the form of a programming language. 
 
-\subsubsection{Test} 
-Testing is the validation of the implementation against the programs design. This can be done through a variety of ways including, but not limited to, unit and system testing, black box testing, static code analysis, and automated testing. Testers seek to discover defects so that engineers can fix them before the code is released to the public. 
+\textbf{Test}: Testing is the validation of the implementation against the programs design. This can be done through a variety of ways including, but not limited to, unit and system testing, black box testing, static code analysis, and automated testing. Testers seek to discover defects so that engineers can fix them before the code is released to the public. 
 
-\subsection{Reasonably Prudent Software Development} 
+\section{Reasonably Prudent Software Development} 
 discuss software development practices that satisfy legal constraints. discuss methodologies (waterfall, spiral) that help improve quality of software. discuss the academic field and what they teach in universities. bring up the code of ethics.  
 
 then discuss actual, formal standards set forth by the ieee, acm, etc. bring up those ieee standards you find and show how they meet legal standards.  
@@ -258,7 +305,7 @@ While certain design defects can occur during the design phase, these flaws will
 \begin{center} 
 \includegraphics[scale=0.77]{figures/graph.pdf} 
 \end{center} 
-\caption{bug tracking over time} 
+\caption{Defect Tracking Over Time} 
 \label{fig:bugs} 
 \end{figure} 
 
@@ -279,11 +326,11 @@ standards and committees (ieee, acm, etc.)
 
 \section{Scopes of Influence} 
 
-In a legal context, different perspectives are used to scrutinize the liability of software. Each perspective has its own scope to which it can influence its encapsulated perspectives. The initial level is the software implementation perspective. To determine liability based on a manufacturing defect, the implementation is scrutinized against the engineers design of the product. Thus, the implementation perspective is encapsulated by the design perspective. 
+In a legal context, different perspectives are used to scrutinize the liability of software. Each perspective has its own scope to which it can influence its encapsulated perspectives. The initial level is the software implementation perspective. To determine liability based on a manufacturing defect, the implementation is scrutinized against the engineers' design of the product. Thus, the implementation perspective is encapsulated by the design perspective. 
 
 Beyond a simple manufacturing defect liability, software engineers can also be negligent if their design is unsafe. To determine negligence, the design itself is judged against a standard outside of the specification of the project. Courts normally refer to this outside standard as the ``State-of-the-Art. This perspective is used to determine if the behavior of software engineers, in the form of their design, was negligent. The state-of-the-art can influence a software products design, and by virtue its implementation, because its perspective has a wider scope than software design. 
 
-While software engineers are in fact held accountable by a legal system that, by itself, lacks the technical merit to pass judgment on such a specialized field, they can influence the very standard against which they are judged. Software engineering experts from both industry and academia, by the very nature of their work, define what constitutes the state-of-the-art. Thus, two more perspectives are introduced whose scope encapsulates all others: Academia and Industry. Both perspectives have, qualitatively, equal influence over the software engineering state-of-the-art and its underlying perspectives so one cannot encapsulate the other. However, since both perspectives borrow expertise from one another, they can mutually influence each other. 
+While software engineers are in fact held accountable by a legal system that, by itself, lacks the technical merit to pass judgment on such a specialized field, they can influence the very standard against which they are judged. Software engineering experts from both industry and academia, by the very nature of their work, define what constitutes the state-of-the-art. Thus, two more perspectives are introduced whose scopes encapsulate all others: Academia and Industry. Both perspectives have, qualitatively, equal influence over the software engineering state-of-the-art and its underlying perspectives so one cannot encapsulate the other. However, since both perspectives borrow expertise from one another, they can mutually influence each other. 
 
 \chapter{Conclusion} 
 Software safety, for now, remains an impracticable desire. While the precautions and recommendations derived from this research can assist in improving the overall safety and quality of software products, they cannot be held to the same regard as professional standards. The software industry still needs time to mature and society must learn to recognize that software is engineering. 
