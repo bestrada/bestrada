@@ -1,12 +1,5 @@
 @del *.pdf
 
-@del *.aux
-@del *.bbl
-@del *.blg
-@del *.toc
-@del *.log
-@del *.lof
-
 pdflatex thesis.tex
 bibtex thesis
 pdflatex thesis.tex
