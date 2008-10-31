@@ -339,12 +339,11 @@ Diligent adoption of modeled software processes, be it intentional or incidental
 \subsection{Waterfall Model}
 \begin{figure}[t]
 \begin{center}
-\includegraphics{figures/waterfall.pdf}
+\includegraphics[scale=0.7]{figures/waterfall.pdf}
 \end{center}
 \caption{Waterfall Model of the Software Process}
 \label{fig:waterfall}
 \end{figure}
-
 The original treatment of the waterfall model appears in \cite{Royce1970} and describes a specification-driven approach to software development. Figure \ref{fig:waterfall} shows different phases that flow steadily downwards, like a waterfall. The model stresses a sequential occurrence of events in software development, but also includes an iterative treatment to account for the evolving software development process.
 
 This model shows the widely-accepted phases of the software development process, but the specific details within each phase are not set-in-stone. The model defines activities that should go on during requirements, analysis, implementation, etc. But societal demands may require other considerations to be made during these phases.
@@ -363,36 +362,31 @@ The spiral model, as described in \cite{Boehm1986}, builds on refinements made t
 Notice that each rotation around the spiral begins with objectives, consideration of alternatives, and the constraints on the system so (cost, schedule, interface, etc.). According to Boehm's model, software developers should take risks into consideration and these considerations should be documented.
 
 \section{Reasonably Prudent Software Development}
-While there are several methodologies to model the software development process beyond waterfall and spiral, one prudent attribute that they all should have in common is \textit{\textbf{iteration}}. With iteration, software engineers perform the activities they would follow to build the entire project during each iteration. There are different terms that define the activity during these iterations, but in general, software development occurs in three phases: design, implementation, and test.
+While there are several methodologies to model the software development process beyond waterfall and spiral, one prudent attribute that they all should have in common is \textit{\textbf{iteration}}. With iteration, software engineers perform the activities they would follow to build the entire project during each iteration. There are different terms that define the activity during these iterations, but in general, software development occurs in three phases: design, implementation, and test. This section does not attempt to exhaustively describe the state-of-the-art of all software engineering activity, but intends to expose the key points of these three general activities and reveal how applying the respective state-of-the-art in these areas can prevent harm.
 
-\textbf{Design}: Herb Simon would classify design in general as the formulation actions that will ``change existing situations into preferred ones''. From software engineering standpoint, designers are concerned with how things ought to be in order to attain goals and function \cite{simon}. Activities can include gathering requirements, developing external functions and interfaces, designing internal component structures, generating test plans, and ensuring functions are complete and achievable.
+\textbf{Design}: Herbert Simon would classify design in general as the formulation actions that will ``change existing situations into preferred ones''. From software engineering standpoint, designers are concerned with how things ought to be in order to attain goals and function \cite{Simon96}. Activities can include gathering requirements, developing external functions and interfaces, designing internal component structures, generating test plans, and ensuring functions are complete and achievable.
 
-Defects in design are difficult to prevent as there are no automated tools to detect them. By analyzing risk and borrowing the best practices from the state-of-the-art, software designers can reduce the number of defects that get written into the code. Using the killer robot case as an example, 
+Defects in design are difficult to prevent as there are no automated tools to detect them. By analyzing risk and borrowing the best practices from the state-of-the-art, software designers can reduce the number of defects that get written into the code. Using the killer robot case as an example, it can be argued that the design of the user interface of their Robbie CX30 did not comply with the state-of-the-art. Careful study of design principles and involvement of UI experts would have found this design defect so that it could be corrected in subsequent implementation iterations.
 
-\textbf{Implement}: Implementation involves converting the specifications from the design into actual software code. Reasonably prudent software engineers use modern tools and distinct methodologies to implement software. 
+\textbf{Implement}: Implementation involves converting the specifications from the design into actual software code. Reasonably prudent software engineers use modern tools and distinct methodologies to implement software. Sometimes referred to as software construction or coding, engineers will implement code to create a static description of the processes defined in the prior phase, usually in the form of a programming language.
 
+The state-of-the-art of software implementation is constantly evolving. Software compilers translate human-readable code written by programmers into machine bits or byte/object code. Syntax mistakes and simple error conditions can be detected by compilers and prevent software defects. Compilation typically happens soon or immediately after a programmer finishes a unit of programming work. But advanced integrated development environments often provide real-time compilation that happens during development so that these simple errors are detected as the programmer is writing code.  
 
-\textbf{Implement}: The implementation phase of the software cycle involves the translation of design into functional code. Sometimes referred to as software construction or coding, engineers will implement code to create a static description of the processes defined in the prior phase, usually in the form of a programming language.  
+As software has matured, certain programming practices have been universally recognized as the state-of-the art. For example, static code analyzers like FxCop or FindBugs are more sophisticated than a compiler and can detect certain violations of these best-practices. Analyzers can detect potential dynamic, or runtime errors, without actually executing the code. This is beneficial because reproducing every possible code path in tests is difficult, and arguably impossible, to achieve. Static code analysis typically happens after a complete unit of programming finishes and an analyzer can run on either the source or object code. 
 
-\textbf{Test}: Testing is the validation of the implementation against the programs design. This can be done through a variety of ways including, but not limited to, unit and system testing, black box testing, static code analysis, and automated testing. Testers seek to discover defects so that engineers can fix them before the code is released to the public.  
+Like design, there several implementation tools and methodologies that can be considered state-of-the-art depending on their application. In the killer robot scenario, one of the mistakes made by the developer on the Robbie CX30 project was a misinterpretation of a formula in the design that manifested itself by altering the movement of the robot's arm. Integrating software tools like static code analysis may have prevented this type of defect depending on the severity of the defect, but adopting implementation methodologies like code reviews or pair programming \cite{Williams00} would have certainly reduced the risk of this type of defect making into the release implementation.
 
-discuss software development practices that satisfy legal constraints. discuss methodologies (waterfall, spiral) that help improve quality of software. discuss the academic field and what they teach in universities. bring up the code of ethics.   
+\textbf{Test}: Testing is the validation of the implementation against the programs design. This can be done through a variety of ways including, but not limited to, unit and system testing, black box testing, static code analysis, and automated testing. Testers seek to discover defects so that engineers can fix them before the code is released to the public.
+
+When software is complete enough to be executed, a series of unit and system level tests run to validate the code against its expected behavior. In  addition to automated test cases, test engineers run black-box style tests to mimic real-world usage.
+
+discuss software development practices that satisfy legal constraints. discuss methodologies (waterfall, spiral) that help improve quality of software. discuss the academic field and what they teach in universities. bring up the code of ethics.
 
 then discuss actual, formal standards set forth by the ieee, acm, etc. bring up those ieee standards you find and show how they meet legal standards.   
 
 software engineering must be proactive to prevent bugs from getting released, while the common law is reactive.  
 
 While certain design defects can occur during the design phase, these flaws will still manifest themselves as errors in the actual source code. It is agreeable that certain design activities related to requirements occur \textit{during} development \cite{Turner99}; that is after software construction has started. Because the source code is where flaws will ultimately need to be fixed, this work is interested in those activities that can help prevent software defects that would manifest after construction has begun.
-
-\textbf{Design}:
-
-The state-of-the-art of software implementation is constantly evolving. Software compilers translate human-readable code written by programmers into machine bits or byte/object code. Syntax mistakes and simple error conditions can be detected by compilers and prevent software defects. Compilation typically happens soon or immediately after a programmer finishes a unit of programming work. But advanced integrated development environments often provide real-time compilation that happens during development so that these simple errors are detected as the programmer is writing code.  
-
-As software has matured, certain programming practices have been universally recognized as the state-of-the art. Static code analyzers like FxCop or FindBugs are more sophisticated than a compiler and can detect certain violations of these best-practices. Analyzers can detect potential dynamic, or runtime errors, without actually executing the code. This is beneficial because reproducing every possible code path in tests is difficult, and arguably impossible, to achieve. Static code analysis typically happens after a complete unit of programming finishes and an analyzer can run on either the source or object code. 
-
-There are also several implementation methodologies that can be considered state-of-the-art depending on their application. Pair programming and extreme programming are examples. 
-
-\textbf{Test}: When software is complete enough to be executed, a series of unit and system level tests run to validate the code against its expected behavior. In  addition to automated test cases, test engineers run black-box style tests to mimic real-world usage.  
 
 \section{Summary}
 

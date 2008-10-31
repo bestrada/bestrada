@@ -4,6 +4,7 @@ pdflatex thesis.tex
 bibtex thesis
 pdflatex thesis.tex
 pdflatex thesis.tex
+pdflatex thesis.tex
 
 @del *.aux
 @del *.bbl
