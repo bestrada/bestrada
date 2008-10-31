@@ -133,7 +133,7 @@ I would like to express the utmost gratitude to Professor Clark Turner. His enth
 
 I would also like to thank my parents, Jim and Lourdes. Without your unwavering support and direction I would not be the person I have become. I hope you are proud.  
 
-\tableofcontents  
+\tableofcontents
 \listoffigures\addcontentsline{toc}{chapter}{List of Figures}  
 
 
@@ -146,7 +146,7 @@ While this faith in software is warranted, it does not come without risk. Despit
 
 \section{Research Questions}  
 
-Because of its unique nature, defects in software are inevitable and typically more difficult to locate and handle than physical flaws in mechanical components \cite{Parnas90}. Defects in the safety-critical realm can be especially dangerous. Software applications in products like video games, spreadsheets, and web browsers are understandably not dangerous to humans. But software can be and has been applied in medical machinery \cite{FAKE}, automobiles \cite{FAKE}, and space shuttles \cite{FAKE}. 
+Because of its unique nature, defects in software are inevitable and typically more difficult to locate and handle than physical flaws in mechanical components \cite{Parnas90}. Defects in the safety-critical realm can be especially dangerous. Software applications in products like video games, spreadsheets, and web browsers are understandably not dangerous to humans. But microprocessors and software are already being used to control prosthetic limbs \cite{Graupe78}, to help restore sight to the blind \cite{Fox95}, to automate the braking systems in cars \cite{Hurtig94}, and even to treat cancer patients with radiation \cite{Therac25}.
 
 Using a complex artifact like software in safety-critical systems creates a predicament that our legal system is not fully prepared to handle. Yet despite its shallow history in software-related adjudication, the legal system imposes constraints on software engineering activity. The law constrains manufacturers to a standard of care that must be met to avoid liability \cite{FAKE}. This thesis closely examines the software development process and adopts legal constraints as requirements to this process. Effective processes drive software development and, when executed properly, can prevent future harm during the product's use. This research posits and addresses these three general questions: \singlespace  
 \begin{enumerate}  
@@ -196,7 +196,10 @@ It is necessary to distinguish the type of legal defect a product is held agains
 \end{itemize} 
 Research has concluded that software code can easily contain both classes of defect and that the current, practical body of evidence available in software engineering (specifications, documentation, source code, etc.) is insufficient for determining the class of defect in arbitrary cases. Software engineers can be held liable for both types of defect, but the manufacture of software can in many ways be considered design\footnote{The intrinsic properties of software that would lead scholars to this conclusion are explained in Chapter \ref{software_process} and more fully in \cite{Turner99}.}. Hence, this research seeks to prepare software engineers by discussing the process that can improve defect prevention in design. In so doing, this thesis aims to refine the behavior of software engineers in the safety-critical realm to improve the overall safety of their products and avoid the risk of legal dispute. 
 
-\section{Summary} 
+\section{Summary}
+Society has entered an age of high technology where innovation becomes real and in record time. Businesses and organization capitalize on peoples' want for the faster, easier, and more convenient. But the economic interests of these organizations and the inevitability of human imperfection put people in harm's way.
+
+Defects will manifest themselves in products that people use and lead to injury. The engineers who build these products are held liable for such defects. The law is a system that victims can use to enforce this liability. This research is motivated by the classification of these defects in a legal context and the possibility of preventing them.
 
 \chapter{Legal Background}  
 
@@ -291,7 +294,7 @@ The laws of negligence can only be invoked under certain conditions. The prerequ
 \item legally recognized damages or injury exist 
 \end{enumerate} 
 \doublespace 
-In \textit{The Case of the Killer Robot}\footnote{\textit{The Case of the Killer Robot} is a fictional scenario created by Richard G. Epstein to illustrate the complexity of building real-world software and the ethical issues introduced in the safety-critical realm. It is referenced in \cite{Epstein96} and reprinted with academic permission in Appendix \ref{appa}.}, employees of Silicon Techtronics Inc. wrote software for robotics that were to manufacture products at Cybernetics Inc. The software contained latent defects that ultimately lead to the death of Cibernetics employee Bart Matthews. This fictional scenario poses an ideal case study for the legal issues surrounding software development and the applicability of negligence. 
+In the fictional scenario, \textit{The Case of the Killer Robot}\footnote{\textit{The Case of the Killer Robot} is a fictional scenario created by Richard G. Epstein to illustrate the complexity of building real-world software and the ethical issues introduced in the safety-critical realm. It is referenced in \cite{Epstein96} and reprinted with academic permission in Appendix \ref{appa}.}, employees of Silicon Techtronics Inc. wrote software for robotics that were to manufacture products at Cybernetics Inc. The software contained latent defects that ultimately lead to the death of Cibernetics employee Bart Matthews. This scenario poses an ideal case study for the legal issues surrounding software development and the applicability of negligence. 
 
 Negligence cases call for an actual duty of care owed to a plaintiff. There may be a question about how much care is owed in a given situation, but there are circumstances in which there is no duty owed that bears on the harm a plaintiff suffers. Judges decide whether or not this duty exists. In the killer robot example, Silicon Techtronics Inc. is held to a duty of care expected by users of their machinery. Since their software controls machines that are capable of injuring humans, it is reasonable for users to expect some amount of care to be taken to prevent this. 
 
@@ -315,34 +318,73 @@ While the legal system (among other things) ensures the safety of products, the 
 
 Some lawyers contend that the law evolves towards efficient decisions in accident disputes in courts, where ``\textit{efficient}'' in this context means the defendant-manufacturer is more likely than the plaintiff-victim to win the suit if an accident occurs. In terms of software engineering, this means that an organization that develops safety-critical software will, in the long run, tend towards winning or possibly avoiding dispute. This is a good thing because it means the quality and safety of software improves. In fact, software quality and safety must improve if the defendants are to win, and possibly avoid, dispute. The party that is interested in precedent (in this case, the defendant software developers) will litigate until a favorable decision is met. This means that manufactures that are likely to be involved in accident disputes will make preventative efforts to improve the safety of their products to avoid liability costs in court cases and more easily defend themselves in case of a dispute \cite{FAKE}. 
 
-\section{Summary} 
+\section{Summary}
+Software engineers who work on safety critical software constantly make decisions on design and implementation details of the products they work on. These decisions will ultimately affect the safety of their product. The law regulates these engineers by holding them accountable for their implementation to standard that is the safest and most feasible at the time the product was built.
+
+Accountability is enforced through products liability law. Namely, engineers can be found negligent for the decisions they made and alternatives they failed to consider. The requirements for a negligence case are unambiguous and safety-critical software engineers clearly fall under their jurisdiction. Since negligence is a determination of behavior and conduct, it can be best demonstrated by examining their processes.
 
 \chapter{Software Processes}\label{software_process}
-In order to build quality software systems, many organizations follow a formal approach to the software development process including formal methods, best practices, and adoption of standards. One such methodology, the Spiral Model of Software Development and Enhancement, has withstood the test of time and is still widely accepted as the state-of-the-art in software process. Diligent adoption of this model, be it intentional or incidental, can in many ways fulfill the ``due care'' requirements set forth by judicial authorities.  
+\begin{quote}
+``\textit{This work must be conducted with attention to detail and the highest standard of professional care.}''
+\flushright{\textsc{-Code of Business Conduct, St. Jude Medical} \cite{SJMCode}}
+\end{quote}
+
+The capabilities of software have, no doubt, changed dramatically since the introduction of computers decades ago. Society's increasing reliance on computers and software creates pressure to adapt. Software evolves because individuals and organizations are integrating computers into their activities \cite{Lehman98}.
+
+In order to build quality software systems, many organizations follow a formal approach to the software development process including formal methods, best practices, and adoption of standards. Returning to the \textit{Killer Robot} case study from last chapter, it can be argued that the diligent adoption of some formal method could have reduced the likelihood of an accident. The following sections outline the basic models of the software process and how their application could have helped in the Case of the Killer Robot.
 
 \section{Basic Models of the Software Process}  
-The following concepts are not explained in depth, as it is assumed that the audience of this section is already familiar with these basic ideas of software development. Later sections explain how prudent application of these practices fulfills the legal requirements set forth by the common law.  
+Diligent adoption of modeled software processes, be it intentional or incidental, can in many ways fulfill the ``due care'' requirements set forth by judicial authorities. The waterfall and spiral models shown below model the software development process for individual projects. Both are acceptable models to use on a software development project, but the spiral model seems to be more accepted because it is a current, generalized version of many of the previous models and accommodates for for different types of methodologies depending on its application.
 
-\textbf{Design}: Herb Simon would classify design in general as the formulation actions that will ``change existing situations into preferred ones''. From software engineering standpoint, designers are concerned with how things ought to be in order to attain goals and function \cite{simon}. Activities can include gathering requirements, developing external functions and interfaces, designing internal component structures, generating test plans, and ensuring functions are complete and achievable.  
+\subsection{Waterfall Model}
+\begin{figure}[t]
+\begin{center}
+\includegraphics{figures/waterfall.pdf}
+\end{center}
+\caption{Waterfall Model of the Software Process}
+\label{fig:waterfall}
+\end{figure}
+
+The original treatment of the waterfall model appears in \cite{Royce1970} and describes a specification-driven approach to software development. Figure \ref{fig:waterfall} shows different phases that flow steadily downwards, like a waterfall. The model stresses a sequential occurrence of events in software development, but also includes an iterative treatment to account for the evolving software development process.
+
+This model shows the widely-accepted phases of the software development process, but the specific details within each phase are not set-in-stone. The model defines activities that should go on during requirements, analysis, implementation, etc. But societal demands may require other considerations to be made during these phases.
+
+\subsection{Spiral Model}\label{spiral}
+\begin{figure}[t]
+\begin{center}
+\includegraphics{figures/spiral.pdf}
+\end{center}
+\caption{Spiral Model of the Software Process}
+\label{fig:spiral}
+\end{figure}
+
+The spiral model, as described in \cite{Boehm1986}, builds on refinements made to the waterfall model. Boehm explains that the software process as an iteration of four phases of activity -- shown as quadrants – which can be retrofitted to particularize to a variety of methods and approaches. As illustrated in Figure \ref{fig:spiral}, the radial dimension represents the cumulative costs incurred in accomplishing the steps to date while the angular dimension represents the progress made in completing each spiral.
+
+Notice that each rotation around the spiral begins with objectives, consideration of alternatives, and the constraints on the system so (cost, schedule, interface, etc.). According to Boehm's model, software developers should take risks into consideration and these considerations should be documented.
+
+\section{Reasonably Prudent Software Development}
+While there are several methodologies to model the software development process beyond waterfall and spiral, one prudent attribute that they all should have in common is \textit{\textbf{iteration}}. With iteration, software engineers perform the activities they would follow to build the entire project during each iteration. There are different terms that define the activity during these iterations, but in general, software development occurs in three phases: design, implementation, and test.
+
+\textbf{Design}: Herb Simon would classify design in general as the formulation actions that will ``change existing situations into preferred ones''. From software engineering standpoint, designers are concerned with how things ought to be in order to attain goals and function \cite{simon}. Activities can include gathering requirements, developing external functions and interfaces, designing internal component structures, generating test plans, and ensuring functions are complete and achievable.
+
+Defects in design are difficult to prevent as there are no automated tools to detect them. By analyzing risk and borrowing the best practices from the state-of-the-art, software designers can reduce the number of defects that get written into the code. Using the killer robot case as an example, 
+
+\textbf{Implement}: Implementation involves converting the specifications from the design into actual software code. Reasonably prudent software engineers use modern tools and distinct methodologies to implement software. 
+
 
 \textbf{Implement}: The implementation phase of the software cycle involves the translation of design into functional code. Sometimes referred to as software construction or coding, engineers will implement code to create a static description of the processes defined in the prior phase, usually in the form of a programming language.  
 
 \textbf{Test}: Testing is the validation of the implementation against the programs design. This can be done through a variety of ways including, but not limited to, unit and system testing, black box testing, static code analysis, and automated testing. Testers seek to discover defects so that engineers can fix them before the code is released to the public.  
 
-\section{Reasonably Prudent Software Development}  
 discuss software development practices that satisfy legal constraints. discuss methodologies (waterfall, spiral) that help improve quality of software. discuss the academic field and what they teach in universities. bring up the code of ethics.   
 
 then discuss actual, formal standards set forth by the ieee, acm, etc. bring up those ieee standards you find and show how they meet legal standards.   
 
 software engineering must be proactive to prevent bugs from getting released, while the common law is reactive.  
 
-While certain design defects can occur during the design phase, these flaws will still manifest themselves as errors in the actual source code. It is agreeable that certain design activities related to requirements occur \textit{during} development \cite{Turner99}; that is after software construction has started. Because the source code is where flaws will ultimately need to be fixed, this work is interested in those activities that can help prevent software defects that would manifest after construction has begun. 
+While certain design defects can occur during the design phase, these flaws will still manifest themselves as errors in the actual source code. It is agreeable that certain design activities related to requirements occur \textit{during} development \cite{Turner99}; that is after software construction has started. Because the source code is where flaws will ultimately need to be fixed, this work is interested in those activities that can help prevent software defects that would manifest after construction has begun.
 
-\textbf{Design}: Defects in design are difficult to prevent as there are no automated tools to detect them. By analyzing risk and borrowing the best practices from the state-of-the-art, software designers can reduce the number of defects that get written into the code. 
-
-The state-of-the-art in design is extensive. Design involves analyzing requirements and writing specifications. 
-
-\textbf{Implement}: Implementation involves converting the specifications from the design into actual software code. Reasonably prudent software engineers use modern tools and distinct methodologies to implement software. 
+\textbf{Design}:
 
 The state-of-the-art of software implementation is constantly evolving. Software compilers translate human-readable code written by programmers into machine bits or byte/object code. Syntax mistakes and simple error conditions can be detected by compilers and prevent software defects. Compilation typically happens soon or immediately after a programmer finishes a unit of programming work. But advanced integrated development environments often provide real-time compilation that happens during development so that these simple errors are detected as the programmer is writing code.  
 
@@ -352,7 +394,9 @@ There are also several implementation methodologies that can be considered state
 
 \textbf{Test}: When software is complete enough to be executed, a series of unit and system level tests run to validate the code against its expected behavior. In  addition to automated test cases, test engineers run black-box style tests to mimic real-world usage.  
 
-\section{Summary} 
+\section{Summary}
+
+Models of these processes show that the the evolution of software is both a proactive, feed-forward system as well as a reactive, feedback system. The processes are proactive because software developers use the demands of their clients to write requirements for what they will implement. Society pushes them to innovate and create software that will be profitable. At the same time, the process is reactive because testing occurs to detect errors and inadequacies and are reported back to requirements and design planning for corrections. The study of these models will help software engineers understand how they can integrate legal requirements in their processes.
 
 \chapter{Paving the Intersection}  
 we don't have to wait and be reactive like the common law. we have influence right now! it may not seem like it, but software engineers can indirectly influence law in the following ways:  
