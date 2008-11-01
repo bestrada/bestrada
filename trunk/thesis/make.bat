@@ -1,4 +1,4 @@
-@del *.pdf
+@del thesis.pdf
 
 pdflatex thesis.tex
 bibtex thesis
