@@ -184,7 +184,7 @@ Author and professor Henry Petroski claims that without tragic mishaps of engine
 
 The graph in Figure \ref{fig:bugs} qualitatively models the discovery of defects over time of a single engineered product during its development lifecycle. The y-axis represents the percentage of defects found in the product. The x-axis represents time starting at the point where engineering begins. Logically, the percentage of defects found increases over time through various engineering best practices. Additionally, as defects are found and fixed, the rate at which they are discovered should theoretically decrease. As time progresses, the percentage of defects found approaches, though very likely never reaches, 100\%. The curve is a limit that approaches complete defect coverage. The point in time that the product is released to the public intersects with the defect curve leaving some amount of defects undiscovered. The percentage of undiscovered defects that remain in product \textit{after} it is released is subject to liability. By learning from the mistakes of the past and identifying the best practices that should take place before this point in time, engineers can increase the defects found and repaired before they release to market, thus minimizing the defects subject to liability. 
 
-The term \textit{liability} is a legal one, but in general, it refers to the responsibilities of engineers to produce safe products before they release them and their accountability if they fail to produce such safety. To understand the concept of liability more fully and in the context of this research, it helps to understand the types of defects software engineers can be liable for.
+The term \textit{liability} is a legal one, but in general, it refers to the responsibility of engineers to produce safe products before they release them and their accountability if they fail to produce such safety. To understand the concept of liability more fully and in the context of this research, it helps to understand the types of defects software engineers can be liable for.
 
 \section{On defect classification in software}
 Engineers releasing safety-critical products would love to be able to guarantee 100\% safety, but unfortunately there is no tool to use or process to follow that would allow them to do so \cite{Brooks87}. The edge cases that can cause injury will happen and software engineers will learn from these mistakes. Such mistakes are legally classified as a \textit{product defect}. A product that is defective ``contains some imperfection that makes it legally inadequate'' \cite{Turner99}. This work is interested in laying out the processes that would at least minimize the risk of safety-critical software and reduce the harm that would result from those defects that are overlooked.
@@ -307,7 +307,7 @@ Finally, actual damages or injures must be suffered for a negligence case to fol
 
 \subsubsection{Why hasn't our legal system addressed software negligence?}  
 
-The American legal system has still yet to resolve a \textit{real} dispute involving software. As software has now been around for decades and has already caused problems worthy of litigation \cite{FAKE}, why havent our courts regulated for safer software?  
+The American legal system has still yet to resolve a \textit{real} dispute involving software. As software has now been around for decades and has already caused problems worthy of litigation \cite{FAKE}, why haven't our courts regulated for safer software?  
 
 One reason why our courts have not addressed the issue of software safety is because of out-of-court measures that companies will take to settle disputes. Oftentimes, disputes will be settled through mediation, wherein a neutral third party facilitates a compromise of the situation \cite{FAKE}. Unfortunately, the law does not get updated through mediation because this kind of dispute resolution does not make a determination of right or wrong, it merely creates an agreement not to pursue trial litigation. Authority that constrains trial court judges, and subsequently software engineers that face such trials, is only developed by appeals courts. Appellate review produces the legal requirements and constraints for real trials.  
 
@@ -381,52 +381,54 @@ Like design, there several implementation tools and methodologies that can be co
 
 When software is complete enough to be executed, a series of unit and system level tests run to validate the code against its expected behavior. In  addition to automated test cases, test engineers run black-box style tests to mimic real-world usage.
 
-discuss software development practices that satisfy legal constraints. discuss methodologies (waterfall, spiral) that help improve quality of software. discuss the academic field and what they teach in universities. bring up the code of ethics.
-
-then discuss actual, formal standards set forth by the ieee, acm, etc. bring up those ieee standards you find and show how they meet legal standards.   
-
-software engineering must be proactive to prevent bugs from getting released, while the common law is reactive.  
-
-While certain design defects can occur during the design phase, these flaws will still manifest themselves as errors in the actual source code. It is agreeable that certain design activities related to requirements occur \textit{during} development \cite{Turner99}; that is after software construction has started. Because the source code is where flaws will ultimately need to be fixed, this work is interested in those activities that can help prevent software defects that would manifest after construction has begun.
+In an article from the case of the killer robot, investigators report that test cases were not authentic and did not represent the expected usage of the product. Evidence of a test plan and automation of many of the usage scenarios would have made the project more defensible. Similar to mistakes in other areas of the software development lifecycle, engineers could have minimized risk by complying to the software testing state-of-the-art.
 
 \section{Summary}
 
-Models of these processes show that the the evolution of software is both a proactive, feed-forward system as well as a reactive, feedback system. The processes are proactive because software developers use the demands of their clients to write requirements for what they will implement. Society pushes them to innovate and create software that will be profitable. At the same time, the process is reactive because testing occurs to detect errors and inadequacies and are reported back to requirements and design planning for corrections. The study of these models will help software engineers understand how they can integrate legal requirements in their processes.
+Models of these processes show that the the evolution of software is both a proactive, feed-forward system as well as a reactive, feedback system. The processes are proactive because software developers use the demands of their clients to write requirements for what they will implement. Society pushes them to innovate and create software that will be profitable. At the same time, the process is reactive because testing occurs to detect errors and inadequacies and are reported back to requirements and design planning for corrections. What is key to understand about the constantly evolving software industry is that different process models are more appropriate for each project and no matter which model is chosen it is always beneficial to iterate cycles of the process. Iteration provides more opportunities to find mistakes, consider risks, and update the implementations as requirements are sure to change.
 
-\chapter{Paving the Intersection}  
-we don't have to wait and be reactive like the common law. we have influence right now! it may not seem like it, but software engineers can indirectly influence law in the following ways:  
-academics and research (expert testimony)  
-standards and committees (ieee, acm, etc.)  
+The study of these models will help software engineers choose the best approach for their projects and understand the legal requirements that are already integrated in their processes. The law requires that if a reasonable alternative design is available it should be implemented. By using iteration in their process, software organizations are less likely to overlook these alternatives.
+
+\chapter{Paving the Intersection}
+While the common law works in a reactive manner, software engineers do not have to. In fact, software engineers have influence over the very laws that constrain their work. Just like implementation defects are tested against the design, design defects are tested against the state-of-the-art. But the state-of-the-art is not a court-created criterion. It is a standard created by software engineers themselves!
+
+In a dispute, the state-of-the art is defined as the best set of tools, technologies, and processes that could have been used at the time of a product's construction. This benchmark is defined software engineering academics and industry. It is created by expert groups in standards and best practices. It is taught in universities and understood by professors and students alike. It is utilized in industry among all successful software engineering projects. In this way, software engineers are able to influence the legal standard they are held to.
 
 \section{Scopes of Influence}  
-
 In a legal context, different perspectives are used to scrutinize the liability of software. Each perspective has its own scope to which it can influence its encapsulated perspectives. The initial level is the software implementation perspective. To determine liability based on a manufacturing defect, the implementation is scrutinized against the engineers' design of the product. Thus, the implementation perspective is encapsulated by the design perspective.  
 
 Beyond a simple manufacturing defect liability, software engineers can also be negligent if their design is unsafe. To determine negligence, the design itself is judged against a standard outside of the specification of the project. Courts normally refer to this outside standard as the ``State-of-the-Art. This perspective is used to determine if the behavior of software engineers, in the form of their design, was negligent. The state-of-the-art can influence a software products design, and by virtue its implementation, because its perspective has a wider scope than software design.  
 
-While software engineers are in fact held accountable by a legal system that, by itself, lacks the technical merit to pass judgment on such a specialized field, they can influence the very standard against which they are judged. Software engineering experts from both industry and academia, by the very nature of their work, define what constitutes the state-of-the-art. Thus, two more perspectives are introduced whose scopes encapsulate all others: Academia and Industry. Both perspectives have, qualitatively, equal influence over the software engineering state-of-the-art and its underlying perspectives so one cannot encapsulate the other. However, since both perspectives borrow expertise from one another, they can mutually influence each other.  
+\begin{figure}[t]
+\begin{center}  
+\includegraphics{figures/scopes.pdf}  
+\end{center}  
+\caption{Scopes of Influence}  
+\label{fig:scopes}
+\end{figure}
 
-\section{Summary} 
+While software engineers are in fact held accountable by a legal system that, by itself, lacks the technical merit to pass judgment on such a specialized field, they can influence the very standard against which they are judged. Software engineering experts from both industry and academia, by the very nature of their work, define what constitutes the state-of-the-art. Thus, two more perspectives are introduced whose scopes encapsulate all others: Academia and Industry. Both perspectives have, qualitatively, equal influence over the software engineering state-of-the-art and its underlying perspectives so one cannot encapsulate the other. However, since both perspectives borrow expertise from one another, they can mutually influence each other.   Figure \ref{fig:scopes} illustrates the concept of these perspectives and their influence over each other.
+
 
 \chapter{Conclusion}  
 Software safety, for now, remains an impracticable desire. While the precautions and recommendations derived from this research can assist in improving the overall safety and quality of software products, they cannot be held to the same regard as professional standards. The software industry still needs time to mature and society must learn to recognize that software is engineering.  
 
 \section{Drawbacks and Limitations}  
-Building software with safety constraints affirmed to the same level as medicine, architecture, or even other fields of physical engineering, is unlikely to happen within the near future. Certain inequities of the industry and limitations of the medium prevent software engineers from ensuring the safety of software like other industries are able to.  
-Just as the software profession is lacking in legal history, these legal shortcomings mutually hinder the effectiveness of software engineers.  
+Building software with safety constraints affirmed to the same level as medicine, architecture, or even other fields of physical engineering, is unlikely to happen within the near future. Certain inequities of the industry and limitations of the medium prevent software engineers from ensuring the safety of software like other industries are able to. Just as the software profession is lacking in legal history, these legal shortcomings mutually hinder the effectiveness of software engineers.  
 
 \subsection{Why We Can't Guarantee Software Safety}  
-Society is accustomed to software solutions built faster and cheaper. Imposing constraints to improve safety will slow down the speed in which developers can implement solutions; a speed at which safety-critical clients already expect them to deliver at. In addition, adding longer and more thorough development patterns will add to the cost of the solution. But if the cost of a safer software solution is slower and more expensive to build, clients may not see any value of using software over traditionally engineered solutions. 
+Society is accustomed to software solutions built faster and cheaper. Imposing constraints to improve safety will slow down the speed in which developers can implement solutions; a speed at which safety-critical clients already expect them to deliver at. In addition, adding longer and more thorough development patterns will add to the cost of the solution. But if the cost of a safer software solution is slower and more expensive to build, clients may not see any value of using software over traditionally engineered solutions.
 
-Software development jobs are not all safety-critical. Unlike other professions, the vast majority of jobs available to computer science graduates are in enterprise and end-user software that is not safety-critical [cite:? monster]. Since these areas do not need safety-regulation the way that all doctors, architects, and physical engineers do, progress in software safety is obstructed.  
+Additionally, software development jobs are not all safety-critical. Unlike other professions, the vast majority of jobs available to computer science graduates are in enterprise and end-user software that is not safety-critical \cite{FAKE}. Since these areas do not need safety-regulation the way that all doctors, architects, and physical engineers do, the industry and regulating bodies are less likely to pay attention to software safety.
 
 \subsection{Why We Shouldn't Guarantee Software Safety}  
-Creating a strict standard will hinder technical progress. Software is still in a state where it is evolving quickly, and if a hasty standard is created, it will either halt technical progress at the point where the standard is, or will quickly become obsolete and unable to catch up to the progress that non-safety-critical software developers are working on.  
-A defined standard may reduce software quality. Again, since software progress is moving so quickly, software engineers could choose to only follow a standard which at the time is obsolete and insufficient for proper safety. If the safety of an application is evaluated on a case-by-case basis, engineers should take the necessary precautions beyond what is considered sufficient to guarantee safety because there is no minimum to meet.  
+Creating a strict standard will hinder technical progress. Software is still in a state where it is evolving quickly, and if a hasty standard is created, it will either halt technical progress at the point where the standard is, or will quickly become obsolete and unable to catch up to the progress that non-safety-critical software developers are working on.
+
+A defined standard may reduce software quality. Again, since software progress is moving so quickly, software engineers could choose to only follow a standard which at the time is obsolete and insufficient for proper safety. Without the existence of an official, strict standard, the safety of an application is evaluated on a case-by-case basis. Engineers should take the necessary precautions beyond what is considered sufficient to guarantee safety because there is no minimum benchmark to meet.  
 
 \section{Future Work}  
 
-It would not be difficult to expand this research beyond the scope of test. Standards and practices exist for other stages, as well as legal requirements. Much of what has been written can be generalized to other areas of the software development process.
+It would not be difficult to expand this research beyond the scope of software engineering. Standards and practices exist for other areas of engineering, as well as legal requirements. Much of what has been written can be generalized to these fields.
 
 \appendix
 \include{killerrobot}
