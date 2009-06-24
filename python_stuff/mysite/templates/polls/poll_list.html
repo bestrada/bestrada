@@ -1,0 +1,13 @@
+<html><head><title>Polls</title></head>
+<body>
+{% if object_list %}
+  <ul>
+  {% for poll in object_list %}
+    <li>{{ poll.question }}: {{ poll.id }}</li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No polls are available.</p>
+{% endif %}
+</body>
+</html>
