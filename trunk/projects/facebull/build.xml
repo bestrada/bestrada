@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="facebull" default="build" basedir=".">
+	
+	<property name="src.dir"   value="src" />
+	<property name="build.dir" value="bin" />
+	
+	<target name="build">
+		<mkdir dir="${build.dir}" />
+		<javac srcdir="${src.dir}" destdir="${build.dir}" />
+	</target>
+	
+	<target name="clean">
+		<delete dir="${build.dir}" />
+	</target>
+	
+</project>
